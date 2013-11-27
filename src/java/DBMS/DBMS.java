@@ -43,8 +43,8 @@ public class DBMS {
 //                    "<clave de usuario psql>");
             conexion = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/sigulab",
-                    "preparador",
-                    "preparaduria");
+                    "mod3",
+                    "mod3");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
