@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/web/WEB-INF/struts-config.xml</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/Actions/Compra/agregarCompra.java</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/web/index.jsp</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/web/JSP/Compras/consultarCompras.jsp</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/web/JSP/Proveedor/agregarProveedor.jsp</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/Actions/Proveedor/agregarProveedor.java</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/Clases/Proveedor.java</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/Actions/Compra/consultarCompras.java</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/DBMS/DBMS.java</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/web/JSP/Proveedor/consultarProveedores.jsp</file>
+            <file>file:/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/java/Clases/Compra.java</file>
+        </group>
+    </open-files>
+</project-private>

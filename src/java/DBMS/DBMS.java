@@ -4,12 +4,14 @@
  */
 package DBMS;
 
-import Clases.Prepa;
+import Clases.Compra;
+import Clases.Proveedor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,20 +54,59 @@ public class DBMS {
         return false;
     }
 
-    public boolean agregarDatos(Prepa u) {
+    public ArrayList<Proveedor> consultarProveedores() {
+        
+        ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>(0);
+        PreparedStatement psConsultar = null;
+        try {
 
+            psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".proveedor");
+
+            ResultSet rs = psConsultar.executeQuery();
+            
+            while (rs.next()) {
+                Proveedor p = new Proveedor();
+                p.setRIF(rs.getString("rif"));
+                p.setCompania(rs.getString("compania"));
+                p.setTelefono(rs.getString("contacto"));
+                p.setResena(rs.getString("review"));
+                proveedores.add(p);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return proveedores;
+    }
+    
+    public boolean agregarProveedor(Proveedor p) {
         PreparedStatement psAgregar = null;
         try {
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod1\".ejemplo VALUES (?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".proveedor VALUES (?,?,?,?)");
+            psAgregar.setString(1, p.getRIF());
+            psAgregar.setString(2, p.getCompania());
+            psAgregar.setString(3, p.getTelefono());
+            psAgregar.setString(4, p.getResena());
             
-            psAgregar.setString(1, u.getCodigo());
-            psAgregar.setString(2, u.getNombre());
-            System.out.println(psAgregar.toString());
-
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean eliminarProveedor(Proveedor p) {
+        PreparedStatement ps = null;
+        try {
+
+            ps = conexion.prepareStatement("DELETE FROM \"mod3\".proveedor WHERE ( RIF = ? )");
+
+            ps.setString(1, p.getRIF());
+            Integer s = ps.executeUpdate();
+
+            return s > 0;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -73,26 +114,39 @@ public class DBMS {
         }
     }
     
+    /* COMPRAS*/
     
-    public boolean consultarDatos(Prepa u) {
-
+    public ArrayList<Compra> consultarCompras() {
+        
+        ArrayList<Compra> proveedores = new ArrayList<Compra>(0);
         PreparedStatement psConsultar = null;
         try {
 
-            psConsultar = conexion.prepareStatement("SELECT * FROM \"mod1\".ejemplo WHERE codigo = ?");
-            
-            psConsultar.setString(1, u.getCodigo());
-            System.out.println(psConsultar.toString());
+            psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".compra");
 
-            ResultSet Rs = psConsultar.executeQuery();
+            ResultSet rs = psConsultar.executeQuery();
             
-            while (Rs.next()) {
-                if((Rs.getString("nombre")).equals("SFAFA"))
-                return true;
+            while (rs.next()) {
+                Compra c = new Compra();
+                c.setNumOrden(rs.getInt("n_oc_os"));
+                proveedores.add(c);
             }
-            
-            return false;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return proveedores;
+    }
+    
+    public boolean agregarCompra(Compra c) {
+        PreparedStatement psAgregar = null;
+        try {
 
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".compra VALUES (?)");
+            psAgregar.setInt(1, c.getNumOrden());
+            
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;

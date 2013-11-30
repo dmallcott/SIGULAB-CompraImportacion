@@ -27,7 +27,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <!-- MODIFICAR ESTO HACIA SU PAGINA PRINCIPAL OJOOOOO-->
-        <welcome-file>prepa1.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

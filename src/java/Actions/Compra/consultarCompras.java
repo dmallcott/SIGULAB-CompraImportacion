@@ -1,15 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package actions;
 
-import Clases.Prepa;
+package Actions.Compra;
 
-
+import Clases.Compra;
 import DBMS.DBMS;
-
-
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,15 +20,14 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author jidc28
+ * @author daniel
  */
-public class almacenarEjemplo extends org.apache.struts.action.Action {
-    /* forward name="success" path="" */
-
+public class consultarCompras extends org.apache.struts.action.Action {
+    
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-
-    /**
+    
+     /**
      * This is the action called from the Struts framework.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -44,30 +42,14 @@ public class almacenarEjemplo extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
-        Prepa u = (Prepa) form;
         HttpSession session = request.getSession(true);
 
-        ActionErrors error = new ActionErrors();
-
-        error = u.validate(mapping, request);
-        boolean huboError = false;
-
-        if (error.size() != 0) {
-            huboError = true;
-        }
-
-        if (huboError) {
-            saveErrors(request, error);
-            return mapping.findForward(FAILURE);
-            //si los campos son validos
-        } else {
-            boolean agrego = DBMS.getInstance().agregarDatos(u);
-            
-            if (agrego) {
-                return mapping.findForward(SUCCESS);
-            } else {
-                return mapping.findForward(FAILURE);
-            }
-        }
+        // Se obtiene la lista de proveedores registrados
+        ArrayList<Compra> compras = DBMS.getInstance().consultarCompras();
+        
+        // Se retorna dicha lista por sesion
+        request.setAttribute("compras", compras);
+        
+        return mapping.findForward(SUCCESS); 
     }
 }

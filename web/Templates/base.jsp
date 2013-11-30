@@ -4,18 +4,13 @@
     Author     : Gustav Sinovsky
 --%>
 
-<%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
-<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <div align="center">
         <a title="Inicio" rel="home" href="">
@@ -77,15 +72,15 @@
     <h2> <ul id="nav2" style="padding-left:7.15cm">
             <li class="parent2">Catálogo de compras
                 <ul class="sub-nav2">
-                    <li><h2><html:link action="/consultarCompras">Consultar compras</html:link></h2></li>
+                    <li><h2>Agregar Compra</h2></li>
                 </ul>
             </li>
         </ul></h2>
     <h2> <ul id="nav3" style="padding-left:6.6cm">
             <li class="parent3">Catálogo de proveedores
                 <ul class="sub-nav3">
-                    <li><h2><html:link action="/registrarProveedor">Agregar proveedor</html:link></h2></li>
-                    <li><h2><html:link action="/consultarProveedores">Consultar proveedor</html:link></h2></li>    
+                    <li><h2>Agregar proveedor</h2></li>
+                    <li><h2>Consultar proveedor</h2></li>    
                 </ul>
             </li>
         </ul></h2>

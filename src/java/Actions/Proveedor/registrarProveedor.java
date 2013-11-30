@@ -1,12 +1,19 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package actions;
+
+package Actions.Proveedor;
+
+import Clases.Proveedor;
+import DBMS.DBMS;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -15,17 +22,13 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author jidc28
+ * @author patrick
  */
-public class plantillaActions extends org.apache.struts.action.Action {
-    /* forward name="success" path="" */
-    private static final String SUCCESS = "success";
-    private static final String FAILURE = "failure";
-    private static final String COORDINADOR = "coordinador";
-    private static final String DECANATO = "decanto";
-    private static final String MODULOUNO = "modulouno";
+public class registrarProveedor extends org.apache.struts.action.Action {
     
-    /**
+    private static final String SUCCESS = "success";
+    
+     /**
      * This is the action called from the Struts framework.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -38,19 +41,8 @@ public class plantillaActions extends org.apache.struts.action.Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        int a = 2;
-        int b = 2;
-        
-        if (a==b)
+            throws Exception 
+    {
         return mapping.findForward(SUCCESS);
-        
-        return mapping.findForward(FAILURE);
-        
-//        Recuerden que esto es una plantilla trabajada con condicionales
-//        dentro de su sistema ustedes deben modelar tal cual si fuera un programa
-//        comun y corriente, es decir, pueden usar IF, ELSE, WHILE, entre otras
-//        herramientas que provea java para realizar su flujo en el sistema.
     }
-    
 }
