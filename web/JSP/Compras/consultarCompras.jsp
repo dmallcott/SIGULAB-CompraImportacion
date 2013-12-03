@@ -21,18 +21,37 @@
         <div id="consultCompra">
             <table border="0">
                 <thead>
-                    <th>
-                        Orden
-                    </th>
+                <th>
+                    Orden
+                </th>
                 </thead>
                 <logic:iterate name="compras" id="Compras">
                     <tr>
                         <td>
                             <bean:write name="Compras" property="numOrden"></bean:write>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                            <bean:write name="Compras" property="tipo"></bean:write>
+                            </td>                        
+                            <td>
+                            <bean:write name="Compras" property="fechaPartida"></bean:write>
+                            </td>
+                            <td>
+                            <bean:write name="Compras" property="fechaRecepPre"></bean:write>
+                            </td>
+                            <td>
+                            <bean:write name="Compras" property="pagoProveedor"></bean:write>
+                            </td>
+                            <td>
+                            <bean:write name="Compras" property="tipoAutPago"></bean:write>
+                            </td>
+                            <td>
+                            <bean:write name="Compras" property="numOrden"></bean:write>
+                            </td>
+                        </tr>
                 </logic:iterate> 
             </table>
+
         </div>
     </body>
 </html>
