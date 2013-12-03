@@ -24,7 +24,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author patrick
  */
-public class registrarProveedor extends org.apache.struts.action.Action {
+public class ReqAgregarProveedor extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     

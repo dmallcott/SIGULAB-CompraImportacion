@@ -18,6 +18,22 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+        <logic:present name="eliminado">
+            <br>
+            <p align ="center" style="background-color: springgreen;
+               width: 300px; margin-left: auto; margin-right: auto"> 
+               Proveedor eliminado exitosamente.
+            </p>
+        </logic:present>
+        <logic:present name="noEliminado">
+            <br>
+            <p align ="center" style="background-color: springgreen;
+               width: 300px; margin-left: auto; margin-right: auto"> 
+               El proveedor no pudo ser eliminado exitosamente.
+            </p>
+        </logic:present>
+        
         <div id="consultProveedor">
             <table border="0">
                 <thead>
@@ -33,6 +49,9 @@
                     <th>
                         Resena
                     </th> 
+                    <th>
+                        Editar
+                    </th>
                     <th>
                         Eliminar
                     </th>
@@ -52,7 +71,22 @@
                             <bean:write name="Proveedores" property="resena"></bean:write>
                         </td>
                         <td>
-                        <html:button property="derp">Eliminar</html:button>
+                            <html:form action="/petEditarResena" onsubmit="return(this)">
+                                <html:hidden name="Proveedores" property="RIF"/>
+                                <html:hidden name="Proveedores" property="resena"/>
+                                
+                                <html:submit>
+                                    Editar Resena
+                                </html:submit>
+                            </html:form>
+                        </td>
+                        <td>
+                            <html:form action="/eliminarProveedor" onsubmit="return(this)">
+                                <html:hidden name="Proveedores" property="RIF"/>
+                                <html:submit>
+                                    Eliminar
+                                </html:submit>
+                            </html:form>
                         </td>
                     </tr>
                 </logic:iterate> 

@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+<<<<<<< HEAD
+        <h1>Hello World!</h1>
+    </body>
+=======
         <header><br>
             <b><h1>
                     <a href="" style="text-decoration: none">
@@ -100,4 +104,5 @@
 
 
 </body>
+>>>>>>> dmallcott
 </html>

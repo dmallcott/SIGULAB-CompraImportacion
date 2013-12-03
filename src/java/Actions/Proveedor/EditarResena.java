@@ -3,31 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Actions.Proveedor;
 
-package Actions.Compra;
-
-import Clases.Compra;
+import Clases.Proveedor;
 import DBMS.DBMS;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 /**
  *
  * @author daniel
  */
-public class consultarCompras extends org.apache.struts.action.Action {
-    
-    private static final String SUCCESS = "success";
+public class EditarResena extends org.apache.struts.action.Action {
+
     private static final String FAILURE = "failure";
-    
-     /**
+    private static final String SUCCESS = "success";
+
+    /**
      * This is the action called from the Struts framework.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -43,13 +40,23 @@ public class consultarCompras extends org.apache.struts.action.Action {
             throws Exception {
 
         HttpSession session = request.getSession(true);
+        Proveedor u = (Proveedor) form;
+        System.out.println("rif"+u.getRIF());
+        
+        // Se llama a la base para que se elimine el proveedor u
+        boolean editado = DBMS.getInstance().editarResena(u);
 
-        // Se obtiene la lista de proveedores registrados
-        ArrayList<Compra> compras = DBMS.getInstance().consultarCompras();
-        
-        // Se retorna dicha lista por sesion
-        request.setAttribute("compras", compras);
-        
-        return mapping.findForward(SUCCESS); 
+        /* En caso de no ser eliminado se manda una alerta por request a la pagina para que se avise al usuario.
+         En caso de ser eliminado se vuelve a la pagina de consulta con un mensaje de exito 
+         */
+        if (!editado) {
+            request.setAttribute("noEditado", FAILURE);
+            return mapping.findForward(FAILURE);
+        } else {
+            request.setAttribute("editado", SUCCESS);
+            ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
+            request.setAttribute("proveedores", proveedores);
+            return mapping.findForward(SUCCESS);
+        }
     }
 }

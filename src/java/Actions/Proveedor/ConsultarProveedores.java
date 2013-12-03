@@ -9,26 +9,22 @@ package Actions.Proveedor;
 import Clases.Proveedor;
 import DBMS.DBMS;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
-
 /**
  *
- * @author patrick
+ * @author daniel
  */
-public class agregarProveedor extends org.apache.struts.action.Action {
+public class ConsultarProveedores extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    private static final String YAREGISTRADO = "yaregistrado";
     
      /**
      * This is the action called from the Struts framework.
@@ -43,43 +39,17 @@ public class agregarProveedor extends org.apache.struts.action.Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception 
-    {
+            throws Exception {
 
-        Proveedor u = (Proveedor) form;
         HttpSession session = request.getSession(true);
 
-        ActionErrors error = new ActionErrors();
-
-        //valido los campos de formulario
-        //error = u.validate(mapping, request); NO SE VALIDAR
-        boolean huboError = false;
-
-
-        if (error.size() != 0) {
-            huboError = true;
-        }
+        // Se obtiene la lista de proveedores registrados
+        ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
         
-
-        //si los campos no son validos
-        if (huboError) {
-            saveErrors(request, error);
-            return mapping.findForward(FAILURE);
-            //si los campos son validos
-        } else {
-             boolean registro = DBMS.getInstance().agregarProveedor(u);
-
-            if (registro) {
-
-                ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-                request.setAttribute("proveedores", proveedores);
-                request.setAttribute("registro",SUCCESS);
-                return mapping.findForward(SUCCESS);
-            } else {
-                error.add("registro", new ActionMessage("error.codigoexistente"));
-                saveErrors(request, error);
-                return mapping.findForward(YAREGISTRADO);
-            }
-        }
+        // Se retorna dicha lista por sesion
+        request.setAttribute("proveedores", proveedores);
+        
+        return mapping.findForward(SUCCESS); 
     }
+    
 }

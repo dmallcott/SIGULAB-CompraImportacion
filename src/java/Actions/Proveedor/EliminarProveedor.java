@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Actions.Proveedor;
 
 import Clases.Proveedor;
@@ -21,10 +20,11 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author daniel
  */
-public class eliminarProveedor extends org.apache.struts.action.Action {
-    
+public class EliminarProveedor extends org.apache.struts.action.Action {
+
     private static final String FAILURE = "failure";
     private static final String SUCCESS = "success";
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -42,40 +42,21 @@ public class eliminarProveedor extends org.apache.struts.action.Action {
 
         Proveedor u = (Proveedor) form;
         HttpSession session = request.getSession(true);
-        ActionErrors error = new ActionErrors();
-        //obtengo una lista de carreras registradas
 
-        //valido los campos de formulario
-        /*error = u.validate(mapping, request);
-        boolean huboError = false;
-        
-        if (error.size() != 0) {
-            huboError = true;
+        // Se llama a la base para que se elimine el proveedor u
+        boolean eliminado = DBMS.getInstance().eliminarProveedor(u);
+
+        /* En caso de no ser eliminado se manda una alerta por request a la pagina para que se avise al usuario.
+         En caso de ser eliminado se vuelve a la pagina de consulta con un mensaje de exito 
+         */
+        if (!eliminado) {
+            request.setAttribute("noEliminado", FAILURE);
+            return mapping.findForward(SUCCESS);
+        } else {
+            request.setAttribute("eliminado", SUCCESS);
+            ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
+            request.setAttribute("proveedores", proveedores);
+            return mapping.findForward(SUCCESS);
         }
-
-        //si los campos no son validos
-        if (huboError) {
-            saveErrors(request, error);
-            request.setAttribute("noEliminado",FAILURE);
-            System.out.println("ERROR!!");
-            return mapping.findForward(FAILURE);
-            //si los campos son validos
-        } else {*/
-            boolean eliminado = DBMS.getInstance().eliminarProveedor(u);
-            //retorno a pagina de exito
-            if (!eliminado) {
-                request.setAttribute("noEliminado",FAILURE);
-                return mapping.findForward(SUCCESS);
-            } else {
-                request.setAttribute("eliminado",SUCCESS);
-
-                ArrayList<Proveedor> carreras = DBMS.getInstance().consultarProveedores();
-
-                //si existen carreras registradas
-
-                //retorno a pagina de exito
-//                session.setAttribute("proveedores", proveedores);
-                return mapping.findForward(SUCCESS);
-            }
-        }
+    }
 }

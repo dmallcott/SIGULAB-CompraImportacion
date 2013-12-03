@@ -101,9 +101,27 @@ public class DBMS {
         PreparedStatement ps = null;
         try {
 
-            ps = conexion.prepareStatement("DELETE FROM \"mod3\".proveedor WHERE ( RIF = ? )");
+            ps = conexion.prepareStatement("DELETE FROM \"mod3\".proveedor WHERE ( rif = ? )");
 
             ps.setString(1, p.getRIF());
+            Integer s = ps.executeUpdate();
+
+            return s > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean editarResena(Proveedor p) {
+        PreparedStatement ps = null;
+        try {
+
+            ps = conexion.prepareStatement("UPDATE \"mod3\".Proveedor set review = ? WHERE rif = ?;");
+            
+            ps.setString(1, p.getResena());
+            ps.setString(2, p.getRIF());
             Integer s = ps.executeUpdate();
 
             return s > 0;

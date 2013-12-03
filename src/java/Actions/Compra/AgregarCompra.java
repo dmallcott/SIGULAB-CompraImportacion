@@ -10,6 +10,6 @@ package Actions.Compra;
  *
  * @author daniel
  */
-public class agregarCompra {
+public class AgregarCompra {
     
 }
