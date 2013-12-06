@@ -19,10 +19,17 @@ import org.apache.struts.action.ActionMessage;
  * @author patrick
  */
 public class Proveedor extends org.apache.struts.action.ActionForm {
+    private static final String patronRIF = "[VJG]-[0-9]{8}-[0-9]";
     private String RIF;
     private String compania;
     private String telefono;
     private String resena;
+    private Pattern patron;
+    private Matcher match;
+    
+    public Proveedor() {
+        patron = Pattern.compile(patronRIF);
+    }
 
     public String getRIF() {
         return RIF;
@@ -54,5 +61,25 @@ public class Proveedor extends org.apache.struts.action.ActionForm {
 
     public void setResena(String resena) {
         this.resena = resena;
+    }
+    
+    public boolean validate(final String RIF){
+        match = patron.matcher(RIF);
+        return match.matches();
+    }
+    
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+        
+        if (this.getRIF() == null)
+            errors.add("RIF", new ActionMessage("error.rif.malformulado"));
+        
+        if (!validate(getRIF()))
+            errors.add("RIF", new ActionMessage("error.rif.vacio"));
+        
+        if (getCompania().matches("\\w") || getCompania().equals(""))
+            errors.add("compania", new ActionMessage("error.compania.vacia"));
+        
+        return errors;
     }
 }

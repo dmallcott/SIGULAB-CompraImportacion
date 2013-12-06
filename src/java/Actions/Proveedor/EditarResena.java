@@ -41,10 +41,10 @@ public class EditarResena extends org.apache.struts.action.Action {
 
         HttpSession session = request.getSession(true);
         Proveedor u = (Proveedor) form;
-        System.out.println("rif"+u.getRIF());
-        
-        // Se llama a la base para que se elimine el proveedor u
-        boolean editado = DBMS.getInstance().editarResena(u);
+        boolean editado = false;
+        if (u.getResena().length() < 300 )
+            // Se llama a la base para que se elimine el proveedor u
+            editado = DBMS.getInstance().editarResena(u);
 
         /* En caso de no ser eliminado se manda una alerta por request a la pagina para que se avise al usuario.
          En caso de ser eliminado se vuelve a la pagina de consulta con un mensaje de exito 

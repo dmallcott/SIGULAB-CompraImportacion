@@ -22,25 +22,13 @@
     </global>
 
     <formset>
-
-        <!-- An example form -->
-        <form name="logonForm">
-            <field
-                property="username"
-                depends="required">
-                    <arg key="logonForm.username"/>
-            </field>
-            <field
-                property="password"
-                depends="required,mask">
-                    <arg key="logonForm.password"/>
-                    <var>
-                        <var-name>mask</var-name>
-                        <var-value>^[0-9a-zA-Z]*$</var-value>
-                    </var>
+        <!--
+        <form name="Proveedor">
+            <field property="RIF" depends="required">
+                <arg key="Proveedor.RIF"/>
             </field>
         </form>
-
+        -->
     </formset>
 
     <!-- An example formset for another locale -->

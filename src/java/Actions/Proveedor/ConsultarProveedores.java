@@ -45,7 +45,9 @@ public class ConsultarProveedores extends org.apache.struts.action.Action {
 
         // Se obtiene la lista de proveedores registrados
         ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-        
+        if (proveedores.isEmpty()) {
+            request.setAttribute("noConsulta", FAILURE);
+        }
         // Se retorna dicha lista por sesion
         request.setAttribute("proveedores", proveedores);
         

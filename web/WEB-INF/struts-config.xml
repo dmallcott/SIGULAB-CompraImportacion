@@ -7,10 +7,12 @@
 
 <struts-config>
     <form-beans>
-    <!-- En los form beans deben colocar las clases que utilizaran dentro de 
-         los actions, sino struts les dira que no consigue el form bean a cual
-         asociarse para determinado action-->
-        <form-bean name="Proveedor" type="Clases.Proveedor"/>
+        <form-bean name="Proveedor" type="Clases.Proveedor">
+            <form-property name="RIF" type="java.lang.String" />
+            <form-property name="compania" type="java.lang.String" />
+            <form-property name="telefono" type="java.lang.String" />
+            <form-property name="resena" type="java.lang.String" />
+        </form-bean>
         <form-bean name="Compra" type="Clases.Compra"/>
     </form-beans>
     
@@ -23,6 +25,14 @@
 
     <action-mappings>
             
+        <!-- GENERAL -->
+        
+        <action input="/*" 
+                path="/home" 
+                type="org.apache.struts.actions.ForwardAction" 
+                parameter="index">
+        </action>
+        
         <!-- PROVEEDOR -->    
            
         <!-- Consultar Proveedores -->
@@ -32,10 +42,7 @@
                 scope="request"
                 name="Proveedor"
                 validate="false">
-            <!--Si el forward es Success, va a prepa2.jsp-->
             <forward name="success" path="consultarProveedores"/>
-            <!--Si no es Success, es decir, es Failure, va a welcomeStruts.jsp-->
-            <forward name="failure" path="/welcomeStruts.jsp"/>
         </action>
         
         <!-- Agregar Proveedor -->
@@ -54,8 +61,7 @@
                 name="Proveedor"
                 validate="false">
             <forward name="success" path="consultarProveedores"/>
-            <forward name="failure" path="/welcomeStruts.jsp"/>
-            <forward name="yaregistrada" path="/welcomeStruts.jsp"/>
+            <forward name="failure" path="agregarProveedor"/>
         </action>
         
         <!-- Eliminar Proveedor -->
@@ -71,7 +77,7 @@
         
         <!-- Editar Resena -->
             <action input="/consultarProveedores"
-                path="/petEditarResena"
+                path="/reqEditarResena"
                 type="Actions.Proveedor.ReqEditarResena"
                 scope="request"
                 name="Proveedor"
@@ -79,7 +85,7 @@
                 <forward name="success" path="editarResena"/>
             </action>
             
-            <action input="/petEditarResena"
+            <action input="/reqEditarResena"
                     path="/editarResena"
                     type="Actions.Proveedor.EditarResena"
                     scope="request"
@@ -97,10 +103,29 @@
                 scope="request"
                 name="Compra"
                 validate="false">
-            <!--Si el forward es Success, va a prepa2.jsp-->
             <forward name="success" path="consultarCompras"/>
-            <forward name="failure" path="/welcomeStruts.jsp"/>
+            <forward name="failure" path="index"/>
         </action>
+        
+        <!-- Agregar Compra -->
+        <action input="/*"
+                path="/reqAgregarCompra"
+                type="Actions.Compra.ReqAgregarCompra"
+                scope="request"
+                validat="false">
+            <forward name="success" path="agregarCompra"/>
+        </action>
+        
+        <action input="/reqAgregarCompra"
+                path="/agregarCompra"
+                type="Actions.Compra.AgregarCompra"
+                scope="request"
+                name="Compra"
+                validate="false">
+            <forward name="success" path="consultarCompras"/>
+            <forward name="failure" path="agregarCompra"/>
+        </action>
+        
         
     </action-mappings>
     

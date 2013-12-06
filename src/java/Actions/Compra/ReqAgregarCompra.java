@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Actions.Proveedor;
+package Actions.Compra;
 
 import Clases.Proveedor;
 import DBMS.DBMS;
@@ -24,11 +24,9 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author patrick
  */
-public class AgregarProveedor extends org.apache.struts.action.Action {
+public class ReqAgregarCompra extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
-    private static final String FAILURE = "failure";
-    private static final String YAREGISTRADO = "yaregistrado";
     
      /**
      * This is the action called from the Struts framework.
@@ -45,41 +43,6 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception 
     {
-
-        Proveedor u = (Proveedor) form;
-        HttpSession session = request.getSession(true);
-        boolean huboError = false;
-        ActionErrors error = new ActionErrors();
-
-        //valido los campos de formulario
-        error = u.validate(mapping, request);
-        
-
-
-        if (error.size() != 0) {
-            huboError = true;
-        }
-        
-
-        //si los campos no son validos
-        if (huboError) {
-            saveErrors(request, error);
-            request.setAttribute("noAgregado", FAILURE);
-            return mapping.findForward(FAILURE);
-            //si los campos son validos
-        } else {
-             boolean registro = DBMS.getInstance().agregarProveedor(u);
-             ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-             request.setAttribute("proveedores", proveedores);
-            if (registro) {
-                request.setAttribute("agregado",SUCCESS);
-                
-            } else {
-                request.setAttribute("yaAgregado",FAILURE);
-                saveErrors(request, error);
-            }
-         
-        }
         return mapping.findForward(SUCCESS);
     }
 }

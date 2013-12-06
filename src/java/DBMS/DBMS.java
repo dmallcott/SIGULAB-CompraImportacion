@@ -147,6 +147,24 @@ public class DBMS {
             while (rs.next()) {
                 Compra c = new Compra();
                 c.setNumOrden(rs.getInt("n_oc_os"));
+                c.setStatus(rs.getInt("status"));
+                c.setTipo(rs.getString("tipo"));
+                c.setFechaPartPresu(rs.getDate("fechapartpresu"));
+                c.setFechaRecepCertPresu(rs.getDate("fecharecepcertpresu"));
+                c.setTipoPago(rs.getString("tipopago"));
+                c.setNumeroPago(rs.getInt("numeropago"));
+                c.setFechaPago(rs.getDate("fechapago"));
+                c.setTotalGravemenes(rs.getDouble("totalgravemenes"));
+                c.setMontoFactura(rs.getDouble("montofactura"));
+                c.setTipoCertServ(rs.getString("tipocertserv"));
+                c.setNumeroCertServ(rs.getInt("numerocertserv"));
+                c.setFechaCertServ(rs.getDate("fechacertserv"));
+                c.setNIR(rs.getInt("NIR"));
+                c.setNumeroFactura(rs.getString("numerofactura"));
+                c.setFechaFactura(rs.getDate("fechafactura"));
+                c.setUbicacion(rs.getString("ubicacion"));
+                c.setObs(rs.getString("obs"));
+                
                 proveedores.add(c);
             }
         } catch (SQLException ex) {
@@ -159,8 +177,25 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".compra VALUES (?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".compra VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setInt(1, c.getNumOrden());
+            psAgregar.setInt(2, c.getStatus());
+            psAgregar.setString(3, c.getTipo());
+            psAgregar.setDate(4, c.getFechaPartPresu());
+            psAgregar.setDate(5, c.getFechaRecepCertPresu());
+            psAgregar.setString(6, c.getTipoPago());
+            psAgregar.setInt(7, c.getNumeroPago());
+            psAgregar.setDate(8, c.getFechaPago());
+            psAgregar.setDouble(9, c.getTotalGravemenes());
+            psAgregar.setDouble(10, c.getMontoFactura());
+            psAgregar.setString(11, c.getTipoCertServ());
+            psAgregar.setInt(12, c.getNumeroCertServ());
+            psAgregar.setDate(13, c.getFechaCertServ());
+            psAgregar.setInt(14, c.getNIR());
+            psAgregar.setString(15, c.getNumeroFactura());
+            psAgregar.setDate(16, c.getFechaFactura());
+            psAgregar.setString(17, c.getUbicacion());
+            psAgregar.setString(18, c.getObs());
             
             Integer i = psAgregar.executeUpdate();
 
