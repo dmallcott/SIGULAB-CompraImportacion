@@ -1,7 +1,0 @@
-#!/bin/bash
-
-
-unzip ./src/documents/templates/carta_invitacion.odt -d $1
-
-
-
