@@ -51,6 +51,13 @@
                                                             Proveedor no agregado.
                                                         </p>
                                                     </logic:present>
+                                                    <logic:present name="yaAgregado">
+                                                        <br>
+                                                        <p align ="center" style="background-color: firebrick; color: white;
+                                                           width: 300px; margin-left: auto; margin-right: auto"> 
+                                                            Proveedor ya existe.
+                                                        </p>
+                                                    </logic:present>
 
                                                     <html:form action="/agregarProveedor" method="POST" acceptCharset="ISO-8859-1" 
                                                                enctype="multipart/form-data" onsubmit="return(this)">

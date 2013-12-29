@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package Actions.Proveedor;
+package Actions.Documentos;
 
+import Clases.CartaInvitacion;
 import Clases.Proveedor;
 import DBMS.DBMS;
 import java.util.ArrayList;
@@ -22,15 +23,14 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author patrick
+ * @author daniel
  */
-public class AgregarProveedor extends org.apache.struts.action.Action {
+public class agregarCartaInvitacion extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    private static final String YAREGISTRADO = "yaregistrado";
     
-     /**
+    /**
      * This is the action called from the Struts framework.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -46,20 +46,18 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
             throws Exception 
     {
 
-        Proveedor u = (Proveedor) form;
-        HttpSession session = request.getSession(true);
+        CartaInvitacion carta = (CartaInvitacion) form;
+        HttpSession session = request.getSession(true);  
+        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
         boolean huboError = false;
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
-        error = u.validate(mapping, request);
-        
-
+        error = carta.validate(mapping, request);        
 
         if (error.size() != 0) {
             huboError = true;
         }
-        
 
         //si los campos no son validos
         if (huboError) {
@@ -68,18 +66,15 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
             return mapping.findForward(FAILURE);
             //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().agregarProveedor(u);
-             ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-             request.setAttribute("proveedores", proveedores);
+             boolean registro = DBMS.getInstance().agregarCartaInvitacion(user, carta);
+             // wat now
             if (registro) {
                 request.setAttribute("agregado",SUCCESS);
                 
             } else {
                 request.setAttribute("yaAgregado",FAILURE);
                 saveErrors(request, error);
-                return mapping.findForward(FAILURE);
             }
-         
         }
         return mapping.findForward(SUCCESS);
     }
