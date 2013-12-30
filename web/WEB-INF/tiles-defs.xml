@@ -6,6 +6,9 @@
 
 <tiles-definitions>
 
+    
+    
+    
     <!-- INDEX -->
     
     <definition name="index" path="/index.jsp"/>
@@ -20,5 +23,9 @@
     
     <definition name="agregarCompra" path="/JSP/Compras/agregarCompra.jsp"/>
     <definition name="consultarCompras" path="/JSP/Compras/consultarCompras.jsp"/>
+    
+    <!-- COMPRAS -->
+    
+    <definition name="agregarCartaInvitacion" path="/JSP/Documentos/cartaInvitacion.jsp"/>
 
 </tiles-definitions>

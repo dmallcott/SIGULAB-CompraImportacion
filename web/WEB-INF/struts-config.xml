@@ -14,6 +14,7 @@
             <form-property name="resena" type="java.lang.String" />
         </form-bean>
         <form-bean name="Compra" type="Clases.Compra"/>
+        <form-bean name="CartaInvitacion" type="Clases.CartaInvitacion"/>
     </form-beans>
     
     <global-exceptions>
@@ -112,7 +113,7 @@
                 path="/reqAgregarCompra"
                 type="Actions.Compra.ReqAgregarCompra"
                 scope="request"
-                validat="false">
+                validate="false">
             <forward name="success" path="agregarCompra"/>
         </action>
         
@@ -126,6 +127,23 @@
             <forward name="failure" path="agregarCompra"/>
         </action>
         
+        <!-- Agregar Carta -->
+        <action input="/*"
+                path="/reqAgregarCartaInvitacion"
+                type="Actions.Documentos.ReqAgregarCartaInvitacion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarCartaInvitacion"/>
+        </action>
+        
+        <action input="/reqAgregarCartaInvitacion"
+                path="/agregarCartaInvitacion"
+                type="Actions.Documentos.AgregarCartaInvitacion"
+                scope="request"
+                name="CartaInvitacion"
+                validate="false">
+            <forward name="success" path="consultarCompras"/>
+        </action>
         
     </action-mappings>
     

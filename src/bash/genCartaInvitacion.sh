@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Se comienza por extraer los componentes del documento
-unzip ./src/documents/templates/carta_invitacion.odt -d $1
+unzip /home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/documents/templates/carta_invitacion.odt -d $1
 
 # Luego se modifica el archivo content.xml para cambiar las 
 # etiquetas previamente definidas por los valores pasados 
@@ -24,11 +24,11 @@ sed -i 's/.%UNIDAD_SOLICITANTE%./>'"${12}"'</g' content.xml
 # moverlo a la carpeta de documentos generados y 
 # eliminar el directorio donde se descomprimio
 zip -r carta_invitacion_$1.odt *
-cp carta_invitacion_$1.odt ../src/documents/generated
+cp carta_invitacion_$1.odt /home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/documents/generated
 cd ..
 rm -rf $1/
 rm *.sh~
 
 # Por ultimo se usa unoconv para generar el .pdf y luego se elimina el .odt
-unoconv -f pdf src/documents/generated/carta_invitacion_$1.odt
-rm src/documents/generated/carta_invitacion_$1.odt
+unoconv -f pdf /home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/documents/generated/carta_invitacion_$1.odt
+rm /home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/documents/generated/carta_invitacion_$1.odt

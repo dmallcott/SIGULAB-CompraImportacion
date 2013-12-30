@@ -9,6 +9,9 @@ package Actions.Documentos;
 import Clases.CartaInvitacion;
 import Clases.Proveedor;
 import DBMS.DBMS;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +28,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author daniel
  */
-public class agregarCartaInvitacion extends org.apache.struts.action.Action {
+public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -46,14 +49,29 @@ public class agregarCartaInvitacion extends org.apache.struts.action.Action {
             throws Exception 
     {
 
-        CartaInvitacion carta = (CartaInvitacion) form;
+        //CartaInvitacion carta = (CartaInvitacion) form;
         HttpSession session = request.getSession(true);  
-        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
+        //String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
         boolean huboError = false;
         ActionErrors error = new ActionErrors();
-
+        CartaInvitacion test = new CartaInvitacion();
+        test.setCodigo("1");    
+        test.setFecha(Date.valueOf("2013-12-26"));
+        test.setNomEmpresa("DT Systems");
+        test.setDireccion("Caracas");
+        test.setPresente("Daniel Mallcott");
+        test.setTelefono("0212-1234567");
+        test.setCorreo("dmallcott@usb.ve");
+        test.setDiaOferta("05");
+        test.setMesOferta("Marzo");
+        test.setContacto("Daniel");
+        test.setResponsable("Daniel Mallcott");
+        test.setUnidadSolicitante("ULAB");
+        
+        
+        
         //valido los campos de formulario
-        error = carta.validate(mapping, request);        
+        //error = carta.validate(mapping, request);        
 
         if (error.size() != 0) {
             huboError = true;
@@ -66,7 +84,8 @@ public class agregarCartaInvitacion extends org.apache.struts.action.Action {
             return mapping.findForward(FAILURE);
             //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().agregarCartaInvitacion(user, carta);
+            /*
+             boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);
              // wat now
             if (registro) {
                 request.setAttribute("agregado",SUCCESS);
@@ -74,8 +93,24 @@ public class agregarCartaInvitacion extends org.apache.struts.action.Action {
             } else {
                 request.setAttribute("yaAgregado",FAILURE);
                 saveErrors(request, error);
+            }*/
+            boolean gen = test.generateDoc();
+            if (gen == true){
+                OutputStream out = response.getOutputStream();
+                response.setContentType("application/rtf");
+                response.setHeader("Content-Disposition","attachment;filename=carta_invitacion_"+test.getCodigo()+".pdf");
+                FileInputStream in = new FileInputStream("/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/documents/generated/carta_invitacion_"+test.getCodigo()+".pdf");
+                byte[] buffer = new byte[4096];
+                int length;
+                while ((length = in.read(buffer)) > 0){
+                    out.write(buffer, 0, length);
+                }
+                in.close();
+                out.flush();
+                
             }
-        }
-        return mapping.findForward(SUCCESS);
-    }
+        }  
+        //return mapping.findForward(SUCCESS);
+        return null;
+    }   
 }

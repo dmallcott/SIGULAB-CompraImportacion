@@ -20,6 +20,7 @@
                         <ul class="sub-nav2" style="display:none; list-style:none;">
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCompra">Agregar compra</html:link></a></h6></li>
                             <li><h6 style="margin:0;"><a><html:link action="/consultarCompras">Consultar compras</html:link></a></h6></li>
+                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCartaInvitacion">Agregar carta</html:link></a></h6></li>
                         </ul>
                     </ul>
                 </div>

@@ -17,7 +17,7 @@ import java.sql.Date;
  *
  * @author daniel
  */
-public class CartaInvitacion {
+public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String codigo; // todos los docs tienen codigo? podrias hacer una interfaz con eso
     private Date Fecha;
     private String nomEmpresa;
@@ -31,8 +31,8 @@ public class CartaInvitacion {
     private String responsable;
     private String unidadSolicitante;
 
-    
-    public static void main(String[] args) throws IOException, InterruptedException{
+    /*
+    public static void test() throws IOException, InterruptedException{
         CartaInvitacion test = new CartaInvitacion();
         test.setCodigo("1");    
         test.setFecha(Date.valueOf("2013-12-26"));
@@ -49,17 +49,22 @@ public class CartaInvitacion {
         
         boolean result = test.generateDoc();
         
-    }
+    }*/
     
     public boolean generateDoc() throws IOException, InterruptedException {
         Process terminal;
         
-        String[] command = {"./src/bash/genCartaInvitacion.sh", codigo, Fecha.toString(), nomEmpresa, direccion, 
+        String[] command = {"/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/bash/genCartaInvitacion.sh", 
+            codigo, Fecha.toString(), nomEmpresa, direccion, 
             presente, telefono, correo, diaOferta, mesOferta, contacto, responsable, unidadSolicitante};
         
         terminal = Runtime.getRuntime().exec(command);
         terminal.waitFor();
-        return true;
+        if (terminal.exitValue() == 0)
+            return true;
+        else
+            return false;
+        
     }
     
     public String getCodigo() {
