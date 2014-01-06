@@ -6,6 +6,7 @@ package DBMS;
 
 import Clases.Compra;
 import Clases.Proveedor;
+import Clases.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -54,8 +55,29 @@ public class DBMS {
         return false;
     }
 
+    public Usuario verificarUsuario(Usuario u) {
+        PreparedStatement psConsultar = null;
+        Usuario user = new Usuario();
+        try {
+
+            psConsultar = conexion.prepareStatement("SELECT usbid, tipo  FROM \"mod3\".usuario WHERE (usbid = ? AND contrasena = ?)");
+            psConsultar.setString(1, u.getUsbid());
+            psConsultar.setString(2, u.getContrasena());
+            ResultSet rs = psConsultar.executeQuery();
+
+            if (rs.next()) {
+                user.setUsbid(rs.getString("usbid"));
+                user.setTipousuario(rs.getString("tipo"));
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
     public ArrayList<Proveedor> consultarProveedores() {
-        
+
         ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>(0);
         PreparedStatement psConsultar = null;
         try {
@@ -63,7 +85,7 @@ public class DBMS {
             psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".proveedor");
 
             ResultSet rs = psConsultar.executeQuery();
-            
+
             while (rs.next()) {
                 Proveedor p = new Proveedor();
                 p.setRIF(rs.getString("rif"));
@@ -77,7 +99,7 @@ public class DBMS {
         }
         return proveedores;
     }
-    
+
     public boolean agregarProveedor(Proveedor p) {
         PreparedStatement psAgregar = null;
         try {
@@ -87,7 +109,7 @@ public class DBMS {
             psAgregar.setString(2, p.getCompania());
             psAgregar.setString(3, p.getTelefono());
             psAgregar.setString(4, p.getResena());
-            
+
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
@@ -96,7 +118,7 @@ public class DBMS {
             return false;
         }
     }
-    
+
     public boolean eliminarProveedor(Proveedor p) {
         PreparedStatement ps = null;
         try {
@@ -113,13 +135,13 @@ public class DBMS {
             return false;
         }
     }
-    
+
     public boolean editarResena(Proveedor p) {
         PreparedStatement ps = null;
         try {
 
             ps = conexion.prepareStatement("UPDATE \"mod3\".Proveedor set review = ? WHERE rif = ?;");
-            
+
             ps.setString(1, p.getResena());
             ps.setString(2, p.getRIF());
             Integer s = ps.executeUpdate();
@@ -131,11 +153,10 @@ public class DBMS {
             return false;
         }
     }
-    
+
     /* COMPRAS*/
-    
     public ArrayList<Compra> consultarCompras() {
-        
+
         ArrayList<Compra> proveedores = new ArrayList<Compra>(0);
         PreparedStatement psConsultar = null;
         try {
@@ -143,7 +164,7 @@ public class DBMS {
             psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".compra");
 
             ResultSet rs = psConsultar.executeQuery();
-            
+
             while (rs.next()) {
                 Compra c = new Compra();
                 c.setNumOrden(rs.getInt("n_oc_os"));
@@ -164,7 +185,7 @@ public class DBMS {
                 c.setFechaFactura(rs.getDate("fechafactura"));
                 c.setUbicacion(rs.getString("ubicacion"));
                 c.setObs(rs.getString("obs"));
-                
+
                 proveedores.add(c);
             }
         } catch (SQLException ex) {
@@ -172,7 +193,7 @@ public class DBMS {
         }
         return proveedores;
     }
-    
+
     public boolean agregarCompra(Compra c) {
         PreparedStatement psAgregar = null;
         try {
@@ -196,7 +217,7 @@ public class DBMS {
             psAgregar.setDate(16, c.getFechaFactura());
             psAgregar.setString(17, c.getUbicacion());
             psAgregar.setString(18, c.getObs());
-            
+
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
@@ -205,4 +226,5 @@ public class DBMS {
             return false;
         }
     }
+
 }

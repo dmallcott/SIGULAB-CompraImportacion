@@ -6,11 +6,10 @@
 
 package Clases;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 
 /**
@@ -18,7 +17,7 @@ import java.sql.Date;
  * @author daniel
  */
 public class CartaInvitacion extends org.apache.struts.action.ActionForm {
-    private String codigo; // todos los docs tienen codigo? podrias hacer una interfaz con eso
+    private String codigo;
     private Date Fecha;
     private String nomEmpresa;
     private String direccion;
@@ -31,6 +30,19 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String responsable;
     private String unidadSolicitante;
 
+    private String genPath;
+    
+    // TO-DO: -validate
+
+    public String getGenPath() {
+        return genPath;
+    }
+
+    public void setGenPath(String genPath) {
+        this.genPath = genPath;
+    }
+    
+    
     /*
     public static void test() throws IOException, InterruptedException{
         CartaInvitacion test = new CartaInvitacion();
@@ -51,20 +63,33 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
         
     }*/
     
-    public boolean generateDoc() throws IOException, InterruptedException {
-        Process terminal;
-        
-        String[] command = {"/home/daniel/NetBeansProjects/SIGULAB-CompraImportacion/src/bash/genCartaInvitacion.sh", 
-            codigo, Fecha.toString(), nomEmpresa, direccion, 
-            presente, telefono, correo, diaOferta, mesOferta, contacto, responsable, unidadSolicitante};
-        
-        terminal = Runtime.getRuntime().exec(command);
-        terminal.waitFor();
-        if (terminal.exitValue() == 0)
-            return true;
-        else
+    /**
+    * Este metodo genera el documento asociado a la clase en la carpeta src/documentos/generated.
+    * Corre el script 'genCartaInvitacion' el cual se encarga de todo el proceso.
+    * @return Un booleano con el estatus de salida de 'genCartaInvitacion'
+    */
+    public boolean generateDoc() {
+        try {
+            // Esta cantidad excesiva de strings es para calcular el path de la webapp dinamicamente.
+            String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().toString();
+            String shortenedPath = absolutePath.replace("file:", "");
+            String appPath = shortenedPath.replace("/build/web/WEB-INF/classes/Clases/CartaInvitacion.class", "");
+            String[] command = {"./src/bash/genCartaInvitacion.sh",
+                codigo, Fecha.toString(), nomEmpresa, direccion,
+                presente, telefono, correo, diaOferta, mesOferta, contacto, responsable, unidadSolicitante};
+            
+            Process terminal = Runtime.getRuntime().exec(command,null,new File(appPath));
+            terminal.waitFor();
+            if (terminal.exitValue() == 0) {
+                genPath = appPath + "src/documents/generated/carta_invitacion_"+codigo+".pdf";
+                return true;
+            } else
+                return false;
+        } catch (IOException ex) {
             return false;
-        
+        } catch (InterruptedException ex) {
+            return false;
+        }
     }
     
     public String getCodigo() {

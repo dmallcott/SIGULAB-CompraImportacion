@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="Usuario" type="Clases.Usuario"/>
         <form-bean name="Proveedor" type="Clases.Proveedor">
             <form-property name="RIF" type="java.lang.String" />
             <form-property name="compania" type="java.lang.String" />
@@ -18,7 +19,6 @@
     </form-beans>
     
     <global-exceptions>
-    
     </global-exceptions>
 
     <global-forwards>
@@ -26,7 +26,34 @@
 
     <action-mappings>
             
+        <!-- VISTAS -->
+        <action path="/vistaCoordinador"
+            type="org.apache.struts.actions.ForwardAction"
+            scope="request"
+            validate="false"
+            parameter="vistaCoordinador"
+            >
+        </action>
+        
+        <!-- LOGIN -->
+        <action input="/Login.jsp" 
+                path="/login"
+                name="Usuario"
+                scope="request" 
+                type="Session.IniciarSesion" 
+                validate="false">
+            <forward name="coordinador" path="vistaCoordinador"/>
+            <forward name="failure" path="/Login.jsp"/>
+        </action>
+        
         <!-- GENERAL -->
+        <action name="Usuario" 
+                path="/irInicio" 
+                scope="request" 
+                type="Otros.Inicio" 
+                validate="false">
+            <forward name="coordinador" path="vistaCoordinador"/>
+        </action> <!-- ESTO NO SIRVE -->
         
         <action input="/*" 
                 path="/home" 
@@ -130,7 +157,7 @@
         <!-- Agregar Carta -->
         <action input="/*"
                 path="/reqAgregarCartaInvitacion"
-                type="Actions.Documentos.ReqAgregarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.ReqAgregarCartaInvitacion"
                 scope="request"
                 validate="false">
             <forward name="success" path="agregarCartaInvitacion"/>
@@ -138,11 +165,12 @@
         
         <action input="/reqAgregarCartaInvitacion"
                 path="/agregarCartaInvitacion"
-                type="Actions.Documentos.AgregarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
                 scope="request"
                 name="CartaInvitacion"
                 validate="false">
-            <forward name="success" path="consultarCompras"/>
+            
+            
         </action>
         
     </action-mappings>

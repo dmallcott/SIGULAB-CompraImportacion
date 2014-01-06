@@ -6,11 +6,30 @@
 
 <tiles-definitions>
 
+    <definition name="base" path="/Plantilla/plantilla.jsp">
+        <put name="banner" value="/Plantilla/banner.jsp"/>
+        <put name="sidebarR" value="/Plantilla/sidebarR.jsp"/>
+        <put name="footer" value="/Plantilla/footer.jsp"/>
+    </definition>
     
+
     
+    <!-- COORDINADOR -->
+    
+    <definition name="baseCoordinador" extends="base"> <!-- BASE PARA COORDINADOR -->
+        <put name="sidebarL" value="/Plantilla/Lsidebars/sidebarCoordinador.jsp"/>
+    </definition>
+    
+    <definition name="vistaCoordinador" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/VistaCoordinador.jsp"/>
+        <put name="title" value="Sistema de la ULAB" type="string"/>
+    </definition>
+    
+
     
     <!-- INDEX -->
     
+   
     <definition name="index" path="/index.jsp"/>
     
     <!-- PROVEEDORES -->
@@ -28,4 +47,6 @@
     
     <definition name="agregarCartaInvitacion" path="/JSP/Documentos/cartaInvitacion.jsp"/>
 
+    
+    
 </tiles-definitions>
