@@ -46,6 +46,14 @@
             <forward name="failure" path="/Login.jsp"/>
         </action>
         
+        <action input="/" 
+                path="/cerrarSesion" 
+                scope="request" 
+                type="Session.CerrarSesion" 
+                validate="false">
+            <forward name="success" path="/Login.jsp"/>
+        </action>
+        
         <!-- GENERAL -->
         <action name="Usuario" 
                 path="/irInicio" 

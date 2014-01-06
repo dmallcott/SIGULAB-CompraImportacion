@@ -4,6 +4,8 @@
     Author     : daniel
 --%>
 
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+
 <!--SIDEBAR-->
 <div id="sidebar-first" class="sidebar grid-3 pull-10">
     <div class="region region-sidebar-first">
@@ -21,14 +23,26 @@
                     </ul>
                     <ul class="menu1">
                         <li class="first leaf">
-                            <a href="#">Catalogo de compras</a>
+                            <a href="#">Documentos</a>
                         </li>
                         <ul class="sub-nav2" style="display:none; list-style:none;">
-                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCompra">Agregar compra</html:link></a></h6></li>
-                            <li><h6 style="margin:0;"><a><html:link action="/consultarCompras">Consultar compras</html:link></a></h6></li>
+
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCartaInvitacion">Agregar carta</html:link></a></h6></li>
                         </ul>
                     </ul>
+                    <ul class="menu2">
+                        <li class="first last leaf">
+                            <a><html:link action="/consultarCompras">Registro de Compras</html:link></a>
+                        </li>
+                    </ul>
+                    <div id="block-system-main-menu" class="block block-menu">
+                        <ul class="menu">
+                            <li class="first last leaf">
+                                <a><html:link action="/cerrarSesion">Salir</html:link></a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
