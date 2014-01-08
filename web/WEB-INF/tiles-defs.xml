@@ -22,8 +22,18 @@
     
     <definition name="vistaCoordinador" extends="baseCoordinador"> <!-- Vista coordinador -->
         <put name="body" value="Bienvenido Coordinador." type="string"/>
-        <put name="title" value="Sistema de la ULAB" type="string"/>
+        <put name="page_title" value="ULAB" type="string"/>
+        <put name="body_title" value="Sistema de la ULAB" type="string"/>
     </definition>
+    
+    <!-- DOCUMENTOS -->
+    
+    <definition name="agregarCartaInvitacion" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/cartaInvitacion.jsp"/>
+        <put name="page_title" value="ULAB: Carta de Invitacion" type="string"/>
+        <put name="body_title" value="Carta de Invitacion" type="string"/>
+    </definition>
+    
     
     
     <!-- DE AQUI PARA ABAJO ESTA DESACTUALIZADO Y NO FUNCIONA. ESTO OCURRIO POR LA ACTUALIZACION
@@ -40,9 +50,7 @@
     <definition name="agregarCompra" path="/JSP/Compras/agregarCompra.jsp"/>
     <definition name="consultarCompras" path="/JSP/Compras/consultarCompras.jsp"/>
     
-    <!-- DOCUMENTOS -->
     
-    <definition name="agregarCartaInvitacion" path="/JSP/Documentos/cartaInvitacion.jsp"/>
 
     
     

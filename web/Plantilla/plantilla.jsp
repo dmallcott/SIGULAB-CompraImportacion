@@ -14,7 +14,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><tiles:insert attribute="title"/></title>
+        <title><tiles:insert attribute="page_title"/></title>
         <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/layout.css"/>
         <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/forms.css"/>
         <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/colors.css"/>
@@ -38,7 +38,7 @@
                             <div class="region region-content">
                                 <article id="node-53" class="node node-article node-promoted node-teaser clearfix" about="/node/53" typeof="sioc:Item foaf:Document" role="article">
                                     <header class="clearfix">
-                                        <h2 property="dc:title" datatype="" class="title node-title"><tiles:insert attribute="title"/></h2>
+                                        <h2 property="dc:title" datatype="" class="title node-title"><tiles:insert attribute="body_title"/></h2>
                                     </header>
                                     <div class="content clearfix">
                                         <div class="field field-name-body field-type-text-with-summary field-label-hidden">

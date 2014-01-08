@@ -50,12 +50,12 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
 
         CartaInvitacion carta = (CartaInvitacion) form;
         HttpSession session = request.getSession(true);  
-        //String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
+        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
         boolean huboError = false;
         ActionErrors error = new ActionErrors();
         
         //valido los campos de formulario
-        //error = carta.validate(mapping, request);        
+        error = carta.validate(mapping, request);        
 
         if (error.size() != 0) {
             huboError = true;
@@ -72,27 +72,13 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
              // wat now
             if (registro) {
                 request.setAttribute("agregado",SUCCESS);
+                return mapping.findForward(SUCCESS);
                 
             } else {
                 request.setAttribute("yaAgregado",FAILURE);
                 saveErrors(request, error);
+                return mapping.findForward(FAILURE);
             }
-            /*
-            boolean gen = test.generateDoc();
-            if (gen == true){
-                session.setAttribute("nombreArchivo", "carta_invitacion_" + test.getCodigo() + ".pdf");
-                session.setAttribute("genPath", test.getGenPath());
-                return mapping.findForward(SUCCESS);
-                
-                
-                
-                
-                
-                
-            } else {
-                return mapping.findForward(FAILURE); // maybe archivo no generado?
-            }
-                    */
         }  
     }   
 }

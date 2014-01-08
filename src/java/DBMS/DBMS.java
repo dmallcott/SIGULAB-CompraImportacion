@@ -4,6 +4,7 @@
  */
 package DBMS;
 
+import Clases.CartaInvitacion;
 import Clases.Compra;
 import Clases.Proveedor;
 import Clases.Usuario;
@@ -39,11 +40,6 @@ public class DBMS {
     public static boolean conectar() {
         try {
             Class.forName("org.postgresql.Driver");
-//            La forma de esto debe ser la siguiente:
-//                     conexion = DriverManager.getConnection(
-//                    "jdbc:postgresql://localhost:5432/<database>",
-//                    "<nombre de usuario psql>",
-//                    "<clave de usuario psql>");
             conexion = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/sigulab",
                     "mod3",
@@ -226,5 +222,31 @@ public class DBMS {
             return false;
         }
     }
+    public boolean AgregarCartaInvitacion(String user, CartaInvitacion carta) {
+        PreparedStatement psAgregar = null;
+        try {
+            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cartainvitacion VALUES (?,?,?,?)");
+            psAgregar.setString(1, user);
+            psAgregar.setString(2, carta.getCodigo());
+            psAgregar.setString(2, carta.getContacto());
+            psAgregar.setString(2, carta.getCorreo());
+            psAgregar.setString(2, carta.getDiaOferta());
+            psAgregar.setString(2, carta.getDireccion());
+            psAgregar.setString(2, carta.getFecha());
+            psAgregar.setString(2, carta.getGenPath());
+            psAgregar.setString(2, carta.getMesOferta());
+            psAgregar.setString(2, carta.getNomEmpresa());
+            psAgregar.setString(2, carta.getResponsable());
+            psAgregar.setString(2, carta.getTelefono());
+            psAgregar.setString(2, carta.getUnidadSolicitante());
 
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }
