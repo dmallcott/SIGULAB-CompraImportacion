@@ -56,7 +56,7 @@ public class DBMS {
         Usuario user = new Usuario();
         try {
 
-            psConsultar = conexion.prepareStatement("SELECT usbid, tipo  FROM \"mod3\".usuario WHERE (usbid = ? AND contrasena = ?)");
+            psConsultar = conexion.prepareStatement("SELECT usbid, tipo  FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?)");
             psConsultar.setString(1, u.getUsbid());
             psConsultar.setString(2, u.getContrasena());
             ResultSet rs = psConsultar.executeQuery();

@@ -22,13 +22,13 @@
     </global>
 
     <formset>
-        <!--
+        
         <form name="Proveedor">
             <field property="RIF" depends="required">
                 <arg key="Proveedor.RIF"/>
             </field>
         </form>
-        -->
+        
     </formset>
 
     <!-- An example formset for another locale -->
