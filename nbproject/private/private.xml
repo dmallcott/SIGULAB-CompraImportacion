@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/src/java/Clases/EspecificacionTecnica.java</file>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/web/JSP/Coordinador/Documentos/especificacionTecnica.jsp</file>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/src/java/Actions/Documentos/EspecificacionTecnica/AgregarEspecificacionTecnica.java</file>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/src/java/Actions/Documentos/EspecificacionTecnica/ReqAgregarEspecificacionTecnica.java</file>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/web/JSP/Coordinador/Documentos/cartaInvitacion.jsp</file>
-            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/web/Plantilla/Lsidebars/sidebarCoordinador.jsp</file>
             <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/src/java/DBMS/DBMS.java</file>
             <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/web/WEB-INF/struts-config.xml</file>
+            <file>file:/Users/danielar92/Documents/Sistemas/SIGULAB-CompraImportacion/web/WEB-INF/tiles-defs.xml</file>
         </group>
-
     </open-files>
 </project-private>

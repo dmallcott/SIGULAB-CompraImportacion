@@ -25,8 +25,13 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
     private String codigo;
     private String registro;
     private String fecha;
+    private String proveedor;
+    private String bienOServicio;
     private String motivoReq;
     private String responsable;
+    private String justificacion;
+    private String proveniente;
+    private String cargo;
 
     
     // Variables para uso del sistema
@@ -103,6 +108,46 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+    
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }     
+    
+    public String getBienOServicio() {
+        return bienOServicio;
+    }
+
+    public void setbienOServicio(String bienOServicio) {
+        this.bienOServicio = bienOServicio;
+    }     
+    
+    public String getJustificacion() {
+        return justificacion;
+    }
+
+    public void setJustificacion(String justificacion) {
+        this.justificacion = justificacion;
+    }     
+    
+    public String getProveniente() {
+        return proveniente;
+    }
+
+    public void setProveniente(String proveniente) {
+        this.proveniente = proveniente;
+    }
+    
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }     
     
     public String getMotivoReq() {
         return motivoReq;

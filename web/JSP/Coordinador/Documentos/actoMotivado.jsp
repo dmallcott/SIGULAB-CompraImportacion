@@ -21,6 +21,20 @@
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
             </tr>
             <tr>
+            <tr>
+                <td style="color: black">Proveedor</td>
+                <td><html:text property="proveedor" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color:firebrick"><html:errors property="proveedor"/></td>
+            </tr>
+            <tr>
+                <td style="color: black">Bien o Servicio</td>
+                <td><html:text property="bienOServicio" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color:firebrick"><html:errors property="bienOServicio"/></td>
+            </tr>
                 <td style="color: black">Motivo Requerimiento</td>
                 <td><html:text property="motivoReq" maxlength="200" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
@@ -33,6 +47,27 @@
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="responsable"/></td>
+            </tr>
+            <tr>
+                <td style="color: black">justificacion</td>
+                <td><html:text property="fecha" maxlength="300" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color:firebrick"><html:errors property="justificacion"/></td>
+            </tr>  
+            <tr>
+                <td style="color: black">Proveniente de</td>
+                <td><html:text property="fecha" maxlength="20" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color:firebrick"><html:errors property="proveniente"/></td>
+            </tr>
+            <tr>
+                <td style="color: black">Cargo</td>
+                <td><html:text property="cargo" maxlength="50" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="color:firebrick"><html:errors property="cargo"/></td>
             </tr>
         </tbody>
     </table>

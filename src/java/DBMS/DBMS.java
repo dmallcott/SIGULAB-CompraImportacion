@@ -283,10 +283,10 @@ PreparedStatement psAgregar = null;
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?)");
             psAgregar.setString(1, user);
             psAgregar.setString(2, acto.getCodigo());
-            psAgregar.setString(2, acto.getRegistro());
-            psAgregar.setString(2, acto.getGenPath());
-            psAgregar.setString(2, acto.getMotivoReq());
-            psAgregar.setString(2, acto.getResponsable());
+            psAgregar.setString(3, acto.getBienOServicio());
+            psAgregar.setString(4, acto.getRegistro());
+            psAgregar.setString(5, acto.getMotivoReq());
+            psAgregar.setString(6, acto.getResponsable());
 
             Integer i = psAgregar.executeUpdate();
 
