@@ -287,17 +287,30 @@ PreparedStatement psAgregar = null;
         
     }
     
-public boolean AgregarActoMotivado(String user, ActoMotivado acto) { 
-PreparedStatement psAgregar = null;
+    public boolean AgregarActoMotivado(Usuario user, ActoMotivado acto) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
         try {
-            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?)");
-            psAgregar.setString(1, user);
-            psAgregar.setString(2, acto.getCodigo());
-            psAgregar.setString(3, acto.getBienOServicio());
-            psAgregar.setString(4, acto.getRegistro());
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoactomotivado(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigoactomotivado");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setDate(2, Date.valueOf(acto.getFecha()));
+            psAgregar.setString(3, acto.getProveedor());
+            psAgregar.setString(4, acto.getBienOServicio());
             psAgregar.setString(5, acto.getMotivoReq());
             psAgregar.setString(6, acto.getResponsable());
+            psAgregar.setString(7, acto.getJustificacion());
+            psAgregar.setString(8, acto.getProveniente());
+            psAgregar.setString(9, acto.getCargo());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -306,6 +319,5 @@ PreparedStatement psAgregar = null;
             ex.printStackTrace();
             return false;
         }
-        
-    }    
+    }   
 }

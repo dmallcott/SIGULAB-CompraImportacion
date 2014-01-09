@@ -23,7 +23,6 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
 
     // Informacion del documento
     private String codigo;
-    private String registro;
     private String fecha;
     private String proveedor;
     private String bienOServicio;
@@ -38,7 +37,7 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
     private String genPath;
     
     public boolean validateFecha(String fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         try {
             sdf.parse(fecha);
             return true;
@@ -49,10 +48,6 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
-
-        if (codigo == null) {
-            errors.add("codigo", new ActionMessage("error.codigo.null"));
-        }
         
         if (!validateFecha(fecha)) {
             errors.add("fecha", new ActionMessage("error.fecha.invalida"));
@@ -68,7 +63,8 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
             String shortenedPath = absolutePath.replace("file:", "");
             String appPath = shortenedPath.replace("/build/web/WEB-INF/classes/Clases/ActoMotivado.class", "");
             String[] command = {"./src/bash/genActoMotivado.sh",
-                codigo, registro, fecha,motivoReq, responsable};
+                codigo,fecha, proveedor,
+                bienOServicio, motivoReq, responsable, justificacion, cargo};
 
             Process terminal = Runtime.getRuntime().exec(command, null, new File(appPath));
             terminal.waitFor();
@@ -91,14 +87,6 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
-    }
-
-    public String getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(String registro) {
-        this.registro = registro;
     }
     
     public String getFecha() {

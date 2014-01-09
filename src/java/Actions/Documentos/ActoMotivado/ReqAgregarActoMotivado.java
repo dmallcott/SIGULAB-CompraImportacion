@@ -22,7 +22,7 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author danielar92
+ * @author Daniela Rodriguez
  */
 public class ReqAgregarActoMotivado extends org.apache.struts.action.Action{
         private static final String SUCCESS = "success";

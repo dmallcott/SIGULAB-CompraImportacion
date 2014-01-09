@@ -15,7 +15,7 @@
         <tbody>
             <tr>
                 <td style="color: black">Fecha</td>
-                <td><html:text property="fecha" maxlength="10" value="dd-mm-yyyy" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
@@ -42,22 +42,22 @@
                 <td colspan="2" style="color:firebrick"><html:errors property="motivoReq"/></td>
             </tr>
             <tr>
-                <td style="color: black"> Responsable</td>
+                <td style="color: black">Responsable</td>
                 <td><html:text property="responsable" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="responsable"/></td>
             </tr>
             <tr>
-                <td style="color: black">justificacion</td>
-                <td><html:text property="fecha" maxlength="300" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Justificacion</td>
+                <td><html:text property="justificacion" maxlength="300" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="justificacion"/></td>
             </tr>  
             <tr>
                 <td style="color: black">Proveniente de</td>
-                <td><html:text property="fecha" maxlength="20" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="proveniente" maxlength="20" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="proveniente"/></td>

@@ -219,8 +219,8 @@
                 scope="request"
                 name="ActoMotivado"
                 validate="false">
-            
-            
+            <forward name="success" path="vistaCoordinador"/>
+            <forward name="failure" path="agregarActoMotivado"/>
         </action>        
         
 

@@ -8,6 +8,7 @@ package Actions.Documentos.ActoMotivado;
 
 import Clases.ActoMotivado;
 import Clases.CartaInvitacion;
+import Clases.Usuario;
 import DBMS.DBMS;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -23,15 +24,16 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+
 /**
  *
  * @author Daniela Rodriguez
  */
-
 public class AgregarActoMotivado extends org.apache.struts.action.Action {
+    
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -45,40 +47,34 @@ public class AgregarActoMotivado extends org.apache.struts.action.Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception 
-    {
-
-        ActoMotivado acto = (ActoMotivado) form;
-        HttpSession session = request.getSession(true);  
-        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
-        boolean huboError = false;
-        ActionErrors error = new ActionErrors();
+            throws Exception {
         
+        ActoMotivado acto = (ActoMotivado) form;
+        HttpSession session = request.getSession(true);        
+        Usuario user = (Usuario) session.getAttribute("usuario");
+        ActionErrors error = new ActionErrors();
+
         //valido los campos de formulario
         error = acto.validate(mapping, request);        
 
-        if (error.size() != 0) {
-            huboError = true;
-        }
-
         //si los campos no son validos
-        if (huboError) {
+        if (error.size() != 0) {
             saveErrors(request, error);
             request.setAttribute("noAgregado", FAILURE);
             return mapping.findForward(FAILURE);
-        //si los campos son validos
+            //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().AgregarActoMotivado(user, acto);
-             // wat now
+            boolean registro = DBMS.getInstance().AgregarActoMotivado(user, acto);
+            // wat now
             if (registro) {
-                request.setAttribute("agregado",SUCCESS);
+                request.setAttribute("agregado", SUCCESS);
                 return mapping.findForward(SUCCESS);
                 
             } else {
-                request.setAttribute("yaAgregado",FAILURE);
+                request.setAttribute("yaAgregado", FAILURE);
                 saveErrors(request, error);
                 return mapping.findForward(FAILURE);
             }
-        }  
-    }       
+        }        
+    }    
 }
