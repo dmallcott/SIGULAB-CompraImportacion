@@ -233,14 +233,14 @@ public class DBMS {
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigocarta(?);");
             psConsultar.setString(1, user.getUnidad());
-            
+
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
                 nuevoCodigo = rs.getString("crearcodigocarta");
             else
                 return false;
-            
+
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cartainvitacion VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, carta.getContacto());
@@ -263,7 +263,7 @@ public class DBMS {
         }
     }
 
-    public boolean AgregarEspecificacionTecnica(String user, EspecificacionTecnica especificacion) { 
+    public boolean AgregarEspecificacionTecnica(String user, EspecificacionTecnica especificacion) {
 PreparedStatement psAgregar = null;
         try {
             // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
@@ -284,23 +284,23 @@ PreparedStatement psAgregar = null;
             ex.printStackTrace();
             return false;
         }
-        
+
     }
-    
+
     public boolean AgregarActoMotivado(Usuario user, ActoMotivado acto) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigoactomotivado(?);");
             psConsultar.setString(1, user.getUnidad());
-            
+
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
                 nuevoCodigo = rs.getString("crearcodigoactomotivado");
             else
                 return false;
-            
+
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setDate(2, Date.valueOf(acto.getFecha()));
@@ -319,5 +319,5 @@ PreparedStatement psAgregar = null;
             ex.printStackTrace();
             return false;
         }
-    }   
+    }
 }
