@@ -34,7 +34,18 @@
         <put name="body_title" value="Carta de Invitacion" type="string"/>
     </definition>
     
+    <definition name="agregarEspecificacionTecnica" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/especificacionTecnica.jsp"/>
+        <put name="page_title" value="ULAB: Especificacion Tecnica" type="string"/>
+        <put name="body_title" value="Especificacion Tecnica" type="string"/>
+    </definition>
     
+    <definition name="agregarActoMotivado" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/actoMotivado.jsp"/>
+        <put name="page_title" value="ULAB: Acto Motivado" type="string"/>
+        <put name="body_title" value="Acto Motivado" type="string"/>
+    </definition>    
+   
     
     <!-- DE AQUI PARA ABAJO ESTA DESACTUALIZADO Y NO FUNCIONA. ESTO OCURRIO POR LA ACTUALIZACION
          DE LOS TILES-DEFS AL MODELOS ACTUAL. SERA ARREGLADO EN SU DEBIDO TIEMPO -->
