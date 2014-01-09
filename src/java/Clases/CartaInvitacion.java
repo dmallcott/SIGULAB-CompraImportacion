@@ -71,7 +71,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     }
 
     public boolean validateFecha(String fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             sdf.parse(fecha);
             return true;
@@ -111,9 +111,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
         
         if (contacto.matches("\\w") || contacto.equals(""))
             errors.add("contacto", new ActionMessage("error.campo.vacio"));
-
-        if (responsable.matches("\\w") || responsable.equals(""))
-            errors.add("responsable", new ActionMessage("error.campo.vacio"));
         
         return errors;
     }

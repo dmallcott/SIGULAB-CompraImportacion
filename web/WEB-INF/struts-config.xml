@@ -162,6 +162,7 @@
             <forward name="failure" path="agregarCompra"/>
         </action>
         
+        <!-- DOCUMENTOS -->
         <!-- Agregar Carta -->
         <action input="/*"
                 path="/reqAgregarCartaInvitacion"
