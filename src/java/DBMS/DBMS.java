@@ -6,6 +6,8 @@ package DBMS;
 
 import Clases.CartaInvitacion;
 import Clases.Compra;
+import Clases.EspecificacionTecnica;
+import Clases.ActoMotivado;
 import Clases.Proveedor;
 import Clases.Usuario;
 import java.sql.Connection;
@@ -260,4 +262,50 @@ public class DBMS {
             return false;
         }
     }
+
+    public boolean AgregarEspecificacionTecnica(String user, EspecificacionTecnica especificacion) { 
+PreparedStatement psAgregar = null;
+        try {
+            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".especificaciontecnica VALUES (?,?,?,?)");
+            psAgregar.setString(1, user);
+            psAgregar.setString(2, especificacion.getCodigo());
+            psAgregar.setString(2, especificacion.getFecha());
+            psAgregar.setString(2, especificacion.getGenPath());
+            psAgregar.setString(2, especificacion.getItem());
+            psAgregar.setString(2, especificacion.getNoRegistro());
+            psAgregar.setString(2, especificacion.getCaracteristicas());
+            psAgregar.setString(2, especificacion.getCantidad());
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        
+    }
+    
+public boolean AgregarActoMotivado(String user, ActoMotivado acto) { 
+PreparedStatement psAgregar = null;
+        try {
+            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?)");
+            psAgregar.setString(1, user);
+            psAgregar.setString(2, acto.getCodigo());
+            psAgregar.setString(3, acto.getBienOServicio());
+            psAgregar.setString(4, acto.getRegistro());
+            psAgregar.setString(5, acto.getMotivoReq());
+            psAgregar.setString(6, acto.getResponsable());
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        
+    }    
 }

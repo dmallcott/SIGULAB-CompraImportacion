@@ -16,6 +16,9 @@
         </form-bean>
         <form-bean name="Compra" type="Clases.Compra"/>
         <form-bean name="CartaInvitacion" type="Clases.CartaInvitacion"/>
+        <form-bean name="EspecificacionTecnica" type="Clases.EspecificacionTecnica"/>
+        <form-bean name="ActoMotivado" type="Clases.ActoMotivado"/>
+
     </form-beans>
     
     <global-exceptions>
@@ -86,7 +89,7 @@
                 path="/reqAgregarProveedor"
                 type="Actions.Proveedor.ReqAgregarProveedor"
                 scope="request"
-                validat="false">
+                validate="false">
             <forward name="success" path="agregarProveedor"/>
         </action>
         
@@ -181,7 +184,47 @@
             <forward name="failure" path="agregarCartaInvitacion"/>
             <forward name="success" path="vistaCoordinador"/>
         </action>
+
+                <!-- Agregar Especificacion Tecnica -->
+        <action input="/*"
+                path="/reqAgregarEspecificacionTecnica"
+                type="Actions.Documentos.EspecificacionTecnica.ReqAgregarEspecificacionTecnica"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarEspecificacionTecnica"/>
+        </action>
         
+        <action input="/reqAgregarEspecificacionTecnica"
+                path="/agregarEspecificacionTecnica"
+                type="Actions.Documentos.EspecificacionTecnica.AgregarEspecificacionTecnica"
+                scope="request"
+                name="EspecificacionTecnica"
+                validate="false">
+            
+            
+        </action>
+        
+                <!-- Agregar Acto Motivado -->
+        <action input="/*"
+                path="/reqAgregarActoMotivado"
+                type="Actions.Documentos.ActoMotivado.ReqAgregarActoMotivado"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarActoMotivado"/>
+        </action>
+        
+        <action input="/reqAgregarActoMotivado"
+                path="/agregarActoMotivado"
+                type="Actions.Documentos.ActoMotivado.AgregarActoMotivado"
+                scope="request"
+                name="ActoMotivado"
+                validate="false">
+            
+            
+        </action>        
+        
+
+                        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
