@@ -83,10 +83,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
 
-        if (codigo == null) {
-            errors.add("codigo", new ActionMessage("error.codigo.null"));
-        }
-
         if (!validateFecha(fecha)) {
             errors.add("fecha", new ActionMessage("error.fecha.invalida"));
         }
@@ -118,9 +114,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
 
         if (responsable.matches("\\w") || responsable.equals(""))
             errors.add("responsable", new ActionMessage("error.campo.vacio"));
-        
-        if (unidadSolicitante.matches("\\w") || unidadSolicitante.equals(""))
-            errors.add("unidadSolicitante", new ActionMessage("error.campo.vacio"));
         
         return errors;
     }

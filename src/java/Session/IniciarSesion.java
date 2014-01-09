@@ -52,8 +52,8 @@ public class IniciarSesion extends org.apache.struts.action.Action {
             Usuario tmp = DBMS.getInstance().verificarUsuario(u);
 
             if (tmp.getUsbid() != null) {
-                if (tmp.getTipousuario().equals("Jefe de Laboratorio")) {
-                    session.setAttribute("usbid", tmp.getUsbid());
+                if (tmp.getTipousuario().equals("Coordinador de Adquisiciones")) {
+                    session.setAttribute("usuario", tmp);
                     return mapping.findForward(COORDINADOR);
                 } else {
                     return mapping.findForward(FAILURE);

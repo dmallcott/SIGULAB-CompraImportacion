@@ -7,6 +7,7 @@
 package Actions.Documentos.CartaInvitacion;
 
 import Clases.CartaInvitacion;
+import Clases.Usuario;
 import DBMS.DBMS;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -31,7 +32,7 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -45,40 +46,34 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception 
-    {
-
-        CartaInvitacion carta = (CartaInvitacion) form;
-        HttpSession session = request.getSession(true);  
-        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
-        boolean huboError = false;
-        ActionErrors error = new ActionErrors();
+            throws Exception {
         
-        //valido los campos de formulario
-        error = carta.validate(mapping, request);        
+        CartaInvitacion carta = (CartaInvitacion) form;
+        HttpSession session = request.getSession(true);        
+        Usuario user = (Usuario) session.getAttribute("usuario");
+        ActionErrors error = new ActionErrors();
 
-        if (error.size() != 0) {
-            huboError = true;
-        }
+        //valido los campos de formulario
+        //error = carta.validate(mapping, request);        
 
         //si los campos no son validos
-        if (huboError) {
+        if (error.size() != 0) {
             saveErrors(request, error);
             request.setAttribute("noAgregado", FAILURE);
             return mapping.findForward(FAILURE);
-        //si los campos son validos
+            //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);
-             // wat now
+            boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);
+            // wat now
             if (registro) {
-                request.setAttribute("agregado",SUCCESS);
+                request.setAttribute("agregado", SUCCESS);
                 return mapping.findForward(SUCCESS);
                 
             } else {
-                request.setAttribute("yaAgregado",FAILURE);
+                request.setAttribute("yaAgregado", FAILURE);
                 saveErrors(request, error);
                 return mapping.findForward(FAILURE);
             }
-        }  
-    }   
+        }        
+    }    
 }

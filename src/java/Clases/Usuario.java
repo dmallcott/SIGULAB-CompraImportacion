@@ -21,7 +21,25 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     private String usbid;
     private String tipousuario;
     private String contrasena;
+    private String unidad;
+    private String nombre;
     // En caso de deber manejar esto tu, manejalo como salted hash por lo menos.
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
     
     @Override
     public String toString() {

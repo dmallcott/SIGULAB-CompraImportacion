@@ -177,8 +177,8 @@
                 scope="request"
                 name="CartaInvitacion"
                 validate="false">
-            
-            
+            <forward name="failure" path="agregarCartaInvitacion"/>
+            <forward name="success" path="vistaCoordinador"/>
         </action>
         
     </action-mappings>

@@ -72,13 +72,7 @@
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="responsable"/></td>
             </tr>
-            <tr>
-                <td style="color: black">Unidad Solicitante</td>
-                <td><html:text property="unidadSolicitante" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="unidadSolicitante"/></td>
-            </tr>
+            
         </tbody>
     </table>
     <p style="text-align: center">
