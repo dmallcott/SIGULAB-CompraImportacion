@@ -11,6 +11,7 @@ import Clases.ActoMotivado;
 import Clases.Proveedor;
 import Clases.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +59,7 @@ public class DBMS {
         Usuario user = new Usuario();
         try {
 
-            psConsultar = conexion.prepareStatement("SELECT usbid, tipo  FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?)");
+            psConsultar = conexion.prepareStatement("SELECT usbid, tipo, unidad, nombre  FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?);");
             psConsultar.setString(1, u.getUsbid());
             psConsultar.setString(2, u.getContrasena());
             ResultSet rs = psConsultar.executeQuery();
@@ -66,6 +67,8 @@ public class DBMS {
             if (rs.next()) {
                 user.setUsbid(rs.getString("usbid"));
                 user.setTipousuario(rs.getString("tipo"));
+                user.setUnidad(rs.getString("unidad"));
+                user.setNombre(rs.getString("nombre"));
             }
 
         } catch (SQLException ex) {
@@ -224,24 +227,32 @@ public class DBMS {
             return false;
         }
     }
-    public boolean AgregarCartaInvitacion(String user, CartaInvitacion carta) {
+    public boolean AgregarCartaInvitacion(Usuario user, CartaInvitacion carta) {
         PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
         try {
-            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cartainvitacion VALUES (?,?,?,?)");
-            psAgregar.setString(1, user);
-            psAgregar.setString(2, carta.getCodigo());
+            psConsultar = conexion.prepareStatement("SELECT crearcodigocarta(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigocarta");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cartainvitacion VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, carta.getContacto());
-            psAgregar.setString(2, carta.getCorreo());
-            psAgregar.setString(2, carta.getDiaOferta());
-            psAgregar.setString(2, carta.getDireccion());
-            psAgregar.setString(2, carta.getFecha());
-            psAgregar.setString(2, carta.getGenPath());
-            psAgregar.setString(2, carta.getMesOferta());
-            psAgregar.setString(2, carta.getNomEmpresa());
-            psAgregar.setString(2, carta.getResponsable());
-            psAgregar.setString(2, carta.getTelefono());
-            psAgregar.setString(2, carta.getUnidadSolicitante());
+            psAgregar.setString(3, carta.getCorreo());
+            psAgregar.setString(4, carta.getDiaOferta());
+            psAgregar.setString(5, carta.getDireccion());
+            psAgregar.setDate(6, Date.valueOf(carta.getFecha()));
+            psAgregar.setString(7, carta.getMesOferta());
+            psAgregar.setString(8, carta.getNomEmpresa());
+            psAgregar.setString(9, user.getNombre());
+            psAgregar.setString(10, carta.getTelefono());
+            psAgregar.setString(11, user.getUnidad());
 
             Integer i = psAgregar.executeUpdate();
 

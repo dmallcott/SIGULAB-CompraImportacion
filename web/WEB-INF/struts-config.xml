@@ -165,6 +165,7 @@
             <forward name="failure" path="agregarCompra"/>
         </action>
         
+        <!-- DOCUMENTOS -->
         <!-- Agregar Carta -->
         <action input="/*"
                 path="/reqAgregarCartaInvitacion"
@@ -180,8 +181,8 @@
                 scope="request"
                 name="CartaInvitacion"
                 validate="false">
-            
-            
+            <forward name="failure" path="agregarCartaInvitacion"/>
+            <forward name="success" path="vistaCoordinador"/>
         </action>
 
                 <!-- Agregar Especificacion Tecnica -->
