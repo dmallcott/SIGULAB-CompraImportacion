@@ -54,7 +54,7 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
-        //error = carta.validate(mapping, request);        
+        error = carta.validate(mapping, request);        
 
         //si los campos no son validos
         if (error.size() != 0) {
