@@ -54,7 +54,7 @@ public class AgregarEspecificacionTecnica extends org.apache.struts.action.Actio
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
-        error = especificacion.validate(mapping, request);
+        //error = especificacion.validate(mapping, request);
 
         Item item = new Item();
         especificacion.setItems(new ArrayList<Item>());
@@ -62,7 +62,6 @@ public class AgregarEspecificacionTecnica extends org.apache.struts.action.Actio
             item.setItem(i);
             item.setCaracteristicas(request.getParameter("caracteristica"+i));
             item.setCantidad(Integer.parseInt(request.getParameter("cantidad"+i)));
-
             especificacion.getItems().add(item);
         }
         

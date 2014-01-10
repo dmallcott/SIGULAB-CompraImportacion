@@ -25,7 +25,6 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
     // Informacion del documento
     private String codigo;
     private ArrayList<Item> items;
-
     
     // Variables para uso del sistema
     private String genPath;
@@ -43,7 +42,7 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
- 
+
         return errors;
     }
     

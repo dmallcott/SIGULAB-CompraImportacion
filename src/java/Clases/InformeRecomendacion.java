@@ -37,8 +37,15 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     private String mesRevision;
     private String responsable1;
     private String responsable2;
-    private String unidadSolicitante1;
-    private String unidadSolicitante2;
+    private Boolean opcion1;
+    private Boolean opcion2;
+    private Boolean opcion3;
+    private Boolean opcion4;
+    private Boolean opcion5;
+    private Boolean opcion6;
+    private Boolean opcion7;
+    private Boolean opcion8;
+    private Boolean opcion9;
 
     
     // Variables para uso del sistema
@@ -93,29 +100,7 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     
     
     public boolean generateDoc() {
-        try {
-            // Esta cantidad excesiva de strings es para calcular el path de la webapp dinamicamente.
-            String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().toString();
-            String shortenedPath = absolutePath.replace("file:", "");
-            String appPath = shortenedPath.replace("/build/web/WEB-INF/classes/Clases/InformeRecomendacion.class", "");
-            String[] command = {"./src/bash/genInformeRecomendacion.sh",
-                codigo,cargo1, cargo2,diaEvaluacion,diaFinal,diaRevision,listaProveedores1,
-                listaProveedores2,mesEvaluacion,mesFinal,mesRevision,responsable1,responsable2,
-                unidadSolicitante1,unidadSolicitante2};
-
-            Process terminal = Runtime.getRuntime().exec(command, null, new File(appPath));
-            terminal.waitFor();
-            if (terminal.exitValue() == 0) {
-                genPath = appPath + "src/documents/generated/informe_recomendacion_" + codigo + ".pdf";
-                return true;
-            } else {
-                return false;
-            }
-        } catch (IOException ex) {
-            return false;
-        } catch (InterruptedException ex) {
-            return false;
-        }
+        return false;
     }
 
     public String getCodigo() {
@@ -221,23 +206,78 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     public void setResponsable2(String responsable2) {
         this.responsable2 = responsable2;
     }
-    
-    public String getUnidadSolicitante1() {
-        return unidadSolicitante1;
+
+    public Boolean getOpcion1() {
+        return opcion1;
     }
 
-    public void setUnidadSolicitante1(String unidadSolicitante1) {
-        this.unidadSolicitante1 = unidadSolicitante1;
-    }
-    
-    public String getUnidadSolicitante2() {
-        return unidadSolicitante2;
+    public void setOpcion1(Boolean opcion1) {
+        this.opcion1 = opcion1;
     }
 
-    public void setUnidadSolicitante(String responsable2) {
-        this.unidadSolicitante2 = unidadSolicitante2;
-    }    
-      
+    public Boolean getOpcion2() {
+        return opcion2;
+    }
+
+    public void setOpcion2(Boolean opcion2) {
+        this.opcion2 = opcion2;
+    }
+
+    public Boolean getOpcion3() {
+        return opcion3;
+    }
+
+    public void setOpcion3(Boolean opcion3) {
+        this.opcion3 = opcion3;
+    }
+
+    public Boolean getOpcion4() {
+        return opcion4;
+    }
+
+    public void setOpcion4(Boolean opcion4) {
+        this.opcion4 = opcion4;
+    }
+
+    public Boolean getOpcion5() {
+        return opcion5;
+    }
+
+    public void setOpcion5(Boolean opcion5) {
+        this.opcion5 = opcion5;
+    }
+
+    public Boolean getOpcion6() {
+        return opcion6;
+    }
+
+    public void setOpcion6(Boolean opcion6) {
+        this.opcion6 = opcion6;
+    }
+
+    public Boolean getOpcion7() {
+        return opcion7;
+    }
+
+    public void setOpcion7(Boolean opcion7) {
+        this.opcion7 = opcion7;
+    }
+
+    public Boolean getOpcion8() {
+        return opcion8;
+    }
+
+    public void setOpcion8(Boolean opcion8) {
+        this.opcion8 = opcion8;
+    }
+
+    public Boolean getOpcion9() {
+        return opcion9;
+    }
+
+    public void setOpcion9(Boolean opcion9) {
+        this.opcion9 = opcion9;
+    }
     
     public String getGenPath() {
         return genPath;
