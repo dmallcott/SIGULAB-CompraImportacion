@@ -118,14 +118,14 @@
                     cell1 = row.insertCell(0);
                     cell2 = row.insertCell(1);
                     cell1.innerHTML = 'Empresa';
-                    cell2.innerHTML = '<input type="text" maxlength="50" name="empresa'+x+'"/>';
+                    cell2.innerHTML = '<input required type="text" maxlength="50" name="empresa'+x+'"/>';
                     
                     rowCount = table.rows.length;
                     row = table.insertRow(rowCount);
                     cell1 = row.insertCell(0);
                     cell2 = row.insertCell(1);
                     cell1.innerHTML = 'Items';
-                    cell2.innerHTML = '<input type="text" maxlength="100" name="items'+x+'"/>';
+                    cell2.innerHTML = '<input required type="text" maxlength="100" name="items'+x+'"/>';
                     
                     rowCount = table.rows.length;
                     row = table.insertRow(rowCount);

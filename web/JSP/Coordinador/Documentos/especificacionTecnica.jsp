@@ -31,8 +31,8 @@
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
                     cell1.innerHTML = "Item " + (x+1);
-                    cell2.innerHTML = '<input type="text" maxlength="200" name="caracteristica'+x+'"/>';
-                    cell3.innerHTML = '<input type="number" name="cantidad'+x+'"/>';
+                    cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+x+'"/>';
+                    cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+x+'"/>';
                 }
             </script> 
             </tbody>
