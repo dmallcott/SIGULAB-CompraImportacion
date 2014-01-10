@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package Actions.Documentos.ActoMotivado;
+package Actions.Documentos.NotaDevolucion;
 
-import Clases.ActoMotivado;
+import Clases.NotaDevolucion;
 import Clases.Usuario;
 import DBMS.DBMS;
 import java.io.FileInputStream;
@@ -26,10 +26,10 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author Daniela Rodriguez
+ * @author patrick
  */
-public class AgregarActoMotivado extends org.apache.struts.action.Action {
-
+public class AgregarNotaDevolucion extends org.apache.struts.action.Action{
+    
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
 
@@ -47,14 +47,14 @@ public class AgregarActoMotivado extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        ActoMotivado acto = (ActoMotivado) form;
-        HttpSession session = request.getSession(true);
+        
+        NotaDevolucion nota = (NotaDevolucion) form;
+        HttpSession session = request.getSession(true);        
         Usuario user = (Usuario) session.getAttribute("usuario");
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
-        error = acto.validate(mapping, request);
+        error.clear();
 
         //si los campos no son validos
         if (error.size() != 0) {
@@ -63,17 +63,17 @@ public class AgregarActoMotivado extends org.apache.struts.action.Action {
             return mapping.findForward(FAILURE);
             //si los campos son validos
         } else {
-            boolean registro = DBMS.getInstance().AgregarActoMotivado(user, acto);
+            boolean registro = DBMS.getInstance().AgregarNotaDevolucion(user, nota);
             // wat now
             if (registro) {
                 request.setAttribute("agregado", SUCCESS);
                 return mapping.findForward(SUCCESS);
-
+                
             } else {
                 request.setAttribute("yaAgregado", FAILURE);
                 saveErrors(request, error);
                 return mapping.findForward(FAILURE);
             }
-        }
-    }
+        }        
+    }  
 }

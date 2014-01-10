@@ -51,6 +51,24 @@
         <put name="page_title" value="ULAB: Acto Motivado" type="string"/>
         <put name="body_title" value="Acto Motivado" type="string"/>
     </definition>    
+    
+    <definition name="agregarInformeRecomendacion" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/informeRecomendacion.jsp"/>
+        <put name="page_title" value="ULAB: Informe de Recomendacion" type="string"/>
+        <put name="body_title" value="Informe de Recomendacion" type="string"/>
+    </definition>
+    
+    <definition name="agregarNotaDevolucion" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/notaDevolucion.jsp"/>
+        <put name="page_title" value="ULAB: Nota Devolucion" type="string"/>
+        <put name="body_title" value="Nota Devolucion" type="string"/>
+    </definition>        
+    
+    <definition name="agregarSolicitudServicio" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/solicitudServicio.jsp"/>
+        <put name="page_title" value="ULAB: Solicitud de Servicio" type="string"/>
+        <put name="body_title" value="Solicitud de Servicio" type="string"/>
+    </definition>  
    
     
     <!-- DE AQUI PARA ABAJO ESTA DESACTUALIZADO Y NO FUNCIONA. ESTO OCURRIO POR LA ACTUALIZACION

@@ -19,7 +19,11 @@
         <form-bean name="Cotizacion" type="Clases.Cotizacion"/>
         <form-bean name="EspecificacionTecnica" type="Clases.EspecificacionTecnica"/>
         <form-bean name="ActoMotivado" type="Clases.ActoMotivado"/>
-
+        <form-bean name="InformeRecomendacion" type="Clases.InformeRecomendacion"/>
+        <form-bean name="NotaDevolucion" type="Clases.NotaDevolucion"/>
+        <form-bean name="SolicitudServicio" type="Clases.SolicitudServicio"/>
+        <form-bean name="NotaDevolucion" type="Clases.NotaDevolucion"/>
+        <form-bean name="SolicitudServicio" type="Clases.SolicitudServicio"/>
     </form-beans>
     
     <global-exceptions>
@@ -241,6 +245,101 @@
                 validate="false">
             <forward name="success" path="vistaCoordinador"/>
             <forward name="failure" path="agregarActoMotivado"/>
+        </action>    
+        
+                <!-- Agregar Informe Recomendacion -->
+        <action input="/*"
+                path="/reqAgregarInformeRecomendacion"
+                type="Actions.Documentos.InformeRecomendacion.ReqAgregarInformeRecomendacion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarInformeRecomendacion"/>
+        </action>
+        
+        <action input="/reqAgregarInformeRecomendacion"
+                path="/agregarInformeRecomendacion"
+                type="Actions.Documentos.InformeRecomendacion.AgregarInformeRecomendacion"
+                scope="request"
+                name="InformeRecomendacion"
+                validate="false">
+            <forward name="success" path="vistaCoordinador"/>
+            <forward name="failure" path="agregarInformeRecomendacion"/>
+        </action>                   
+        
+        <!-- Agregar Nota Devolucion -->
+        <action input="/*"
+                path="/reqAgregarNotaDevolucion"
+                type="Actions.Documentos.NotaDevolucion.ReqAgregarNotaDevolucion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarNotaDevolucion"/>
+        </action>
+        
+        <action input="/reqAgregarNotaDevolucion"
+                path="/agregarNotaDevolucion"
+                type="Actions.Documentos.NotaDevolucion.AgregarNotaDevolucion"
+                scope="request"
+                name="NotaDevolucion"
+                validate="false">
+            <forward name="failure" path="agregarNotaDevolucion"/>
+            <forward name="success" path="vistaCoordinador"/>
+        </action>
+        
+        <!-- Agregar Solicitud de Servicio -->
+        <action input="/*"
+                path="/reqAgregarSolicitudServicio"
+                type="Actions.Documentos.SolicitudServicio.ReqAgregarSolicitudServicio"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarSolicitudServicio"/>
+        </action>
+        
+        <action input="/reqAgregarSolicitudServicio"
+                path="/agregarSolicitudServicio"
+                type="Actions.Documentos.SolicitudServicio.AgregarSolicitudServicio"
+                scope="request"
+                name="SolicitudServicio"
+                validate="false">
+            <forward name="failure" path="agregarSolicitudServicio"/>
+            <forward name="success" path="vistaCoordinador"/>
+        </action>        
+        
+        <!-- Agregar Nota Devolucion -->
+        <action input="/*"
+                path="/reqAgregarNotaDevolucion"
+                type="Actions.Documentos.NotaDevolucion.ReqAgregarNotaDevolucion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarNotaDevolucion"/>
+        </action>
+        
+        <action input="/reqAgregarNotaDevolucion"
+                path="/agregarNotaDevolucion"
+                type="Actions.Documentos.NotaDevolucion.AgregarNotaDevolucion"
+                scope="request"
+                name="NotaDevolucion"
+                validate="false">
+            <forward name="failure" path="agregarNotaDevolucion"/>
+            <forward name="success" path="vistaCoordinador"/>
+        </action>
+        
+        <!-- Agregar Solicitud de Servicio -->
+        <action input="/*"
+                path="/reqAgregarSolicitudServicio"
+                type="Actions.Documentos.SolicitudServicio.ReqAgregarSolicitudServicio"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarSolicitudServicio"/>
+        </action>
+        
+        <action input="/reqAgregarSolicitudServicio"
+                path="/agregarSolicitudServicio"
+                type="Actions.Documentos.SolicitudServicio.AgregarSolicitudServicio"
+                scope="request"
+                name="SolicitudServicio"
+                validate="false">
+            <forward name="failure" path="agregarSolicitudServicio"/>
+            <forward name="success" path="vistaCoordinador"/>
         </action>        
         
 
