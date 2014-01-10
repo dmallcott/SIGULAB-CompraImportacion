@@ -31,6 +31,8 @@
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link></a></h6></li>
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarInformeRecomendacion">Agregar Informe de Recomendacion</html:link></a></h6></li> 
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarActoMotivado">Agregar Acto Motivado</html:link></a></h6></li> 
+                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarNotaDevolucion">Agregar Nota Devolucion</html:link></a></h6></li> 
+                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarSolicitudServicio">Agregar Solicitud de Servicio</html:link></a></h6></li> 
                         </ul>
                     </ul>
                     <ul class="menu2">

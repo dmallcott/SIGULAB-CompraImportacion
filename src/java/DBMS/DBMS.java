@@ -11,6 +11,8 @@ import Clases.ActoMotivado;
 import Clases.InformeRecomendacion;
 import Clases.Proveedor;
 import Clases.Usuario;
+import Clases.NotaDevolucion;
+import Clases.SolicitudServicio;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -327,6 +329,7 @@ public class DBMS {
         }
     }
     
+    
     public boolean AgregarInformeRecomendacion(Usuario user, InformeRecomendacion informe) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -357,6 +360,108 @@ public class DBMS {
             psAgregar.setString(11, informe.getResponsable2());
             psAgregar.setString(11, informe.getUnidadSolicitante1());
             psAgregar.setString(11, informe.getUnidadSolicitante2());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i > 0;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+            
+    public boolean AgregarNotaDevolucion(Usuario user, NotaDevolucion nota) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigonota(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigonota");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".notadevolucion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setBoolean(2, Boolean.valueOf(nota.getC1().toString()));
+            psAgregar.setBoolean(3, Boolean.valueOf(nota.getC2().toString()));
+            psAgregar.setBoolean(4, Boolean.valueOf(nota.getC3().toString()));
+            psAgregar.setBoolean(5, Boolean.valueOf(nota.getC4().toString()));
+            psAgregar.setBoolean(6, Boolean.valueOf(nota.getC5().toString()));
+            psAgregar.setBoolean(7, Boolean.valueOf(nota.getC5banco().toString()));
+            psAgregar.setBoolean(8, Boolean.valueOf(nota.getC5contacto().toString()));
+            psAgregar.setBoolean(9, Boolean.valueOf(nota.getC5fiscal().toString()));
+            psAgregar.setBoolean(10, Boolean.valueOf(nota.getC5nombre().toString()));
+            psAgregar.setBoolean(11, Boolean.valueOf(nota.getC5otro().toString()));
+            psAgregar.setBoolean(12, Boolean.valueOf(nota.getC5rif().toString()));
+            psAgregar.setBoolean(13, Boolean.valueOf(nota.getC5tlf().toString()));
+            psAgregar.setBoolean(14, Boolean.valueOf(nota.getC6().toString()));
+            psAgregar.setBoolean(15, Boolean.valueOf(nota.getC7().toString()));
+            psAgregar.setBoolean(16, Boolean.valueOf(nota.getC8().toString()));
+            psAgregar.setBoolean(17, Boolean.valueOf(nota.getC9().toString()));
+            psAgregar.setBoolean(18, Boolean.valueOf(nota.getCertificacionServicio().toString()));
+            psAgregar.setInt(19, Integer.parseInt(nota.getCsNO().toString()));
+            psAgregar.setDate(20, Date.valueOf(nota.getFecha()));
+            psAgregar.setBoolean(21, Boolean.valueOf(nota.getPago().toString()));
+            psAgregar.setInt(22, Integer.parseInt(nota.getpNO().toString()));
+            psAgregar.setBoolean(23, Boolean.valueOf(nota.getRecepcion().toString()));
+            psAgregar.setBoolean(24, Boolean.valueOf(nota.getRequisicion().toString()));
+            psAgregar.setInt(25, Integer.parseInt(nota.getRpNO().toString()));
+            psAgregar.setInt(26, Integer.parseInt(nota.getRqNO().toString()));
+            psAgregar.setBoolean(27, Boolean.valueOf(nota.getSolicitudServicio().toString()));
+            psAgregar.setInt(28, Integer.parseInt(nota.getSsNO().toString()));
+            psAgregar.setString(29, nota.getObservaciones());
+            psAgregar.setInt(30, Integer.parseInt(nota.getoNO().toString()));
+            psAgregar.setBoolean(31, Boolean.valueOf(nota.getOtro().toString()));
+            psAgregar.setString(32, nota.getOtro1());
+            
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean AgregarSolicitudServicio(Usuario user, SolicitudServicio solicitud) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigosolservicio(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigosolservicio");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".solicitudservicio VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, solicitud.getCompania());
+            psAgregar.setString(3, solicitud.getContacto());
+            psAgregar.setString(4, solicitud.getContactoCompania());
+            psAgregar.setString(5, solicitud.getCorreo());
+            psAgregar.setString(6, solicitud.getDe());
+            psAgregar.setString(7, solicitud.getDescripcion());
+            psAgregar.setString(8, solicitud.getEnunciado());
+            psAgregar.setDate(9, Date.valueOf(solicitud.getFecha()));
+            psAgregar.setDate(10, Date.valueOf(solicitud.getFechaCotizacion()));
+            psAgregar.setString(11, solicitud.getMonto());
+            psAgregar.setString(12, solicitud.getNoBienNacional());
+            psAgregar.setString(13, solicitud.getNoCotizacion());
+            psAgregar.setString(14, solicitud.getNombreBien());
+            psAgregar.setString(15, solicitud.getProyectoPOA());
+            psAgregar.setString(16, solicitud.getTelefono());
+            psAgregar.setString(17, solicitud.getTelefonoCompania());
+            psAgregar.setString(18, solicitud.getUbicacion());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -366,4 +471,5 @@ public class DBMS {
             return false;
         }
     }
+
 }
