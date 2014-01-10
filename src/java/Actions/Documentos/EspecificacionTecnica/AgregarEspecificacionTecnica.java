@@ -56,6 +56,16 @@ public class AgregarEspecificacionTecnica extends org.apache.struts.action.Actio
         //valido los campos de formulario
         error = especificacion.validate(mapping, request);
 
+        Item item = new Item();
+        especificacion.setItems(new ArrayList<Item>());
+        for (int i = 0; request.getParameter("caracteristica"+i) != null; i++) {
+            item.setItem(i);
+            item.setCaracteristicas(request.getParameter("caracteristica"+i));
+            item.setCantidad(Integer.parseInt(request.getParameter("cantidad"+i)));
+
+            especificacion.getItems().add(item);
+        }
+        
         //si los campos no son validos
         if (error.size() != 0) {
             saveErrors(request, error);

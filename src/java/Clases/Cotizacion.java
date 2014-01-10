@@ -38,6 +38,15 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
     private String personaContacto;
     private ArrayList<Item> items;
 
+    public String toStringSQL() {
+        String result = "";
+        for (int i = 0; i < items.size(); i++){
+            result = result +items.get(i).toString();
+        }
+        return result;
+    }
+    
+    
     public ArrayList<Item> getItems() {
         return items;
     }

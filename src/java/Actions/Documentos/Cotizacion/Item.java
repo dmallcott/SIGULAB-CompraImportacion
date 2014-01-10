@@ -13,6 +13,11 @@ public class Item {
         private String condicionPago;
         private String garantia;
 
+    @Override
+    public String toString() {
+        return nombre + "|" + precio + "|" + tiempoEntrega + "|" + condicionPago + "|" + garantia + "/";
+    }
+        
     public Float getPrecio() {
         return precio;
     }

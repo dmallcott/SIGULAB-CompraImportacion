@@ -14,6 +14,7 @@ import Clases.Proveedor;
 import Clases.Usuario;
 import Clases.NotaDevolucion;
 import Clases.SolicitudServicio;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -271,21 +272,19 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearcodigoactomotivado(?);");
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoespecificacion(?);");
             psConsultar.setString(1, user.getUnidad());
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
-                nuevoCodigo = rs.getString("crearcodigoespecificaciontecnica");
+                nuevoCodigo = rs.getString("crearcodigoespecificacion");
             else
                 return false;
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemsespecificacionestecnicas VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".especificacionestecnicas VALUES (?,?)");
             psAgregar.setString(1, nuevoCodigo);
-            psAgregar.setString(3, especificacion.getItem());
-            psAgregar.setString(4, especificacion.getCantidad());
-            psAgregar.setString(5, especificacion.getCaracteristicas());
+            psAgregar.setString(2, especificacion.toStringSQL());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -330,11 +329,38 @@ public class DBMS {
         }
     }   
     
-    public boolean AgregarCotizacion(Usuario user, Cotizacion acto) {
+    public boolean AgregarCotizacion(Usuario user, Cotizacion cotizacion) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
-        
-            return true;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcotizacion(?);");
+            psConsultar.setString(1, user.getUnidad());
+
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcotizacion");
+            else
+                return false;
+
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizaciones VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, cotizacion.getCorreo());
+            psAgregar.setString(3, cotizacion.getDireccion());
+            psAgregar.setString(4, cotizacion.getFax());
+            psAgregar.setString(5, cotizacion.getNomEmpresa());
+            psAgregar.setString(6, cotizacion.getPersonaContacto());
+            psAgregar.setString(7, cotizacion.getRif());
+            psAgregar.setString(8, cotizacion.getTelefono());
+            psAgregar.setString(9, cotizacion.toStringSQL());
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
     
     public boolean AgregarInformeRecomendacion(Usuario user, InformeRecomendacion informe) {

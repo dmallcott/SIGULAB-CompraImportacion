@@ -11,21 +11,32 @@
                    method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
     <table border="0">
         <tbody>
-            <tr>
-                <td style="color: black">Caracteristicas</td>
-                <td><html:text property="caracteristicas" maxlength="140" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="caracteristicas"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Cantidad</td>
-                <td><html:text property="cantidad" maxlength="2000" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="cantidad"/></td>
-            </tr>
-            <tr>
+            <table border="0" >
+            <thead>
+                <th>Item </th>
+                <th>Caracteristica</th>
+                <th>Cantidad</th>
+            </thead>
+            <tbody id="tabla" style="overflow: scroll">
+                <script>
+                var numeroItems = 0;
+                while (numeroItems === 0 || numeroItems > 15 || numeroItems === null) {
+                    numeroItems = prompt("Cuantos items tendra esta solicitud?");
+                }
+                var table = document.getElementById("tabla");
+                var rowCount = table.rows.length;
+                for (var x = 0; x < numeroItems; x++) {
+                    var row = table.insertRow(rowCount+x);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    cell1.innerHTML = "Item " + (x+1);
+                    cell2.innerHTML = '<input type="text" name="caracteristica'+x+'"/>';
+                    cell3.innerHTML = '<input type="text" name="cantidad'+x+'"/>';
+                }
+            </script> 
+            </tbody>
+        </table>
         </tbody>
     </table>
     <p style="text-align: center">
