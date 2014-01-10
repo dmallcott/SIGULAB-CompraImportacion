@@ -11,74 +11,83 @@
     <table border="0">
         <tbody>
             <tr>
-                <td style="color: black">NoConsultaPrecio</td>
-                <td><html:text property="NoConsultaPrecio" maxlength="10" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Responsable 1</td>
+                <td><html:text property="responsable1" maxlength="30" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="NoConsultaPrecio"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="responsable1"/></td>
             </tr>
             <tr>
-                <td style="color: black">Nombre de la Empresa</td>
-                <td><html:text property="nomEmpresa" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Cargo 1</td>
+                <td><html:text property="cargo1" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="nomEmpresa"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="cargo1"/></td>
             </tr>
             <tr>
-                <td style="color: black">Direccion de la Empresa</td>
-                <td><html:text property="direccion" maxlength="150" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Proveedores</td>
+                <td><html:text property="listaProveedores1" maxlength="200" value="proveedor1,proveedor2" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="direccion"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="listaProveedores1"/></td>
             </tr>
             <tr>
-                <td style="color: black">Numero de fax</td>
-                <td><html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Responsable 2</td>
+                <td><html:text property="responsable2" maxlength="30" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="telefono"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="responsable2"/></td>
             </tr>
             <tr>
-                <td style="color: black">Correo</td>
-                <td><html:text property="correo" maxlength="50" value="XXXX@usb.ve" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Cargo 2</td>
+                <td><html:text property="cargo2" maxlength="50" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="correo"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="cargo2"/></td>
             </tr>
             <tr>
-                <td style="color: black">Dia final de la oferta</td>
-                <td><html:text property="diaOferta" maxlength="2" value="Ej: 02" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Proveedores</td>
+                <td><html:text property="listaProveedores2" maxlength="200" value="proveedor1,proveedor2" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="diaOferta"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="listaProveedores2"/></td>
             </tr>
             <tr>
-                <td style="color: black">Mes final de la oferta</td>
-                <td><html:text property="mesOferta" maxlength="20" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Dia Remision</td>
+                <td><html:text property="diaRevision" maxlength="2" value="dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="mesOferta"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="diaRevision"/></td>
             </tr>
             <tr>
-                <td style="color: black">Informacion de Contacto</td>
-                <td><html:text property="contacto" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td style="color: black">Mes Remision</td>
+                <td><html:text property="mesRevision" maxlength="2" value="mm" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="contacto"/></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="mesRevision"/></td>
+            </tr>        
+            <tr>
+                <td style="color: black">Dia Evaluacion</td>
+                <td><html:text property="diaEvaluacion" maxlength="2" value="dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td style="color: black">Responsable</td>
-                <td><html:text property="responsable" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="diaEvaluacion"/></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="responsable"/></td>
+                <td style="color: black">Mes Evaluacion</td>
+                <td><html:text property="mesEvaluacion" maxlength="2" value="mm" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+            </tr>
+            
+            <tr>
+                <td style="color: black">Dia de Firma</td>
+                <td><html:text property="diaFinal" maxlength="2" value="dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
-                <td style="color: black">Unidad Solicitante</td>
-                <td><html:text property="unidadSolicitante" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td colspan="2" style="color:firebrick"><html:errors property="diaFinal"/></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="unidadSolicitante"/></td>
+                <td style="color: black">Mes Final</td>
+                <td><html:text property="mesFinal" maxlength="2" value="mm" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
         </tbody>
     </table>

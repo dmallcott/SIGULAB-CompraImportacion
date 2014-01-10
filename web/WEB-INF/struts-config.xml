@@ -18,7 +18,7 @@
         <form-bean name="CartaInvitacion" type="Clases.CartaInvitacion"/>
         <form-bean name="EspecificacionTecnica" type="Clases.EspecificacionTecnica"/>
         <form-bean name="ActoMotivado" type="Clases.ActoMotivado"/>
-
+        <form-bean name="InformeRecomendacion" type="Clases.InformeRecomendacion"/>
     </form-beans>
     
     <global-exceptions>
@@ -221,7 +221,26 @@
                 validate="false">
             <forward name="success" path="vistaCoordinador"/>
             <forward name="failure" path="agregarActoMotivado"/>
-        </action>        
+        </action>    
+        
+                <!-- Agregar Informe Recomendacion -->
+        <action input="/*"
+                path="/reqAgregarInformeRecomendacion"
+                type="Actions.Documentos.InformeRecomendacion.ReqAgregarInformeRecomendacion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarInformeRecomendacion"/>
+        </action>
+        
+        <action input="/reqAgregarInformeRecomendacion"
+                path="/agregarInformeRecomendacion"
+                type="Actions.Documentos.InformeRecomendacion.AgregarInformeRecomendacion"
+                scope="request"
+                name="InformeRecomendacion"
+                validate="false">
+            <forward name="success" path="vistaCoordinador"/>
+            <forward name="failure" path="agregarInformeRecomendacion"/>
+        </action>                   
         
 
                         

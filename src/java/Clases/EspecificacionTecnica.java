@@ -7,9 +7,6 @@ package Clases;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -25,50 +22,32 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
 
     // Informacion del documento
     private String codigo;
-    private String fecha;
-    private int item;
-    private int NoRegistro;
+    private String item;
     private String caracteristicas;
-    private int cantidad;
+    private String cantidad;
 
     
     // Variables para uso del sistema
     private String genPath;
+    private Pattern patron;
+    private Matcher match;
+    private static final String patronNumerico = "[0-9]{1000,}$";
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
-
-        if (codigo == null) {
-            errors.add("codigo", new ActionMessage("error.codigo.null"));
+        
+        if (!validateCantidad(cantidad)) {
+            errors.add("cantidad", new ActionMessage("error.cantidad.invalido"));
         }
-
         return errors;
     }
     
-    /*
-     public static void test() throws IOException, InterruptedException{
-     CartaInvitacion test = new CartaInvitacion();
-     test.setCodigo("1");    
-     test.setFecha(Date.valueOf("2013-12-26"));
-     test.setNomEmpresa("DT Systems");
-     test.setDireccion("Caracas");
-     test.setPresente("Daniel Mallcott");
-     test.setTelefono("0212-1234567");
-     test.setCorreo("dmallcott@usb.ve");
-     test.setDiaOferta("05");
-     test.setMesOferta("Marzo");
-     test.setContacto("Daniel");
-     test.setResponsable("Daniel Mallcott");
-     test.setUnidadSolicitante("ULAB");
-        
-     boolean result = test.generateDoc();
-        
-     }*/
-    /**
-     * Este metodo genera el documento asociado a la clase en la carpeta src/documentos/generated. Corre el script 'genCartaInvitacion' el cual se encarga de todo el proceso.
-     *
-     * @return Un booleano con el estatus de salida de 'genCartaInvitacion'
-     */
+    public boolean validateCantidad(final String cantidad) {
+        patron = Pattern.compile(patronNumerico);
+        match = patron.matcher(cantidad);
+        return match.matches();
+    }
+    
     public boolean generateDoc() {
         try {
             // Esta cantidad excesiva de strings es para calcular el path de la webapp dinamicamente.
@@ -76,8 +55,7 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
             String shortenedPath = absolutePath.replace("file:", "");
             String appPath = shortenedPath.replace("/build/web/WEB-INF/classes/Clases/EspecificacionTecnica.class", "");
             String[] command = {"./src/bash/genEspecificacionTecnica.sh",
-                codigo, fecha, Integer.toString(item), Integer.toString(NoRegistro),
-                caracteristicas,Integer.toString(cantidad)};
+                codigo,item, caracteristicas,cantidad};
 
             Process terminal = Runtime.getRuntime().exec(command, null, new File(appPath));
             terminal.waitFor();
@@ -102,30 +80,14 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
         this.codigo = codigo;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-    
     public String getItem() {
-        return Integer.toString(item);
+        return item;
     }
 
-    public void setItem(int item) {
+    public void setItem(String item) {
         this.item = item;
     }
   
-    public String getNoRegistro() {
-        return Integer.toString(NoRegistro);
-    }
-
-    public void setNoRegistro(int NoRegistro) {
-        this.NoRegistro = NoRegistro;
-    }
-    
     public String getCaracteristicas() {
         return caracteristicas;
     }    
@@ -135,10 +97,10 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
     }    
     
     public String getCantidad() {
-        return Integer.toString(cantidad);
+        return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 

@@ -7,6 +7,7 @@
 package Actions.Documentos.EspecificacionTecnica;
 
 import Clases.EspecificacionTecnica;
+import Clases.Usuario;
 import DBMS.DBMS;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -28,10 +29,10 @@ import org.apache.struts.action.ActionMessage;
  * @author Daniela Rodriguez
  */
 public class AgregarEspecificacionTecnica extends org.apache.struts.action.Action {
-    
+
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -45,40 +46,34 @@ public class AgregarEspecificacionTecnica extends org.apache.struts.action.Actio
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception 
-    {
+            throws Exception {
 
         EspecificacionTecnica especificacion = (EspecificacionTecnica) form;
-        HttpSession session = request.getSession(true);  
-        String user = (String) session.getAttribute("usbid"); // crea un usuario unico admin para pruebas
-        boolean huboError = false;
+        HttpSession session = request.getSession(true);
+        Usuario user = (Usuario) session.getAttribute("usuario");
         ActionErrors error = new ActionErrors();
-        
-        //valido los campos de formulario
-        error = especificacion.validate(mapping, request);        ;
 
-        if (error.size() != 0) {
-            huboError = true;
-        }
+        //valido los campos de formulario
+        error = especificacion.validate(mapping, request);
 
         //si los campos no son validos
-        if (huboError) {
+        if (error.size() != 0) {
             saveErrors(request, error);
             request.setAttribute("noAgregado", FAILURE);
             return mapping.findForward(FAILURE);
-        //si los campos son validos
+            //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().AgregarEspecificacionTecnica(user, especificacion);
-             // wat now
+            boolean registro = DBMS.getInstance().AgregarEspecificacionTecnica(user, especificacion);
+            // wat now
             if (registro) {
-                request.setAttribute("agregado",SUCCESS);
+                request.setAttribute("agregado", SUCCESS);
                 return mapping.findForward(SUCCESS);
-                
+
             } else {
-                request.setAttribute("yaAgregado",FAILURE);
+                request.setAttribute("yaAgregado", FAILURE);
                 saveErrors(request, error);
                 return mapping.findForward(FAILURE);
             }
-        }  
-    }   
+        }
+    }
 }

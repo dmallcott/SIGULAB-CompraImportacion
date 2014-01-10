@@ -8,6 +8,7 @@ import Clases.CartaInvitacion;
 import Clases.Compra;
 import Clases.EspecificacionTecnica;
 import Clases.ActoMotivado;
+import Clases.InformeRecomendacion;
 import Clases.Proveedor;
 import Clases.Usuario;
 import java.sql.Connection;
@@ -263,19 +264,25 @@ public class DBMS {
         }
     }
 
-    public boolean AgregarEspecificacionTecnica(String user, EspecificacionTecnica especificacion) {
-PreparedStatement psAgregar = null;
+    public boolean AgregarEspecificacionTecnica(Usuario user, EspecificacionTecnica especificacion) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
         try {
-            // nota hasta no tener la tabla en la base hecha no puedo hacer esto.
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".especificaciontecnica VALUES (?,?,?,?)");
-            psAgregar.setString(1, user);
-            psAgregar.setString(2, especificacion.getCodigo());
-            psAgregar.setString(2, especificacion.getFecha());
-            psAgregar.setString(2, especificacion.getGenPath());
-            psAgregar.setString(2, especificacion.getItem());
-            psAgregar.setString(2, especificacion.getNoRegistro());
-            psAgregar.setString(2, especificacion.getCaracteristicas());
-            psAgregar.setString(2, especificacion.getCantidad());
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoactomotivado(?);");
+            psConsultar.setString(1, user.getUnidad());
+
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigoespecificaciontecnica");
+            else
+                return false;
+
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemsespecificacionestecnicas VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(3, especificacion.getItem());
+            psAgregar.setString(4, especificacion.getCantidad());
+            psAgregar.setString(5, especificacion.getCaracteristicas());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -284,7 +291,6 @@ PreparedStatement psAgregar = null;
             ex.printStackTrace();
             return false;
         }
-
     }
 
     public boolean AgregarActoMotivado(Usuario user, ActoMotivado acto) {
@@ -311,6 +317,46 @@ PreparedStatement psAgregar = null;
             psAgregar.setString(7, acto.getJustificacion());
             psAgregar.setString(8, acto.getProveniente());
             psAgregar.setString(9, acto.getCargo());
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean AgregarInformeRecomendacion(Usuario user, InformeRecomendacion informe) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoinforme");
+            psConsultar.setString(1, user.getUnidad());
+
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigoinforme");
+            else
+                return false;
+
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, informe.getCargo1());
+            psAgregar.setString(3, informe.getCargo2());
+            psAgregar.setString(4, informe.getDiaEvaluacion());
+            psAgregar.setString(5, informe.getDiaFinal());
+            psAgregar.setString(6, informe.getDiaRevision());
+            psAgregar.setString(7, informe.getListaProveedores1());
+            psAgregar.setString(8, informe.getListaProveedores2());
+            psAgregar.setString(9, informe.getMesEvaluacion());
+            psAgregar.setString(10, informe.getMesFinal());
+            psAgregar.setString(11, informe.getMesRevision());
+            psAgregar.setString(11, informe.getResponsable1());
+            psAgregar.setString(11, informe.getResponsable2());
+            psAgregar.setString(11, informe.getUnidadSolicitante1());
+            psAgregar.setString(11, informe.getUnidadSolicitante2());
 
             Integer i = psAgregar.executeUpdate();
 
