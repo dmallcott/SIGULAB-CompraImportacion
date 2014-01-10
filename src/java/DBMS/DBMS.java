@@ -8,6 +8,7 @@ import Clases.CartaInvitacion;
 import Clases.Compra;
 import Clases.EspecificacionTecnica;
 import Clases.ActoMotivado;
+import Clases.Cotizacion;
 import Clases.Proveedor;
 import Clases.Usuario;
 import java.sql.Connection;
@@ -320,4 +321,11 @@ PreparedStatement psAgregar = null;
             return false;
         }
     }   
+    
+    public boolean AgregarCotizacion(Usuario user, Cotizacion acto) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        
+            return true;
+    }
 }

@@ -27,7 +27,8 @@
                         </li>
                         <ul class="sub-nav2" style="display:none; list-style:none;">
 
-                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCartaInvitacion">Agregar carta</html:link></a></h6></li>
+                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCartaInvitacion">Agregar carta de invitacion</html:link></a></h6></li>
+                            <li><h6 style="margin:0;"><a><html:link action="/reqAgregarCotizacion">Agregar cotizacion</html:link></a></h6></li>
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link></a></h6></li>
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarInformeRecomendacion">Agregar Informe de Recomendacion</html:link></a></h6></li> 
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarActoMotivado">Agregar Acto Motivado</html:link></a></h6></li> 
