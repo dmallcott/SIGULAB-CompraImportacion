@@ -37,28 +37,7 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
     private String correo;
     private String personaContacto;
     private ArrayList<Item> items;
-
-    public String toStringSQL() {
-        String result = "";
-        for (int i = 0; i < items.size(); i++){
-            result = result +items.get(i).toString();
-        }
-        return result;
-    }
     
-    
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
-    
-    
-    
-    
-
     // Variables para uso del sistema
     private String genPath;
     private Pattern patron;
@@ -147,6 +126,13 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
         this.match = match;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
     
     
     public boolean validateTelefono(final String telefono) {
@@ -188,6 +174,8 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
         if (direccion.matches("\\w") || direccion.equals(""))
             errors.add("direccion", new ActionMessage("error.campo.vacio"));
 
+        
+        
         return errors;
     }
 }

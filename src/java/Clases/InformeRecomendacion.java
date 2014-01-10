@@ -40,15 +40,7 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     private String responsable1;
     private String responsable2;
     private ArrayList<Item> items;
-   
-    public String toStringSQL() {
-        String result = "";
-        for (int i = 0; i < items.size(); i++){
-            result = result +items.get(i).toString();
-        }
-        return result;
-    }
-    
+
     // Variables para uso del sistema
     private String genPath;
     private Pattern patron;
@@ -98,8 +90,6 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
         
         return errors;
     }
-    
-    
     
     public boolean generateDoc() {
         return false;

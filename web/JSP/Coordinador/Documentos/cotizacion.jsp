@@ -95,11 +95,11 @@
                     var cell5 = row.insertCell(4);
                     var cell6 = row.insertCell(5);
                     cell1.innerHTML = "Item " + (x+1);
-                    cell2.innerHTML = '<input type="text" name="nombre'+x+'"/>';
-                    cell3.innerHTML = '<input type="text" name="precio'+x+'"/>';
-                    cell4.innerHTML = '<input type="text" name="tiempo'+x+'"/>';
-                    cell5.innerHTML = '<input type="text" name="condicion'+x+'"/>';
-                    cell6.innerHTML = '<input type="text" name="garantia'+x+'"/>';
+                    cell2.innerHTML = '<input type="text" maxlength="50" name="nombre'+x+'"/>';
+                    cell3.innerHTML = '<input type="number" name="precio'+x+'"/>';
+                    cell4.innerHTML = '<input type="text" maxlength="20" name="tiempo'+x+'"/>';
+                    cell5.innerHTML = '<input type="text" maxlength="20" name="condicion'+x+'"/>';
+                    cell6.innerHTML = '<input type="text" maxlength="200" name="garantia'+x+'"/>';
 
                 }
             </script> 

@@ -28,29 +28,6 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
     
     // Variables para uso del sistema
     private String genPath;
-    private Pattern patron;
-    private Matcher match;
-    private static final String patronNumerico = "[0-9]{1000,}$";
-    
-    public String toStringSQL() {
-        String result = "";
-        for (int i = 0; i < items.size(); i++){
-            result = result +items.get(i).toString();
-        }
-        return result;
-    }
-    
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
-
-        return errors;
-    }
-    
-    public boolean validateCantidad(final String cantidad) {
-        patron = Pattern.compile(patronNumerico);
-        match = patron.matcher(cantidad);
-        return match.matches();
-    }
     
     public boolean generateDoc() {
         return false;
@@ -79,22 +56,4 @@ public class EspecificacionTecnica extends org.apache.struts.action.ActionForm {
     public void setGenPath(String genPath) {
         this.genPath = genPath;
     }
-
-    public Pattern getPatron() {
-        return patron;
-    }
-
-    public void setPatron(Pattern patron) {
-        this.patron = patron;
-    }
-
-    public Matcher getMatch() {
-        return match;
-    }
-
-    public void setMatch(Matcher match) {
-        this.match = match;
-    }
-
-    
 }

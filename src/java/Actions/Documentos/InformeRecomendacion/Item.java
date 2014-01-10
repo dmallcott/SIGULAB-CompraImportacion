@@ -12,6 +12,8 @@ package Actions.Documentos.InformeRecomendacion;
  */
 public class Item {
     private int numero;
+    private String empresa;
+    private String items;
     private Boolean opcion1;
     private Boolean opcion2;
     private Boolean opcion3;
@@ -22,6 +24,22 @@ public class Item {
     private Boolean opcion8;
     private Boolean opcion9;
 
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getItems() {
+        return items;
+    }
+
+    public void setItems(String items) {
+        this.items = items;
+    }
+    
     public int getNumero() {
         return numero;
     }
@@ -30,7 +48,7 @@ public class Item {
         this.numero = numero;
     }
 
-    public Boolean isOpcion1() {
+    public Boolean getOpcion1() {
         return opcion1;
     }
 
@@ -38,7 +56,7 @@ public class Item {
         this.opcion1 = opcion1;
     }
 
-    public Boolean isOpcion2() {
+    public Boolean getOpcion2() {
         return opcion2;
     }
 
@@ -46,7 +64,7 @@ public class Item {
         this.opcion2 = opcion2;
     }
 
-    public Boolean isOpcion3() {
+    public Boolean getOpcion3() {
         return opcion3;
     }
 
@@ -54,7 +72,7 @@ public class Item {
         this.opcion3 = opcion3;
     }
 
-    public Boolean isOpcion4() {
+    public Boolean getOpcion4() {
         return opcion4;
     }
 
@@ -62,7 +80,7 @@ public class Item {
         this.opcion4 = opcion4;
     }
 
-    public Boolean isOpcion5() {
+    public Boolean getOpcion5() {
         return opcion5;
     }
 
@@ -70,7 +88,7 @@ public class Item {
         this.opcion5 = opcion5;
     }
 
-    public Boolean isOpcion6() {
+    public Boolean getOpcion6() {
         return opcion6;
     }
 
@@ -78,7 +96,7 @@ public class Item {
         this.opcion6 = opcion6;
     }
 
-    public Boolean isOpcion7() {
+    public Boolean getOpcion7() {
         return opcion7;
     }
 
@@ -86,7 +104,7 @@ public class Item {
         this.opcion7 = opcion7;
     }
 
-    public Boolean isOpcion8() {
+    public Boolean getOpcion8() {
         return opcion8;
     }
 
@@ -94,7 +112,7 @@ public class Item {
         this.opcion8 = opcion8;
     }
 
-    public Boolean isOpcion9() {
+    public Boolean getOpcion9() {
         return opcion9;
     }
 
