@@ -329,7 +329,6 @@ public class DBMS {
         }
     }
     
-    
     public boolean AgregarInformeRecomendacion(Usuario user, InformeRecomendacion informe) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -371,7 +370,7 @@ public class DBMS {
         }
     }
 
-            
+    
     public boolean AgregarNotaDevolucion(Usuario user, NotaDevolucion nota) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
