@@ -6,11 +6,13 @@
 
 package Clases;
 
+import Actions.Documentos.InformeRecomendacion.Item;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -37,16 +39,15 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     private String mesRevision;
     private String responsable1;
     private String responsable2;
-    private Boolean opcion1;
-    private Boolean opcion2;
-    private Boolean opcion3;
-    private Boolean opcion4;
-    private Boolean opcion5;
-    private Boolean opcion6;
-    private Boolean opcion7;
-    private Boolean opcion8;
-    private Boolean opcion9;
-
+    private ArrayList<Item> items;
+   
+    public String toStringSQL() {
+        String result = "";
+        for (int i = 0; i < items.size(); i++){
+            result = result +items.get(i).toString();
+        }
+        return result;
+    }
     
     // Variables para uso del sistema
     private String genPath;
@@ -99,10 +100,37 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
     }
     
     
+    
     public boolean generateDoc() {
         return false;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public Pattern getPatron() {
+        return patron;
+    }
+
+    public void setPatron(Pattern patron) {
+        this.patron = patron;
+    }
+
+    public Matcher getMatch() {
+        return match;
+    }
+
+    public void setMatch(Matcher match) {
+        this.match = match;
+    }
+
+    
+    
     public String getCodigo() {
         return codigo;
     }
@@ -205,78 +233,6 @@ public class InformeRecomendacion extends org.apache.struts.action.ActionForm{
 
     public void setResponsable2(String responsable2) {
         this.responsable2 = responsable2;
-    }
-
-    public Boolean getOpcion1() {
-        return opcion1;
-    }
-
-    public void setOpcion1(Boolean opcion1) {
-        this.opcion1 = opcion1;
-    }
-
-    public Boolean getOpcion2() {
-        return opcion2;
-    }
-
-    public void setOpcion2(Boolean opcion2) {
-        this.opcion2 = opcion2;
-    }
-
-    public Boolean getOpcion3() {
-        return opcion3;
-    }
-
-    public void setOpcion3(Boolean opcion3) {
-        this.opcion3 = opcion3;
-    }
-
-    public Boolean getOpcion4() {
-        return opcion4;
-    }
-
-    public void setOpcion4(Boolean opcion4) {
-        this.opcion4 = opcion4;
-    }
-
-    public Boolean getOpcion5() {
-        return opcion5;
-    }
-
-    public void setOpcion5(Boolean opcion5) {
-        this.opcion5 = opcion5;
-    }
-
-    public Boolean getOpcion6() {
-        return opcion6;
-    }
-
-    public void setOpcion6(Boolean opcion6) {
-        this.opcion6 = opcion6;
-    }
-
-    public Boolean getOpcion7() {
-        return opcion7;
-    }
-
-    public void setOpcion7(Boolean opcion7) {
-        this.opcion7 = opcion7;
-    }
-
-    public Boolean getOpcion8() {
-        return opcion8;
-    }
-
-    public void setOpcion8(Boolean opcion8) {
-        this.opcion8 = opcion8;
-    }
-
-    public Boolean getOpcion9() {
-        return opcion9;
-    }
-
-    public void setOpcion9(Boolean opcion9) {
-        this.opcion9 = opcion9;
     }
     
     public String getGenPath() {

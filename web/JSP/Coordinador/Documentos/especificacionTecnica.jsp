@@ -20,7 +20,7 @@
             <tbody id="tabla" style="overflow: scroll">
                 <script>
                 var numeroItems = 0;
-                while (numeroItems === 0 || numeroItems > 15 || numeroItems === null) {
+                while (numeroItems == 0 || numeroItems > 15 || numeroItems === null) {
                     numeroItems = prompt("Cuantos items tendra esta solicitud?");
                 }
                 var table = document.getElementById("tabla");
