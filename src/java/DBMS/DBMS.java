@@ -355,8 +355,8 @@ public class DBMS {
             psAgregar.setString(9, informe.getMesEvaluacion());
             psAgregar.setString(10, informe.getMesFinal());
             psAgregar.setString(11, informe.getMesRevision());
-            psAgregar.setString(11, informe.getResponsable1());
-            psAgregar.setString(11, informe.getResponsable2());
+            psAgregar.setString(12, informe.getResponsable1());
+            psAgregar.setString(13, informe.getResponsable2());
             
             Integer i = psAgregar.executeUpdate();
             
