@@ -11,6 +11,7 @@ package Actions.Documentos.InformeRecomendacion;
  * @author daniel
  */
 public class Item {
+    private int numero;
     private Boolean opcion1;
     private Boolean opcion2;
     private Boolean opcion3;
@@ -20,6 +21,14 @@ public class Item {
     private Boolean opcion7;
     private Boolean opcion8;
     private Boolean opcion9;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
     public Boolean isOpcion1() {
         return opcion1;

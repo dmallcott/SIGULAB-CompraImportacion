@@ -377,7 +377,7 @@ public class DBMS {
             else
                 return false;
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, informe.getCargo1());
             psAgregar.setString(3, informe.getCargo2());
@@ -391,6 +391,7 @@ public class DBMS {
             psAgregar.setString(11, informe.getMesRevision());
             psAgregar.setString(12, informe.getResponsable1());
             psAgregar.setString(13, informe.getResponsable2());
+            psAgregar.setString(14, informe.toStringSQL());
             
             Integer i = psAgregar.executeUpdate();
             
