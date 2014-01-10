@@ -34,6 +34,12 @@
         <put name="body_title" value="Carta de Invitacion" type="string"/>
     </definition>
     
+    <definition name="agregarCotizacion" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Documentos/cotizacion.jsp"/>
+        <put name="page_title" value="ULAB: Cotizacion" type="string"/>
+        <put name="body_title" value="Cotizacion" type="string"/>
+    </definition>
+    
     <definition name="agregarEspecificacionTecnica" extends="baseCoordinador"> <!-- Vista coordinador -->
         <put name="body" value="/JSP/Coordinador/Documentos/especificacionTecnica.jsp"/>
         <put name="page_title" value="ULAB: Especificacion Tecnica" type="string"/>

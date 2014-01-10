@@ -16,6 +16,7 @@
         </form-bean>
         <form-bean name="Compra" type="Clases.Compra"/>
         <form-bean name="CartaInvitacion" type="Clases.CartaInvitacion"/>
+        <form-bean name="Cotizacion" type="Clases.Cotizacion"/>
         <form-bean name="EspecificacionTecnica" type="Clases.EspecificacionTecnica"/>
         <form-bean name="ActoMotivado" type="Clases.ActoMotivado"/>
         <form-bean name="InformeRecomendacion" type="Clases.InformeRecomendacion"/>
@@ -186,6 +187,25 @@
                 name="CartaInvitacion"
                 validate="false">
             <forward name="failure" path="agregarCartaInvitacion"/>
+            <forward name="success" path="vistaCoordinador"/>
+        </action>
+
+        <!-- Agregar Cotizacion -->
+        <action input="/*"
+                path="/reqAgregarCotizacion"
+                type="Actions.Documentos.Cotizacion.ReqAgregarCotizacion"
+                scope="request"
+                validate="false">
+            <forward name="success" path="agregarCotizacion"/>
+        </action>
+        
+        <action input="/reqAgregarCotizacion"
+                path="/agregarCotizacion"
+                type="Actions.Documentos.Cotizacion.AgregarCotizacion"
+                scope="request"
+                name="Cotizacion"
+                validate="false">
+            <forward name="failure" path="agregarCotizacion"/>
             <forward name="success" path="vistaCoordinador"/>
         </action>
 
