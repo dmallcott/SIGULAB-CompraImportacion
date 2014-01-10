@@ -10,6 +10,8 @@ import Clases.EspecificacionTecnica;
 import Clases.ActoMotivado;
 import Clases.Proveedor;
 import Clases.Usuario;
+import Clases.NotaDevolucion;
+import Clases.SolicitudServicio;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -320,4 +322,104 @@ PreparedStatement psAgregar = null;
             return false;
         }
     }   
+    
+    public boolean AgregarNotaDevolucion(Usuario user, NotaDevolucion nota) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigonota(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigonota");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".notadevolucion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, nota.getC1().toString());
+            psAgregar.setString(3, nota.getC2().toString());
+            psAgregar.setString(4, nota.getC3().toString());
+            psAgregar.setString(5, nota.getC4().toString());
+            psAgregar.setString(6, nota.getC5().toString());
+            psAgregar.setString(7, nota.getC5banco().toString());
+            psAgregar.setString(8, nota.getC5contacto().toString());
+            psAgregar.setString(9, nota.getC5fiscal().toString());
+            psAgregar.setString(10, nota.getC5nombre().toString());
+            psAgregar.setString(11, nota.getC5otro().toString());
+            psAgregar.setString(12, nota.getC5rif().toString());
+            psAgregar.setString(13, nota.getC5tlf().toString());
+            psAgregar.setString(14, nota.getC6().toString());
+            psAgregar.setString(15, nota.getC7().toString());
+            psAgregar.setString(16, nota.getC8().toString());
+            psAgregar.setString(17, nota.getC9().toString());
+            psAgregar.setString(18, nota.getCertificacionServicio().toString());
+            psAgregar.setString(19, nota.getCsNO().toString());
+            psAgregar.setDate(20, Date.valueOf(nota.getFecha()));
+            psAgregar.setString(21, nota.getPago().toString());
+            psAgregar.setString(22, nota.getpNO().toString());
+            psAgregar.setString(23, nota.getRecepcion().toString());
+            psAgregar.setString(24, nota.getRequisicion().toString());
+            psAgregar.setString(25, nota.getRpNO().toString());
+            psAgregar.setString(26, nota.getRqNO().toString());
+            psAgregar.setString(27, nota.getSolicitudServicio().toString());
+            psAgregar.setString(28, nota.getSsNO().toString());
+            psAgregar.setString(29, nota.getObservaciones());
+            psAgregar.setString(30, nota.getoNO().toString());
+            psAgregar.setString(31, nota.getOtro().toString());
+            psAgregar.setString(32, nota.getOtro1());
+            
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean AgregarSolicitudServicio(Usuario user, SolicitudServicio solicitud) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigosolservicio(?);");
+            psConsultar.setString(1, user.getUnidad());
+            
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next())
+                nuevoCodigo = rs.getString("crearcodigosolservicio");
+            else
+                return false;
+            
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".solicitudservicio VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, solicitud.getCompania());
+            psAgregar.setString(3, solicitud.getContacto());
+            psAgregar.setString(4, solicitud.getContactoCompania());
+            psAgregar.setString(5, solicitud.getCorreo());
+            psAgregar.setString(6, solicitud.getDe());
+            psAgregar.setString(7, solicitud.getDescripcion());
+            psAgregar.setString(8, solicitud.getEnunciado());
+            psAgregar.setDate(9, Date.valueOf(solicitud.getFecha()));
+            psAgregar.setDate(10, Date.valueOf(solicitud.getFechaCotizacion()));
+            psAgregar.setString(11, solicitud.getMonto());
+            psAgregar.setString(12, solicitud.getNoBienNacional());
+            psAgregar.setString(13, solicitud.getNoCotizacion());
+            psAgregar.setString(14, solicitud.getNombreBien());
+            psAgregar.setString(15, solicitud.getProyectoPOA());
+            psAgregar.setString(16, solicitud.getTelefono());
+            psAgregar.setString(17, solicitud.getTelefonoCompania());
+            psAgregar.setString(18, solicitud.getUbicacion());
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }  
 }
