@@ -7,6 +7,20 @@
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
+<script>
+    function agregarItem() {
+        var table = document.getElementById("tabla");
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = "Item " + (rowCount+1);
+        cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+rowCount+'"/>';
+        cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+rowCount+'"/>';
+    }
+</script> 
+
 <html:form action="/agregarEspecificacionTecnica"
                    method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
     <table border="0">
@@ -18,23 +32,14 @@
                 <th>Cantidad</th>
             </thead>
             <tbody id="tabla" style="overflow: scroll">
-                <script>
-                var numeroItems = 0;
-                while (numeroItems == 0 || numeroItems > 15 || numeroItems === null) {
-                    numeroItems = prompt("Cuantos items tendra esta solicitud?");
-                }
-                var table = document.getElementById("tabla");
-                var rowCount = table.rows.length;
-                for (var x = 0; x < numeroItems; x++) {
-                    var row = table.insertRow(rowCount+x);
-                    var cell1 = row.insertCell(0);
-                    var cell2 = row.insertCell(1);
-                    var cell3 = row.insertCell(2);
-                    cell1.innerHTML = "Item " + (x+1);
-                    cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+x+'"/>';
-                    cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+x+'"/>';
-                }
-            </script> 
+                <tr>
+                    <td>Item 1</td>
+                    <td><input required type="text" maxlength="200" name="caracteristica0"/></td>
+                    <td><input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad0"/></td>
+                </tr>
+                
+                
+                <button onclick="agregarItem()">Agregar Item</button>
             </tbody>
         </table>
         </tbody>

@@ -142,6 +142,22 @@ public class DBMS {
             return false;
         }
     }
+    
+    public boolean deshabilitarProveedor(Proveedor p) {
+        PreparedStatement ps = null;
+        try {
+
+            ps = conexion.prepareStatement("UPDATE \"mod3\".proveedor SET deshabilitado = TRUE WHERE rif = ?;");
+            ps.setString(2, p.getRIF());
+            Integer s = ps.executeUpdate();
+
+            return s > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean editarResena(Proveedor p) {
         PreparedStatement ps = null;
@@ -369,13 +385,13 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearcodigosolservicio(?);");
+            psConsultar = conexion.prepareStatement("SELECT crearsolservicio(?);");
             psConsultar.setString(1, user.getUnidad());
             
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
-                nuevoCodigo = rs.getString("crearcodigosolservicio");
+                nuevoCodigo = rs.getString("crearsolservicio");
             else
                 return false;
             
@@ -390,14 +406,14 @@ public class DBMS {
             psAgregar.setString(8, solicitud.getEnunciado());
             psAgregar.setDate(9, Date.valueOf(solicitud.getFecha()));
             psAgregar.setDate(10, Date.valueOf(solicitud.getFechaCotizacion()));
-            psAgregar.setString(11, solicitud.getMonto());
-            psAgregar.setString(12, solicitud.getNoBienNacional());
-            psAgregar.setString(13, solicitud.getNoCotizacion());
-            psAgregar.setString(14, solicitud.getNombreBien());
-            psAgregar.setString(15, solicitud.getProyectoPOA());
-            psAgregar.setString(16, solicitud.getTelefono());
-            psAgregar.setString(17, solicitud.getTelefonoCompania());
-            psAgregar.setString(18, solicitud.getUbicacion());
+            psAgregar.setString(11, solicitud.getNoBienNacional());
+            psAgregar.setString(12, solicitud.getNoCotizacion());
+            psAgregar.setString(13, solicitud.getNombreBien());
+            psAgregar.setString(14, solicitud.getProyectoPOA());
+            psAgregar.setString(15, solicitud.getTelefono());
+            psAgregar.setString(16, solicitud.getTelefonoCompania());
+            psAgregar.setString(17, solicitud.getUbicacion());
+            psAgregar.setString(18, solicitud.getMonto());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -414,7 +430,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearcodigoinforme");
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoinforme(?)");
             psConsultar.setString(1, user.getUnidad());
 
             ResultSet rs = psConsultar.executeQuery();
@@ -424,13 +440,13 @@ public class DBMS {
             else
                 return false;
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, informe.getCargo1());
             psAgregar.setString(3, informe.getCargo2());
-            psAgregar.setString(4, informe.getDiaEvaluacion());
-            psAgregar.setString(5, informe.getDiaFinal());
-            psAgregar.setString(6, informe.getDiaRevision());
+            psAgregar.setInt(4, Integer.parseInt(informe.getDiaEvaluacion()));
+            psAgregar.setInt(5, Integer.parseInt(informe.getDiaFinal()));
+            psAgregar.setInt(6, Integer.parseInt(informe.getDiaRevision()));
             psAgregar.setString(7, informe.getListaProveedores1());
             psAgregar.setString(8, informe.getListaProveedores2());
             psAgregar.setString(9, informe.getMesEvaluacion());
@@ -475,13 +491,13 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearcodigoespecificacion(?);");
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoespecificaciones(?);");
             psConsultar.setString(1, user.getUnidad());
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
-                nuevoCodigo = rs.getString("crearcodigoespecificacion");
+                nuevoCodigo = rs.getString("crearcodigoespecificaciones");
             else
                 return false;
             
@@ -513,25 +529,25 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearcotizacion(?);");
+            psConsultar = conexion.prepareStatement("SELECT crearcodigocotizacion(?);");
             psConsultar.setString(1, user.getUnidad());
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
-                nuevoCodigo = rs.getString("crearcotizacion");
+                nuevoCodigo = rs.getString("crearcodigocotizacion");
             else
                 return false;
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizaciones VALUES (?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
-            psAgregar.setString(2, cotizacion.getCorreo());
-            psAgregar.setString(3, cotizacion.getDireccion());
-            psAgregar.setString(4, cotizacion.getFax());
-            psAgregar.setString(5, cotizacion.getNomEmpresa());
-            psAgregar.setString(6, cotizacion.getPersonaContacto());
-            psAgregar.setString(7, cotizacion.getRif());
-            psAgregar.setString(8, cotizacion.getTelefono());
+            psAgregar.setString(2, cotizacion.getRif());
+            psAgregar.setString(3, cotizacion.getNomEmpresa());
+            psAgregar.setString(4, cotizacion.getDireccion());
+            psAgregar.setString(5, cotizacion.getTelefono());
+            psAgregar.setString(6, cotizacion.getFax());
+            psAgregar.setString(7, cotizacion.getCorreo());
+            psAgregar.setString(8, cotizacion.getPersonaContacto());
 
             Integer j = psAgregar.executeUpdate();
 
@@ -539,12 +555,13 @@ public class DBMS {
             Actions.Documentos.Cotizacion.Item temp;
             for (int i = 0; i < items.size() ; i++) {
                 temp = (Actions.Documentos.Cotizacion.Item) items.get(i);
-                psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?)");
+                psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
                 psAgregar.setString(2, temp.getNombre());
                 psAgregar.setFloat(3, temp.getPrecio());
-                psAgregar.setString(4, temp.getCondicionPago());
-                psAgregar.setString(5, temp.getGarantia());
+                psAgregar.setString(4, temp.getTiempoEntrega());
+                psAgregar.setString(5, temp.getCondicionPago());
+                psAgregar.setString(6, temp.getGarantia());
                 
                 Integer n = psAgregar.executeUpdate(); //debes chequear esto
             }

@@ -44,7 +44,7 @@
                                         <div class="field field-name-body field-type-text-with-summary field-label-hidden">
                                             <div class="field-items">
                                                 <div class="field-item even" property="content:encoded">
-                                                    <tiles:insert attribute="body"/>
+                                                        <tiles:insert attribute="body"/>
                                                  </div>
                                             </div>
                                         </div>  

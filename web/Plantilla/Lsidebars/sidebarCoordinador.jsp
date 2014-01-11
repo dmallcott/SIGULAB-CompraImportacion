@@ -18,7 +18,7 @@
                         </li>
                         <ul class="sub-nav" style="display:none; list-style:none;">
                             <li><h6 style="margin:0;"><a><html:link action="/reqAgregarProveedor">Agregar proveedor</html:link></a></h6></li>
-                            <li><h6 style="margin:0;"><a><html:link action="/consultarProveedores">Consultar proveedor</html:link></a></h6></li>
+                            <li><h6 style="margin:0;"><a><html:link action="/consultarProveedores">Consultar proveedores</html:link></a></h6></li>
                         </ul>
                     </ul>
                     <ul class="menu1">

@@ -49,9 +49,7 @@ public class ActoMotivado extends org.apache.struts.action.ActionForm {
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
         
-        if (!validateFecha(fecha)) {
-            errors.add("fecha", new ActionMessage("error.fecha.invalida"));
-        }
+        
 
         return errors;
     }
