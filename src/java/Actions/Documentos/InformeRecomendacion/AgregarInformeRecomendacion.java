@@ -53,9 +53,28 @@ public class AgregarInformeRecomendacion extends org.apache.struts.action.Action
         Usuario user = (Usuario) session.getAttribute("usuario");
         ActionErrors error = new ActionErrors();
 
+        Item item = new Item();
+        informe.setItems(new ArrayList<Item>());
+        for (int i = 0; request.getParameter("opcion1"+i) != null; i++) {
+            item.setNumero(i+1);
+            item.setEmpresa(request.getParameter("empresa"+i));
+            item.setItems(request.getParameter("items"+i));
+            item.setOpcion1(Boolean.valueOf(request.getParameter("opcion1"+i)));
+            item.setOpcion2(Boolean.valueOf(request.getParameter("opcion2"+i)));
+            item.setOpcion3(Boolean.valueOf(request.getParameter("opcion3"+i)));
+            item.setOpcion4(Boolean.valueOf(request.getParameter("opcion4"+i)));
+            item.setOpcion5(Boolean.valueOf(request.getParameter("opcion5"+i)));
+            item.setOpcion6(Boolean.valueOf(request.getParameter("opcion6"+i)));
+            item.setOpcion7(Boolean.valueOf(request.getParameter("opcion7"+i)));
+            item.setOpcion8(Boolean.valueOf(request.getParameter("opcion8"+i)));
+            item.setOpcion9(Boolean.valueOf(request.getParameter("opcion9"+i)));
+            
+            informe.getItems().add(item);
+        }
+        
         //valido los campos de formulario
         error = informe.validate(mapping, request);
-
+        
         //si los campos no son validos
         if (error.size() != 0) {
             saveErrors(request, error);

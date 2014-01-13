@@ -69,24 +69,32 @@
         <put name="page_title" value="ULAB: Solicitud de Servicio" type="string"/>
         <put name="body_title" value="Solicitud de Servicio" type="string"/>
     </definition>  
-   
-    
-    <!-- DE AQUI PARA ABAJO ESTA DESACTUALIZADO Y NO FUNCIONA. ESTO OCURRIO POR LA ACTUALIZACION
-         DE LOS TILES-DEFS AL MODELOS ACTUAL. SERA ARREGLADO EN SU DEBIDO TIEMPO -->
 
     <!-- PROVEEDORES -->
 
-    <definition name="agregarProveedor" path="/JSP/Proveedor/agregarProveedor.jsp"/>
-    <definition name="consultarProveedores" path="/JSP/Proveedor/consultarProveedores.jsp"/>
-    <definition name="editarResena" path="/JSP/Proveedor/editarResena.jsp"/>
+    <definition name="agregarProveedor" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Proveedor/agregarProveedor.jsp"/>
+        <put name="page_title" value="ULAB: Agregar Proveedor" type="string"/>
+        <put name="body_title" value="Agregar Proveedor" type="string"/>
+    </definition>
+    
+    <definition name="consultarProveedores" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Proveedor/consultarProveedores.jsp"/>
+        <put name="page_title" value="ULAB: Consultar Proveedores" type="string"/>
+        <put name="body_title" value="Consultar Proveedores" type="string"/>
+    </definition>   
+    
+    <definition name="editarResena" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Proveedor/editarResena.jsp"/>
+        <put name="page_title" value="ULAB: Editar Resena" type="string"/>
+        <put name="body_title" value="Editar Resena" type="string"/>
+    </definition>
     
     <!-- COMPRAS -->
-    
-    <definition name="agregarCompra" path="/JSP/Compras/agregarCompra.jsp"/>
-    <definition name="consultarCompras" path="/JSP/Compras/consultarCompras.jsp"/>
-    
-    
-
-    
+    <definition name="consultarCompras" extends="baseCoordinador"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Coordinador/Compras/consultarCompras.jsp"/>
+        <put name="page_title" value="ULAB: Consultar Compras" type="string"/>
+        <put name="body_title" value="Consultar Compras" type="string"/>
+    </definition>
     
 </tiles-definitions>

@@ -24,6 +24,8 @@ public class Proveedor extends org.apache.struts.action.ActionForm {
     private String compania;
     private String telefono;
     private String resena;
+    private boolean deshabilitado;
+    
     private Pattern patron;
     private Matcher match;
     
@@ -31,6 +33,14 @@ public class Proveedor extends org.apache.struts.action.ActionForm {
         patron = Pattern.compile(patronRIF);
     }
 
+    public boolean getDeshabilitado() {
+        return deshabilitado;
+    }
+
+    public void setDeshabilitado(boolean deshabilitado) {
+        this.deshabilitado = deshabilitado;
+    }
+    
     public String getRIF() {
         return RIF;
     }

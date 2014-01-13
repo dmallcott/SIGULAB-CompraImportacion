@@ -8,12 +8,7 @@
 <struts-config>
     <form-beans>
         <form-bean name="Usuario" type="Clases.Usuario"/>
-        <form-bean name="Proveedor" type="Clases.Proveedor">
-            <form-property name="RIF" type="java.lang.String" />
-            <form-property name="compania" type="java.lang.String" />
-            <form-property name="telefono" type="java.lang.String" />
-            <form-property name="resena" type="java.lang.String" />
-        </form-bean>
+        <form-bean name="Proveedor" type="Clases.Proveedor"/>
         <form-bean name="Compra" type="Clases.Compra"/>
         <form-bean name="CartaInvitacion" type="Clases.CartaInvitacion"/>
         <form-bean name="Cotizacion" type="Clases.Cotizacion"/>
@@ -71,12 +66,6 @@
             <forward name="coordinador" path="vistaCoordinador"/>
         </action> <!-- ESTO NO SIRVE -->
         
-        <action input="/*" 
-                path="/home" 
-                type="org.apache.struts.actions.ForwardAction" 
-                parameter="index">
-        </action>
-        
         <!-- PROVEEDOR -->    
            
         <!-- Consultar Proveedores -->
@@ -119,6 +108,17 @@
             <forward name="failure" path="consultarProveedores"/>
         </action>
         
+        <!-- Deshabilitar Proveedor -->
+        <action input="/consultarProveedores"
+                path="/deshabilitarProveedor"
+                type="Actions.Proveedor.DeshabilitarProveedor"
+                scope="request"
+                name="Proveedor"
+                validate="false">
+            <forward name="success" path="consultarProveedores"/>
+            <forward name="failure" path="consultarProveedores"/>
+        </action>
+        
         <!-- Editar Resena -->
             <action input="/consultarProveedores"
                 path="/reqEditarResena"
@@ -140,7 +140,6 @@
             </action>
        
         <!-- COMPRAS -->
-        
         <action input="/*" 
                 path="/consultarCompras" 
                 type="Actions.Compra.ConsultarCompras" 
@@ -224,8 +223,8 @@
                 scope="request"
                 name="EspecificacionTecnica"
                 validate="false">
-            
-            
+            <forward name="failure" path="agregarEspecificacionTecnica"/>
+            <forward name="success" path="vistaCoordinador"/>
         </action>
         
                 <!-- Agregar Acto Motivado -->
