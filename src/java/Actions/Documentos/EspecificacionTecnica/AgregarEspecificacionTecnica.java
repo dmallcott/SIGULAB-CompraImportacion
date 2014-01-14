@@ -59,6 +59,7 @@ public class AgregarEspecificacionTecnica extends org.apache.struts.action.Actio
         Item item = new Item();
         especificacion.setItems(new ArrayList<Item>());
         for (int i = 0; request.getParameter("caracteristica"+i) != null; i++) {
+            item = new Item();
             item.setItem(i);
             item.setCaracteristicas(request.getParameter("caracteristica"+i));
             item.setCantidad(Integer.parseInt(request.getParameter("cantidad"+i)));
