@@ -60,6 +60,7 @@ public class AgregarCotizacion extends org.apache.struts.action.Action {
         Item item = new Item();
         cotizacion.setItems(new ArrayList<Item>());
         for (int i = 0; request.getParameter("nombre"+i) != null; i++) {
+            item = new Item();
             item.setNombre(request.getParameter("nombre"+i));
             item.setPrecio(Float.parseFloat(request.getParameter("precio"+i)));
             item.setTiempoEntrega(request.getParameter("tiempo"+i));

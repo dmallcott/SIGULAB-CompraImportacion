@@ -8,6 +8,9 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
 <script>
+    
+    var numeroItems = 1;
+    
     function agregarItem() {
         var table = document.getElementById("tabla");
         var rowCount = table.rows.length;
@@ -18,42 +21,42 @@
 
 
         cell1 = row.insertCell(0);
-        cell1.innerHTML = '<b>Opcion ' + (rowCount + 1) + '</b>';
+        cell1.innerHTML = '<b>Opcion ' + (numeroItems + 1) + '</b>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = 'Empresa';
-        cell2.innerHTML = '<input required type="text" maxlength="50" name="empresa' + rowCount + '"/>';
+        cell2.innerHTML = '<input required type="text" maxlength="50" name="empresa' + numeroItems + '"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = 'Items';
-        cell2.innerHTML = '<input required type="text" maxlength="100" name="items' + rowCount + '"/>';
+        cell2.innerHTML = '<input required type="text" maxlength="100" name="items' + numeroItems + '"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Calidad del Producto</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion1' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '1" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Disponibilidad del Producto</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion2' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '2" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Proveedor Unico</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion3' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '3" value="True"/>';
 
 
         rowCount = table.rows.length;
@@ -61,42 +64,43 @@
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Calidad del Servicio</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion4' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '4" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Garantia</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion5' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '5" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Servicio Postventa</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion6' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '6" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Cumplimiento de las Especificaciones</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion7' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '7" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Precio</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion8' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '8" value="True"/>';
 
         rowCount = table.rows.length;
         row = table.insertRow(rowCount);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell1.innerHTML = '<td style="color: black">Tiempo de Entrega</td>';
-        cell2.innerHTML = '<input type="checkbox" name="opcion9' + rowCount + '" value="True"/>';
+        cell2.innerHTML = '<input type="checkbox" name="opcion' + numeroItems + '9" value="True"/>';
+        numeroItems++;
     }
 </script> 
 
@@ -201,39 +205,39 @@
             </tr>
             <tr>
                 <td style="color: black">Calidad del Producto</td>
-                <td><input type="checkbox" name="opcion10" value="True"/></td>
+                <td><input type="checkbox" name="opcion01" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Disponibilidad del Producto</td>
-                    <td><input type="checkbox" name="opcion20" value="True"/></td>
+                    <td><input type="checkbox" name="opcion02" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Proveedor Unico</td>
-                    <td><input type="checkbox" name="opcion30" value="True"/></td>
+                    <td><input type="checkbox" name="opcion03" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Calidad del Servicio</td>
-                    <td><input type="checkbox" name="opcion40" value="True"/></td> 
+                    <td><input type="checkbox" name="opcion04" value="True"/></td> 
                 </tr>
                 <tr>
                     <td style="color: black">Garantia</td>
-                    <td><input type="checkbox" name="opcion50" value="True"/></td> 
+                    <td><input type="checkbox" name="opcion05" value="True"/></td> 
                 </tr>
                 <tr>
                     <td style="color: black">Servicio Postventa</td>
-                    <td><input type="checkbox" name="opcion60" value="True"/></td>
+                    <td><input type="checkbox" name="opcion06" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Cumplimiento de las Especificaciones</td>
-                    <td><input type="checkbox" name="opcion70" value="True"/></td>
+                    <td><input type="checkbox" name="opcion07" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Precio</td>
-                    <td><input type="checkbox" name="opcion80" value="True"/></td>
+                    <td><input type="checkbox" name="opcion08" value="True"/></td>
                 </tr>
                 <tr>
                     <td style="color: black">Tiempo de Entrega</td>
-                    <td><input type="checkbox" name="opcion90" value="True"/></td>
+                    <td><input type="checkbox" name="opcion09" value="True"/></td>
                 </tr>
             </tbody>
             

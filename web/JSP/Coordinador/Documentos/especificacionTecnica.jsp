@@ -8,6 +8,9 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
 <script>
+    
+    var numeroItems = 1;
+    
     function agregarItem() {
         var table = document.getElementById("tabla");
         var rowCount = table.rows.length;
@@ -15,9 +18,10 @@
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        cell1.innerHTML = "Item " + (rowCount+1);
-        cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+rowCount+'"/>';
-        cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+rowCount+'"/>';
+        cell1.innerHTML = "Item " + (numeroItems+1);
+        cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+numeroItems+'"/>';
+        cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+numeroItems+'"/>';
+        numeroItems++;
     }
 </script> 
 

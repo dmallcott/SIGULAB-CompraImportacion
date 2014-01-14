@@ -304,17 +304,14 @@ public class DBMS {
             else
                 return false;
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
-            psAgregar.setDate(2, Date.valueOf(acto.getFecha()));
-            psAgregar.setString(3, acto.getProveedor());
-            psAgregar.setString(4, acto.getBienOServicio());
-            psAgregar.setString(5, acto.getMotivoReq());
-            psAgregar.setString(6, acto.getResponsable());
-            psAgregar.setString(7, acto.getJustificacion());
-            psAgregar.setString(8, acto.getProveniente());
-            psAgregar.setString(9, acto.getCargo());
-
+            psAgregar.setString(2, acto.getBienOServicio());
+            psAgregar.setDate(3, Date.valueOf(acto.getFecha()));
+            psAgregar.setString(4, acto.getJustificacion());
+            psAgregar.setString(5, acto.getProveedor());
+            psAgregar.setString(6, acto.getProveniente());
+            psAgregar.setString(7, acto.getResponsable());
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
@@ -385,13 +382,13 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
-            psConsultar = conexion.prepareStatement("SELECT crearsolservicio(?);");
+            psConsultar = conexion.prepareStatement("SELECT crearcodigosolservicio(?);");
             psConsultar.setString(1, user.getUnidad());
             
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
             if (rs.next())
-                nuevoCodigo = rs.getString("crearsolservicio");
+                nuevoCodigo = rs.getString("crearcodigosolservicio");
             else
                 return false;
             
@@ -406,14 +403,14 @@ public class DBMS {
             psAgregar.setString(8, solicitud.getEnunciado());
             psAgregar.setDate(9, Date.valueOf(solicitud.getFecha()));
             psAgregar.setDate(10, Date.valueOf(solicitud.getFechaCotizacion()));
-            psAgregar.setString(11, solicitud.getNoBienNacional());
-            psAgregar.setString(12, solicitud.getNoCotizacion());
-            psAgregar.setString(13, solicitud.getNombreBien());
-            psAgregar.setString(14, solicitud.getProyectoPOA());
-            psAgregar.setString(15, solicitud.getTelefono());
-            psAgregar.setString(16, solicitud.getTelefonoCompania());
-            psAgregar.setString(17, solicitud.getUbicacion());
-            psAgregar.setString(18, solicitud.getMonto());
+            psAgregar.setString(11, solicitud.getMonto());
+            psAgregar.setString(12, solicitud.getNoBienNacional());
+            psAgregar.setString(13, solicitud.getNoCotizacion());
+            psAgregar.setString(14, solicitud.getNombreBien());
+            psAgregar.setString(15, solicitud.getProyectoPOA());
+            psAgregar.setString(16, solicitud.getTelefono());
+            psAgregar.setString(17, solicitud.getTelefonoCompania());
+            psAgregar.setString(18, solicitud.getUbicacion());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -457,7 +454,7 @@ public class DBMS {
             
             Integer j = psAgregar.executeUpdate();
             
-            if (j > 0)
+            if (j < 0)
                 return false;
             
             ArrayList items = informe.getItems();

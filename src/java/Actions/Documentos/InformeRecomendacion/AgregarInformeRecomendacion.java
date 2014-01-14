@@ -55,25 +55,26 @@ public class AgregarInformeRecomendacion extends org.apache.struts.action.Action
 
         Item item = new Item();
         informe.setItems(new ArrayList<Item>());
-        for (int i = 0; request.getParameter("opcion1"+i) != null; i++) {
+        for (int i = 0; request.getParameter("empresa"+i) != null; i++) {
+            item = new Item();
             item.setNumero(i+1);
             item.setEmpresa(request.getParameter("empresa"+i));
             item.setItems(request.getParameter("items"+i));
-            item.setOpcion1(Boolean.valueOf(request.getParameter("opcion1"+i)));
-            item.setOpcion2(Boolean.valueOf(request.getParameter("opcion2"+i)));
-            item.setOpcion3(Boolean.valueOf(request.getParameter("opcion3"+i)));
-            item.setOpcion4(Boolean.valueOf(request.getParameter("opcion4"+i)));
-            item.setOpcion5(Boolean.valueOf(request.getParameter("opcion5"+i)));
-            item.setOpcion6(Boolean.valueOf(request.getParameter("opcion6"+i)));
-            item.setOpcion7(Boolean.valueOf(request.getParameter("opcion7"+i)));
-            item.setOpcion8(Boolean.valueOf(request.getParameter("opcion8"+i)));
-            item.setOpcion9(Boolean.valueOf(request.getParameter("opcion9"+i)));
+            item.setOpcion1(Boolean.valueOf(request.getParameter("opcion"+i+"1")));
+            item.setOpcion2(Boolean.valueOf(request.getParameter("opcion"+i+"2")));
+            item.setOpcion3(Boolean.valueOf(request.getParameter("opcion"+i+"3")));
+            item.setOpcion4(Boolean.valueOf(request.getParameter("opcion"+i+"4")));
+            item.setOpcion5(Boolean.valueOf(request.getParameter("opcion"+i+"5")));
+            item.setOpcion6(Boolean.valueOf(request.getParameter("opcion"+i+"6")));
+            item.setOpcion7(Boolean.valueOf(request.getParameter("opcion"+i+"7")));
+            item.setOpcion8(Boolean.valueOf(request.getParameter("opcion"+i+"8")));
+            item.setOpcion9(Boolean.valueOf(request.getParameter("opcion"+i+"9")));
             
             informe.getItems().add(item);
         }
         
         //valido los campos de formulario
-        error = informe.validate(mapping, request);
+        //error = informe.validate(mapping, request);
         
         //si los campos no son validos
         if (error.size() != 0) {
