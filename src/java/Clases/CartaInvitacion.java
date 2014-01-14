@@ -39,6 +39,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
 
     // Variables para uso del sistema
     private String genPath;
+    private String nombreArchivo;
     private Pattern patron;
     private Matcher match;
     private static final String patronTelefono = "^0212-[0-9]{7}$";
@@ -153,6 +154,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
             terminal.waitFor();
             if (terminal.exitValue() == 0) {
                 genPath = appPath + "src/documents/generated/carta_invitacion_" + codigo + ".pdf";
+                //ademas agrega el nombre archivo
                 return true;
             } else {
                 return false;
