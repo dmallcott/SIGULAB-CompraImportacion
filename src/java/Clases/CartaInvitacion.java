@@ -21,7 +21,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author daniel
  */
-public class CartaInvitacion extends org.apache.struts.action.ActionForm {
+public class CartaInvitacion extends org.apache.struts.action.ActionForm{
 
     // Informacion del documento
     private String codigo;
@@ -154,7 +154,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
             terminal.waitFor();
             if (terminal.exitValue() == 0) {
                 genPath = appPath + "src/documents/generated/carta_invitacion_" + codigo + ".pdf";
-                //ademas agrega el nombre archivo
+                nombreArchivo = "carta_invitacion_" + codigo + ".pdf";
                 return true;
             } else {
                 return false;
@@ -261,4 +261,13 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     public void setGenPath(String genPath) {
         this.genPath = genPath;
     }
+
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+    
 }

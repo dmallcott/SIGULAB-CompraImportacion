@@ -8,6 +8,7 @@ package Actions.Documentos;
 
 import Clases.CartaInvitacion;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -24,41 +25,32 @@ import org.apache.struts.action.ActionMapping;
  */
 public class DescargarArchivo extends Action {
 
-    public int toNumber(String name) {
-        if (name.equals("carta_invitacion"))
+    private int toNumber(String name) {
+        if (name.equals("acto_motivado"))
             return 0;
-        else if (name.equals("acto_motivado"))
+        else if (name.equals("carta_invitacion"))
             return 1;
-        else if (name.equals("especifiacion_bien"))
+        else if (name.equals("cotizacion"))
             return 2;
+        else if (name.equals("especifiacion_bien"))
+            return 3;
+        else if (name.equals("informe_recomendacion"))
+            return 4;
+        else if (name.equals("nota_devolucion"))
+            return 5;
+        else if (name.equals("solicitud_servicio"))
+            return 6;
         
         return -1;
     }
     
-    @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        HttpSession session = request.getSession(true);
-        //remueve el document attribute
-        
-        String tipoArchivo = (String) session.getAttribute("tipoArchivo");
-        boolean result = false;
-        // que tal si haces un documento del cual todos hereden? makes sense to me...
-        
-        switch(toNumber(tipoArchivo)) {
-            case 0:
-                CartaInvitacion documento = (CartaInvitacion) session.getAttribute("documento");
-                result = documento.generateDoc();
-        }
-        
-        if (result == false)
-            return null; // THIS IS BAD! DONT DO THIS and remove the attr
-            
+    private void downloadAction(HttpServletResponse response, String nombreArchivo, String pathArchivo) throws IOException {
+        if (nombreArchivo == null || pathArchivo == null)
+            return;
         OutputStream out = response.getOutputStream();
         response.setContentType("application/rtf");
-        response.setHeader("Content-Disposition", "attachment;filename="+documento.getNombreArchivo());
-        FileInputStream in = new FileInputStream(documento.getGenPath());
+        response.setHeader("Content-Disposition", "attachment;filename="+nombreArchivo);
+        FileInputStream in = new FileInputStream(pathArchivo);
         byte[] buffer = new byte[4096]; // este numero sera suficiente?
         int length;
         while ((length = in.read(buffer)) > 0) {
@@ -66,7 +58,40 @@ public class DescargarArchivo extends Action {
         }
         in.close();
         out.flush();
-
+    }
+    
+    @Override
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        HttpSession session = request.getSession(true);
+        String tipoArchivo = (String) session.getAttribute("tipoArchivo");
+        String nombreArchivo = null;
+        String pathArchivo = null;
+        boolean result = false;
+        
+        switch(toNumber(tipoArchivo)) {
+            // Carta invitacion
+            case 1:
+                CartaInvitacion documento = (CartaInvitacion) session.getAttribute("documento");
+                result = documento.generateDoc();
+                if (result == false)
+                    return null;
+                nombreArchivo = documento.getNombreArchivo();
+                pathArchivo = documento.getGenPath();
+                break;
+            default:
+                System.out.println("This should not happen.");
+                break;
+        }
+         // remove the attr
+        session.removeAttribute("tipoArchivo");
+        session.removeAttribute("documento");
+        
+        downloadAction(response,nombreArchivo,pathArchivo);
+        
+        //delete doc
+        
         return null;
     }
 }   
