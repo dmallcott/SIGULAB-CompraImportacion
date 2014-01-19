@@ -4,7 +4,6 @@
  */
 package DBMS;
 
-import Actions.Documentos.InformeRecomendacion.Item;
 import Clases.CartaInvitacion;
 import Clases.Compra;
 import Clases.EspecificacionTecnica;
@@ -15,7 +14,6 @@ import Clases.Proveedor;
 import Clases.Usuario;
 import Clases.NotaDevolucion;
 import Clases.SolicitudServicio;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -23,8 +21,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -32,11 +28,11 @@ import java.util.logging.Logger;
  */
 public class DBMS {
 
-    static private Connection conexion;
-
+    static Connection conexion;
+    static DBMS instance = null;
+    
     protected DBMS() {
     }
-    static private DBMS instance = null;
 
     static public DBMS getInstance() {
         if (null == DBMS.instance) {
@@ -56,16 +52,20 @@ public class DBMS {
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            // excepcion de cant connect
         }
         return false;
     }
-
+    
+    /* Usuarios */
+    
     public Usuario verificarUsuario(Usuario u) {
         PreparedStatement psConsultar = null;
         Usuario user = new Usuario();
         try {
-
-            psConsultar = conexion.prepareStatement("SELECT usbid, tipo, unidad, nombre  FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?);");
+            
+            psConsultar = conexion.prepareStatement("SELECT usbid, tipo, unidad, nombre  "
+                    + "FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?);");
             psConsultar.setString(1, u.getUsbid());
             psConsultar.setString(2, u.getContrasena());
             ResultSet rs = psConsultar.executeQuery();
@@ -76,13 +76,14 @@ public class DBMS {
                 user.setUnidad(rs.getString("unidad"));
                 user.setNombre(rs.getString("nombre"));
             }
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return user;
     }
 
+    /* Proveedores */
+    
     public ArrayList<Proveedor> consultarProveedores() {
 
         ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>(0);

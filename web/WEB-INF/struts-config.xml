@@ -356,7 +356,7 @@
         </action>  
 
         <!-- Ver solicitud -->
-        <action sasda
+        <action
                 path="/verSolicitud"
                 type="Actions.Solicitudes.VerSolicitud"
                 scope="request"
