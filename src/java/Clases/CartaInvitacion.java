@@ -21,7 +21,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author daniel
  */
-public class CartaInvitacion extends org.apache.struts.action.ActionForm{
+public class CartaInvitacion extends org.apache.struts.action.ActionForm {
 
     // Informacion del documento
     private String codigo;
@@ -37,9 +37,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm{
     private String responsable;
     private String unidadSolicitante;
 
-    // Variables para uso del sistema
-    private String genPath;
-    private String nombreArchivo;
+    // to be eliminated
     private Pattern patron;
     private Matcher match;
     private static final String patronTelefono = "^0212-[0-9]{7}$";
@@ -120,10 +118,9 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm{
      public static void test() throws IOException, InterruptedException{
      CartaInvitacion test = new CartaInvitacion();
      test.setCodigo("1");    
-     test.setFecha(Date.valueOf("2013-12-26"));
+     test.setFecha("2013-12-26");
      test.setNomEmpresa("DT Systems");
      test.setDireccion("Caracas");
-     test.setPresente("Daniel Mallcott");
      test.setTelefono("0212-1234567");
      test.setCorreo("dmallcott@usb.ve");
      test.setDiaOferta("05");
@@ -133,14 +130,21 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm{
      test.setUnidadSolicitante("ULAB");
         
      boolean result = test.generateDoc();
+       
+     }
+    
+    public static void Main(String[] args) {
         
-     }*/
+    }
+    */
+    
     /**
      * Este metodo genera el documento asociado a la clase en la carpeta src/documentos/generated. Corre el script 'genCartaInvitacion' el cual se encarga de todo el proceso.
      *
      * @return Un booleano con el estatus de salida de 'genCartaInvitacion'
      */
-    public boolean generateDoc() {
+
+    public Documento generateDoc() {
         try {
             // Esta cantidad excesiva de strings es para calcular el path de la webapp dinamicamente.
             String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().toString();
@@ -149,20 +153,20 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm{
             String[] command = {"./src/bash/genCartaInvitacion.sh",
                 codigo, fecha, nomEmpresa, direccion,
                 telefono, correo, diaOferta, mesOferta, contacto, responsable, unidadSolicitante};
-
+            Documento documento = new Documento();
+            
             Process terminal = Runtime.getRuntime().exec(command, null, new File(appPath));
+            
             terminal.waitFor();
             if (terminal.exitValue() == 0) {
-                genPath = appPath + "src/documents/generated/carta_invitacion_" + codigo + ".pdf";
-                nombreArchivo = "carta_invitacion_" + codigo + ".pdf";
-                return true;
-            } else {
-                return false;
+                documento.setPathArchivo(appPath + "src/documents/generated/carta_invitacion_" + codigo + ".pdf");
+                documento.setNombreArchivo("carta_invitacion_" + codigo + ".pdf");
             }
+            return documento;
         } catch (IOException ex) {
-            return false;
+            return new Documento();
         } catch (InterruptedException ex) {
-            return false;
+            return new Documento();
         }
     }
 
@@ -253,21 +257,4 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm{
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-    public String getGenPath() {
-        return genPath;
-    }
-
-    public void setGenPath(String genPath) {
-        this.genPath = genPath;
-    }
-
-    public String getNombreArchivo() {
-        return nombreArchivo;
-    }
-
-    public void setNombreArchivo(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
-    }
-    
 }

@@ -41,6 +41,20 @@
                             <a><html:link action="/consultarCompras">Registro de Compras</html:link></a>
                         </li>
                     </ul>
+                    <ul class="menu3">
+                        <li class="first leaf">
+                            <a href="#">Nueva Solicitud</a>
+                        </li>
+                        <ul class="sub-nav2" style="display:none; list-style:none;">
+
+                            <li><h6 style="margin:0;"><a><html:link action="/reqNuevaSolicitudCompra">Solicitud de Compra</html:link></a></h6></li>
+                            <li><h6 style="margin:0;"><a><html:link action="/reqNuevaSolicitudServicio">Solicitud de Servicio</html:link></a></h6></li>
+                    </ul>
+                    <ul class="menu3">
+                        <li class="first leaf">
+                            <a><html:link action="/misSolicitudes">Mis solicitudes</html:link></a>
+                        </li>
+                    </ul>
                     <div id="block-system-main-menu" class="block block-menu">
                         <ul class="menu">
                             <li class="first last leaf">

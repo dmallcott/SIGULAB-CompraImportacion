@@ -96,8 +96,8 @@
             </td>
             <td>
                 <p style="width:145px; overflow: auto;">
-                <logic:equal name="Proveedores" property="deshabilitado" value="false" >OK</logic:equal>
-                <logic:notEqual name="Proveedores" property="deshabilitado" value="false" >Deshabilitado</logic:notEqual>
+                <logic:equal name="Proveedores" property="deshabilitado" value="true" >OK</logic:equal>
+                <logic:equal name="Proveedores" property="deshabilitado" value="false" >Deshabilitado</logic:equal>
                 </p>
             </td>
             <td>

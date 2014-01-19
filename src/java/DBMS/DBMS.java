@@ -148,7 +148,7 @@ public class DBMS {
         try {
 
             ps = conexion.prepareStatement("UPDATE \"mod3\".proveedor SET deshabilitado = TRUE WHERE rif = ?;");
-            ps.setString(2, p.getRIF());
+            ps.setString(1, p.getRIF());
             Integer s = ps.executeUpdate();
 
             return s > 0;

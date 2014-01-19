@@ -10,6 +10,12 @@ $(document).ready(function() {
     $('.menu1').click(function() {
         $('.sub-nav2').toggle();
     });
+    $('.menu2').click(function() {
+        $('.sub-nav2').toggle();
+    });
+    $('.menu3').click(function() {
+        $('.sub-nav2').toggle();
+    });
     $('.parent3').click(function() {
         $('.sub-nav3').toggleClass('visible');
     });

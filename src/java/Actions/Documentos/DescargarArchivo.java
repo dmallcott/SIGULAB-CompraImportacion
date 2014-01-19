@@ -6,7 +6,7 @@
 
 package Actions.Documentos;
 
-import Clases.CartaInvitacion;
+import Clases.Documento;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -25,24 +25,6 @@ import org.apache.struts.action.ActionMapping;
  */
 public class DescargarArchivo extends Action {
 
-    private int toNumber(String name) {
-        if (name.equals("acto_motivado"))
-            return 0;
-        else if (name.equals("carta_invitacion"))
-            return 1;
-        else if (name.equals("cotizacion"))
-            return 2;
-        else if (name.equals("especifiacion_bien"))
-            return 3;
-        else if (name.equals("informe_recomendacion"))
-            return 4;
-        else if (name.equals("nota_devolucion"))
-            return 5;
-        else if (name.equals("solicitud_servicio"))
-            return 6;
-        
-        return -1;
-    }
     
     private void downloadAction(HttpServletResponse response, String nombreArchivo, String pathArchivo) throws IOException {
         if (nombreArchivo == null || pathArchivo == null)
@@ -60,35 +42,19 @@ public class DescargarArchivo extends Action {
         out.flush();
     }
     
+    // this might actually work
+    //instead of making it an action make it a simple class
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         HttpSession session = request.getSession(true);
-        String tipoArchivo = (String) session.getAttribute("tipoArchivo");
-        String nombreArchivo = null;
-        String pathArchivo = null;
-        boolean result = false;
+        Documento documento = (Documento) session.getAttribute("documento");
         
-        switch(toNumber(tipoArchivo)) {
-            // Carta invitacion
-            case 1:
-                CartaInvitacion documento = (CartaInvitacion) session.getAttribute("documento");
-                result = documento.generateDoc();
-                if (result == false)
-                    return null;
-                nombreArchivo = documento.getNombreArchivo();
-                pathArchivo = documento.getGenPath();
-                break;
-            default:
-                System.out.println("This should not happen.");
-                break;
-        }
          // remove the attr
-        session.removeAttribute("tipoArchivo");
         session.removeAttribute("documento");
         
-        downloadAction(response,nombreArchivo,pathArchivo);
+        downloadAction(response,documento.getNombreArchivo(), documento.getPathArchivo());
         
         //delete doc
         

@@ -27,7 +27,7 @@
         <tbody>
             <tr>
                 <td style="color: black">Fecha</td>
-                <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <td style="color: black">Correo</td>
-                <td><html:text property="correo" maxlength="50" value="XXXX@usb.ve" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="correo" maxlength="50" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="correo"/></td>

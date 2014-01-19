@@ -19,14 +19,8 @@
         <form-bean name="SolicitudServicio" type="Clases.SolicitudServicio"/>
         <form-bean name="NotaDevolucion" type="Clases.NotaDevolucion"/>
         <form-bean name="SolicitudServicio" type="Clases.SolicitudServicio"/>
+        <form-bean name="Expediente" type="Clases.Expediente"/>
     </form-beans>
-    
-    <global-exceptions>
-    </global-exceptions>
-
-    <global-forwards>
-    </global-forwards>
-
     <action-mappings>
             
         <!-- VISTAS -->
@@ -35,6 +29,14 @@
             scope="request"
             validate="false"
             parameter="vistaCoordinador"
+            >
+        </action>
+        
+        <action path="/vistaGeneral"
+            type="org.apache.struts.actions.ForwardAction"
+            scope="request"
+            validate="false"
+            parameter="vistaGeneral"
             >
         </action>
         
@@ -341,6 +343,26 @@
             <forward name="success" path="vistaCoordinador"/>
         </action>        
         
+        <!-- SOLICITUDES -->
+        <!-- Mis solicitudes -->
+        <action 
+                path="/misSolicitudes"
+                type="Actions.Solicitudes.MisSolicitudes"
+                scope="request"
+                name="Expediente"
+                validate="false">
+            <forward name="failure" path="misSolicitudes"/>
+            <forward name="success" path="detalleSolicitud"/>
+        </action>  
+
+        <!-- Ver solicitud -->
+        <action sasda
+                path="/verSolicitud"
+                type="Actions.Solicitudes.VerSolicitud"
+                scope="request"
+                name="Expediente"
+                validate="false">
+        </action>
 
                         
     </action-mappings>

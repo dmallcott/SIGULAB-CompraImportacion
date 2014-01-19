@@ -21,6 +21,7 @@
         <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/style.css"/>
         <script type='text/javascript' src='./Plantilla/static/scripts/jquery-1.10.2.min.js'></script>
         <script type='text/javascript' src='./Plantilla/static/scripts/script.js'></script>
+        <script type="text/javascript" src="./Plantilla/static/scripts/parsley.js"></script>
     </head>
     <body>
 
