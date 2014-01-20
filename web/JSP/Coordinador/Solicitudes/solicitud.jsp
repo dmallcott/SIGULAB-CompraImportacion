@@ -14,6 +14,7 @@
             <html:submit>Nuevo</html:submit>
         </html:form>
     </logic:empty>
+
     <logic:notEmpty name="Expediente" property="codCartaInvitacion">
         <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
             <html:submit>Editar</html:submit>

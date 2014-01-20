@@ -12,6 +12,7 @@ package Clases;
  */
 public class Expediente extends org.apache.struts.action.ActionForm {
     private String codigo;
+    private String codCartaInvitacion;
     private String codEspecificacionBien;
     private String codInformeRecomendacion;
     private String codNotaDevolucion;
@@ -23,6 +24,14 @@ public class Expediente extends org.apache.struts.action.ActionForm {
     private String idSupervisores;
     private String numeroCotizaciones;
     private String tipo;
+
+    public String getCodCartaInvitacion() {
+        return codCartaInvitacion;
+    }
+
+    public void setCodCartaInvitacion(String codCartaInvitacion) {
+        this.codCartaInvitacion = codCartaInvitacion;
+    }
 
     public String getCodigo() {
         return codigo;

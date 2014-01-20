@@ -606,6 +606,7 @@ public class DBMS {
 
             if (rs.next()) {
                 expediente.setCodigo(codigo);
+                expediente.setCodCartaInvitacion(rs.getString("codcartainvitacion"));
                 expediente.setCodEspecificacionBien(rs.getString("codespecificacionbien"));
                 expediente.setCodInformeRecomendacion(rs.getString("codinformerecomendacion"));
                 expediente.setCodNotaDevolucion(rs.getString("codnotadevolucion"));

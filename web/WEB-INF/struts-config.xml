@@ -172,7 +172,7 @@
         </action>
         
         <!-- DOCUMENTOS -->
-        <!-- Agregar Carta -->
+        <!-- Carta de Invitacion -->
         <action input="/*"
                 path="/reqAgregarCartaInvitacion"
                 type="Actions.Documentos.CartaInvitacion.ReqAgregarCartaInvitacion"
@@ -189,6 +189,14 @@
                 validate="false">
             <forward name="failure" path="agregarCartaInvitacion"/>
             <forward name="success" path="vistaCoordinador"/>
+        </action>
+        
+        <action input="/misSolicitudes"
+                path="/reqEditarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.ReqEditarCartaInvitacion"
+                scope="request"
+                name="CartaInvitacion"
+                validate="false">
         </action>
 
         <!-- Agregar Cotizacion -->
@@ -373,6 +381,14 @@
                 validate="false">
         </action>
 
+        <!-- DESCARGA -->
+        <action input="/misSolicitudes"
+                path="/descargarDocumento"
+                type="Actions.Documentos.DescargarArchivo"
+                scope="request"
+                name="Expediente"
+                validate="false">
+        </action>
                         
     </action-mappings>
     
