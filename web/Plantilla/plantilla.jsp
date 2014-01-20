@@ -4,60 +4,75 @@
     Author     : daniel
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>  
-
-<html:html lang="true">
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><tiles:insert attribute="page_title"/></title>
-        <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/layout.css"/>
-        <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/forms.css"/>
-        <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/colors.css"/>
-        <link rel="stylesheet" type="text/css" href="./Plantilla/static/css/style.css"/>
-        <script type='text/javascript' src='./Plantilla/static/scripts/jquery-1.10.2.min.js'></script>
-        <script type='text/javascript' src='./Plantilla/static/scripts/script.js'></script>
-        <script type="text/javascript" src="./Plantilla/static/scripts/parsley.js"></script>
+        <link rel="shortcut icon" href="http://www.ulab.usb.ve/misc/favicon.ico" type="image/vnd.microsoft.icon">
+        <link href="Plantilla/static/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="Plantilla/static/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="Plantilla/static/bootstrap/dest/respond.src.js" type="text/javascript"></script>
+        <script src="Plantilla/static/js/jquery.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                $("ul#subnavegador").hide();
+                $("li#desplegable").mouseleave(function(){
+                    $(this).find("ul#subnavegador").hide(400);
+                });
+                $("li#desplegable").mouseover(function(){
+                    $(this).find("ul#subnavegador").show(400);
+                });
+            });
+        </script>
+        <style>
+            .container-full {
+                padding-left: 100px;   
+                padding-right: 50px;  
+                width: 1024px;
+                height: 768px;
+            }
+            
+            body {  
+                width: 100%;
+            }
+            
+            col-xs-6 {               
+                width: 460px;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        </style>
     </head>
     <body>
-
-        <div>
-            <tiles:insert attribute="banner"/>
+        <div class="container container-full ">
+            <div class="row show-grid" style="height: 170px;">
+                <div class="col-xs-12">
+                    <tiles:insert attribute="banner"/>
+                </div>
+            </div>
+            <div class="row show-grid">
+                <div class="col-xs-2 " >
+                    <tiles:insert attribute="sidebarL"/>
+                </div>
+                <div class="col-xs-8" >
+                    <tiles:insert attribute="body"/>
+                </div>
+                <div class="col-xs-1 col-xs-push-1" >
+                    <tiles:insert name="sidebarR"/>
+                </div>
+            </div>
+            <div class="row show-grid" >
+                <div class="col-xs-12">
+                    <tiles:insert attribute="footer"/>
+                </div>
+            </div>
         </div>
-
-        <body class="html front not-logged-in two-sidebars page-node" style="">
-        <div id="container" class="container-16">
-            <header id="header" class="section section-header clearfix" role="banner"></header>
-            <div id="main" class="section section-main clearfix" role="main">
-                <div id="content" class="column grid-10 push-3">
-                    <div class="inner">
-                        <div id="main-content" class="clearfix">
-                            <div class="region region-content">
-                                <article id="node-53" class="node node-article node-promoted node-teaser clearfix" about="/node/53" typeof="sioc:Item foaf:Document" role="article">
-                                    <header class="clearfix">
-                                        <h2 property="dc:title" datatype="" class="title node-title"><tiles:insert attribute="body_title"/></h2>
-                                    </header>
-                                    <div class="content clearfix">
-                                        <div class="field field-name-body field-type-text-with-summary field-label-hidden">
-                                            <div class="field-items">
-                                                <div class="field-item even" property="content:encoded">
-                                                        <tiles:insert attribute="body"/>
-                                                 </div>
-                                            </div>
-                                        </div>  
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>                                                       
-            <tiles:insert attribute="sidebarL"/>
-            <tiles:insert attribute="sidebarR"/>
-        </div>
-        <tiles:insert attribute="footer"/> 
     </body>
-</html:html>
+</html>

@@ -11,7 +11,7 @@
             <div class="inner">
                 <div class="content">
                     <table align="left" border="0" cellpadding="1" cellspacing="1"><tbody><tr><td valign="bottom" width="95">
-                                    <a href="http://www.usb.ve"><img alt="" src="./Plantilla/static/img/cebolla_70_45.jpg"></a></td>
+                                    <a href="http://www.usb.ve"><img alt="" src="Plantilla/static/img/cebolla_70_45.jpg"></a></td>
                                 <td valign="bottom">
                                     <a href="http://www.usb.ve/home/node/68">e-virtual</a> | 
                                     <a href="https://webmail.usb.ve/" target="_blank">Correo</a> |

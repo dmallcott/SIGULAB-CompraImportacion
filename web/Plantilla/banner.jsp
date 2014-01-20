@@ -4,6 +4,8 @@
     Author     : daniel
 --%>
 
-<div align="center">
-    <a><html:link action="/home"><img src="./Plantilla/static/img/banner.jpg" alt="Inicio"/></html:link></a>
+<div class="row top ">
+    <div class="col-xs-12 img-responsive" style="text-align:center">
+            <img id="banner" src="./Plantilla/static/img/ulab.jpg" alt="Inicio" style="height: 132px">
+    </div>
 </div>

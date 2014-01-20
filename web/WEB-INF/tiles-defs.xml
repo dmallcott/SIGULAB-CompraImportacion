@@ -19,7 +19,7 @@
     </definition>
     
     <definition name="vistaGeneral" extends="baseGeneral"> <!-- Vista coordinador -->
-        <put name="body" value="Bienvenido." type="string"/>
+        <put name="body" value="" type="string"/>
         <put name="page_title" value="ULAB" type="string"/>
         <put name="body_title" value="Sistema de la ULAB" type="string"/>
     </definition>
@@ -31,7 +31,7 @@
     </definition>
     
     <definition name="vistaCoordinador" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="Bienvenido Coordinador." type="string"/>
+        <put name="body" value="Bienvenido" type="string"/>
         <put name="page_title" value="ULAB" type="string"/>
         <put name="body_title" value="Sistema de la ULAB" type="string"/>
     </definition>

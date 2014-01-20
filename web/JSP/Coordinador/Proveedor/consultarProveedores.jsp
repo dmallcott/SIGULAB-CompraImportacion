@@ -83,19 +83,19 @@
 <logic:iterate name="proveedores" id="Proveedores">
     <tr>
         <td>
-            <p style="width:80px"><bean:write name="Proveedores" property="RIF"></bean:write></p>
+            <p><bean:write name="Proveedores" property="RIF"></bean:write></p>
             </td>
             <td>
             <bean:write name="Proveedores" property="compania"></bean:write>
             </td>
             <td>
-                <p style="width:80px"><bean:write name="Proveedores" property="telefono"></bean:write></p>
+                <p><bean:write name="Proveedores" property="telefono"></bean:write></p>
             </td>
             <td>
-                <p style="width:145px; overflow: auto;"><bean:write name="Proveedores" property="resena"></bean:write></p>
+                <p style="overflow: auto;"><bean:write name="Proveedores" property="resena"></bean:write></p>
             </td>
             <td>
-                <p style="width:145px; overflow: auto;">
+                <p style="overflow: auto;">
                 <logic:equal name="Proveedores" property="deshabilitado" value="true" >OK</logic:equal>
                 <logic:equal name="Proveedores" property="deshabilitado" value="false" >Deshabilitado</logic:equal>
                 </p>
@@ -105,7 +105,7 @@
                 <html:hidden name="Proveedores" property="RIF"/>
                 <html:hidden name="Proveedores" property="resena"/>
 
-                <html:submit>
+                <html:submit styleClass="button">
                     Editar Resena
                 </html:submit>
             </html:form>
