@@ -20,20 +20,15 @@
             <td>
                 <bean:write name="exp" property="codigo"></bean:write>
             </td>
-        </tr>
-        <tr>
             <td>
                 <bean:write name="exp" property="descripcion"></bean:write>
             </td>
-        </tr>
-        <tr>
             <td>
-                <html:form action="/verSolicitud" onsubmit="return(this)">
+                <html:form action="/reqVerSolicitud" onsubmit="return(this)">
                     <html:hidden name="exp" property="codigo"/>
                     <html:submit>Detalle</html:submit>
                 </html:form>
             </td>
-        </tr>
         </logic:iterate>
     </tbody>
 </table>

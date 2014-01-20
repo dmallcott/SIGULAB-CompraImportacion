@@ -8,14 +8,18 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
-<html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
-    <logic:empty property="codCartaInvitacion">
-        <html:submit>Nuevo</html:submit>
+
+    <logic:empty name="Expediente" property="codCartaInvitacion">
+        <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
+            <html:submit>Nuevo</html:submit>
+        </html:form>
     </logic:empty>
-    <logic:notEmpty property="codCartaInvitacion">
-        <html:submit>Editar</html:submit>
+    <logic:notEmpty name="Expediente" property="codCartaInvitacion">
+        <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
+            <html:submit>Editar</html:submit>
+        </html:form>
     </logic:notEmpty>
-</html:form>
+
     
 <html:form action="/descargarDocumento" onsubmit="return(this)">
     <html:hidden property="codCartaInvitacion"/>

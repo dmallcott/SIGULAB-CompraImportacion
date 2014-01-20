@@ -9,6 +9,7 @@ import Clases.Compra;
 import Clases.EspecificacionTecnica;
 import Clases.ActoMotivado;
 import Clases.Cotizacion;
+import Clases.Expediente;
 import Clases.InformeRecomendacion;
 import Clases.Proveedor;
 import Clases.Usuario;
@@ -569,5 +570,57 @@ public class DBMS {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public ArrayList<Expediente> consultarExpedientes(Usuario user) {
+        ArrayList<Expediente> expedientes = new ArrayList<Expediente>(0);
+        PreparedStatement psConsultar = null;
+        try {
+
+            psConsultar = conexion.prepareStatement("SELECT codigo, descripcion FROM \"mod3\".expediente "
+                    + "WHERE idsolicitante = ?");
+            psConsultar.setString(1, user.getUsbid());
+            ResultSet rs = psConsultar.executeQuery();
+
+            while (rs.next()) {
+                Expediente e = new Expediente();
+                e.setCodigo(rs.getString("codigo"));
+                e.setDescripcion(rs.getString("descripcion"));
+                expedientes.add(e);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return expedientes;
+    }
+    
+    public Expediente verEpediente(String codigo) {
+        Expediente expediente = new Expediente();
+        PreparedStatement psConsultar = null;
+        try {
+
+            psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".expediente "
+                    + "WHERE codigo = ?");
+            psConsultar.setString(1, codigo);
+            ResultSet rs = psConsultar.executeQuery();
+
+            if (rs.next()) {
+                expediente.setCodigo(codigo);
+                expediente.setCodEspecificacionBien(rs.getString("codespecificacionbien"));
+                expediente.setCodInformeRecomendacion(rs.getString("codinformerecomendacion"));
+                expediente.setCodNotaDevolucion(rs.getString("codnotadevolucion"));
+                expediente.setCodRequesicion(rs.getString("codrequesicion"));
+                expediente.setCodSolicitudServicio(rs.getString("codsolicitudservicio"));
+                expediente.setDescripcion(rs.getString("descripcion"));
+                expediente.setIdJefeLaboratorio(rs.getString("idjefelaboratorio"));
+                expediente.setIdSolicitante(rs.getString("idsolicitante"));
+                expediente.setIdSupervisores(rs.getString("idsupervisores"));
+                expediente.setNumeroCotizaciones(rs.getString("numerocotizaciones"));
+                expediente.setTipo(rs.getString("tipo"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return expediente;
     }
 }

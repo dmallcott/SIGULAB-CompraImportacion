@@ -90,6 +90,11 @@
                                 <a><html:link action="/consultarCompras">Registro de Compras</html:link></a>
                             </li>
                         </ul>
+                        <ul class="menu3">
+                            <li class="first last leaf">
+                                <a><html:link action="/misSolicitudes">Mis Solicitudes</html:link></a>
+                            </li>
+                        </ul>
                         <div id="block-system-main-menu" class="block block-menu">
                             <ul>
                                 <li class="first last leaf">

@@ -4,25 +4,24 @@
  * and open the template in the editor.
  */
 
-package Actions.Proveedor;
+package Actions.Solicitudes;
 
-import Clases.Proveedor;
+import Clases.Expediente;
 import Clases.Usuario;
 import DBMS.DBMS;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
+
 /**
  *
  * @author daniel
  */
-public class ConsultarProveedores extends org.apache.struts.action.Action {
+public class VerSolicitud extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -43,15 +42,15 @@ public class ConsultarProveedores extends org.apache.struts.action.Action {
             throws Exception {
 
         HttpSession session = request.getSession(true);
+        String codExp = (String) session.getAttribute("codigo");
         
-
         // Se obtiene la lista de proveedores registrados
-        ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-        if (proveedores.isEmpty()) {
-            request.setAttribute("noConsulta", FAILURE);
+        Expediente expediente = DBMS.getInstance().verEpediente(codExp);
+        if (expediente.getCodigo() == null) {
+            request.setAttribute("error", FAILURE);
         }
         // Se retorna dicha lista por sesion
-        request.setAttribute("proveedores", proveedores);
+        request.setAttribute("expediente", expediente);
         
         return mapping.findForward(SUCCESS); 
     }

@@ -115,4 +115,10 @@
         <put name="body_title" value="Mis Solicitudes" type="string"/>
     </definition>
     
+    <definition name="verSolicitud" extends="vistaCoordinador">
+        <put name="body" value="/JSP/Coordinador/Solicitudes/solicitud.jsp"/>
+        <put name="page_title" value="ULAB: Mis Solicitudes" type="string"/>
+        <put name="body_title" value="Mis Solicitudes" type="string"/>
+    </definition>
+    
 </tiles-definitions>
