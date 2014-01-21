@@ -46,6 +46,16 @@
                 <tr>
                     <td colspan="2" style="color:firebrick"><html:errors property="rif"/></td>
             </tr>
+            
+            <tr>
+                <td style="color: black">Codigo Expediente</td>
+                <td><html:text property="codExpediente" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="color:firebrick"><html:errors property="codExpediente"/></td>
+            </tr>
+            
+            
             <tr>
                 <td style="color: black">Nombre de la Empresa</td>
                 <td><html:text property="nomEmpresa" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>

@@ -39,6 +39,7 @@ public class SolicitudServicio extends org.apache.struts.action.ActionForm{
     private String nombreBien;
     private String noBienNacional;
     private String noCotizacion;
+    private String observaciones;
     private String proyectoPOA;
     private String telefono;
     private String telefonoCompania;
@@ -192,6 +193,14 @@ public class SolicitudServicio extends org.apache.struts.action.ActionForm{
 
     public String getUbicacion() {
         return ubicacion;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public String getGenPath() {

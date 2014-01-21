@@ -97,7 +97,8 @@ public class DBMS {
                 Proveedor p = new Proveedor();
                 p.setRIF(rs.getString("rif"));
                 p.setCompania(rs.getString("compania"));
-                p.setTelefono(rs.getString("contacto"));
+                p.setContacto(rs.getString("contacto"));
+                p.setDeshabilitado(rs.getBoolean("deshabilitado"));
                 p.setResena(rs.getString("review"));
                 proveedores.add(p);
             }
@@ -111,11 +112,12 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".proveedor VALUES (?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".proveedor VALUES (?,?,?,?,?)");
             psAgregar.setString(1, p.getRIF());
             psAgregar.setString(2, p.getCompania());
-            psAgregar.setString(3, p.getTelefono());
-            psAgregar.setString(4, p.getResena());
+            psAgregar.setString(3, p.getContacto());
+            psAgregar.setBoolean(4, p.getDeshabilitado());
+            psAgregar.setString(5, p.getResena());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -131,7 +133,6 @@ public class DBMS {
         try {
 
             ps = conexion.prepareStatement("DELETE FROM \"mod3\".proveedor WHERE ( rif = ? )");
-
             ps.setString(1, p.getRIF());
             Integer s = ps.executeUpdate();
 
@@ -342,13 +343,13 @@ public class DBMS {
             psAgregar.setBoolean(4, Boolean.valueOf(nota.getC3().toString()));
             psAgregar.setBoolean(5, Boolean.valueOf(nota.getC4().toString()));
             psAgregar.setBoolean(6, Boolean.valueOf(nota.getC5().toString()));
-            psAgregar.setBoolean(7, Boolean.valueOf(nota.getC5banco().toString()));
-            psAgregar.setBoolean(8, Boolean.valueOf(nota.getC5contacto().toString()));
-            psAgregar.setBoolean(9, Boolean.valueOf(nota.getC5fiscal().toString()));
-            psAgregar.setBoolean(10, Boolean.valueOf(nota.getC5nombre().toString()));
-            psAgregar.setBoolean(11, Boolean.valueOf(nota.getC5otro().toString()));
-            psAgregar.setBoolean(12, Boolean.valueOf(nota.getC5rif().toString()));
-            psAgregar.setBoolean(13, Boolean.valueOf(nota.getC5tlf().toString()));
+            psAgregar.setBoolean(7, Boolean.valueOf(nota.getC5nombre().toString()));
+            psAgregar.setBoolean(8, Boolean.valueOf(nota.getC5fiscal().toString()));
+            psAgregar.setBoolean(9, Boolean.valueOf(nota.getC5rif().toString())); 
+            psAgregar.setBoolean(10, Boolean.valueOf(nota.getC5tlf().toString()));
+            psAgregar.setBoolean(11, Boolean.valueOf(nota.getC5banco().toString()));
+            psAgregar.setBoolean(12, Boolean.valueOf(nota.getC5contacto().toString()));
+            psAgregar.setBoolean(13, Boolean.valueOf(nota.getC5otro().toString()));
             psAgregar.setBoolean(14, Boolean.valueOf(nota.getC6().toString()));
             psAgregar.setBoolean(15, Boolean.valueOf(nota.getC7().toString()));
             psAgregar.setBoolean(16, Boolean.valueOf(nota.getC8().toString()));
@@ -356,18 +357,21 @@ public class DBMS {
             psAgregar.setBoolean(18, Boolean.valueOf(nota.getCertificacionServicio().toString()));
             psAgregar.setInt(19, Integer.parseInt(nota.getCsNO().toString()));
             psAgregar.setDate(20, Date.valueOf(nota.getFecha()));
-            psAgregar.setBoolean(21, Boolean.valueOf(nota.getPago().toString()));
-            psAgregar.setInt(22, Integer.parseInt(nota.getpNO().toString()));
-            psAgregar.setBoolean(23, Boolean.valueOf(nota.getRecepcion().toString()));
-            psAgregar.setBoolean(24, Boolean.valueOf(nota.getRequisicion().toString()));
-            psAgregar.setInt(25, Integer.parseInt(nota.getRpNO().toString()));
-            psAgregar.setInt(26, Integer.parseInt(nota.getRqNO().toString()));
-            psAgregar.setBoolean(27, Boolean.valueOf(nota.getSolicitudServicio().toString()));
-            psAgregar.setInt(28, Integer.parseInt(nota.getSsNO().toString()));
-            psAgregar.setString(29, nota.getObservaciones());
-            psAgregar.setInt(30, Integer.parseInt(nota.getoNO().toString()));
-            psAgregar.setBoolean(31, Boolean.valueOf(nota.getOtro().toString()));
-            psAgregar.setString(32, nota.getOtro1());
+            psAgregar.setString(21, nota.getObservaciones()); 
+            psAgregar.setInt(22, Integer.parseInt(nota.getoNO().toString())); 
+            psAgregar.setBoolean(23, Boolean.valueOf(nota.getOtro().toString()));
+            psAgregar.setString(24, nota.getOtro1());
+            psAgregar.setBoolean(25, Boolean.valueOf(nota.getPago().toString()));
+            psAgregar.setInt(26, Integer.parseInt(nota.getpNO().toString()));
+            psAgregar.setBoolean(27, Boolean.valueOf(nota.getRecepcion().toString()));
+            psAgregar.setBoolean(28, Boolean.valueOf(nota.getRequisicion().toString()));
+            psAgregar.setInt(29, Integer.parseInt(nota.getRpNO().toString()));
+            psAgregar.setInt(30, Integer.parseInt(nota.getRqNO().toString()));
+            psAgregar.setBoolean(31, Boolean.valueOf(nota.getSolicitudServicio().toString()));
+            psAgregar.setInt(32, Integer.parseInt(nota.getSsNO().toString()));
+           
+            
+           
 
             Integer i = psAgregar.executeUpdate();
 
@@ -393,7 +397,7 @@ public class DBMS {
                 return false;
             }
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".solicitudservicio VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".solicitudservicio VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, solicitud.getCompania());
             psAgregar.setString(3, solicitud.getContacto());
@@ -405,13 +409,14 @@ public class DBMS {
             psAgregar.setDate(9, Date.valueOf(solicitud.getFecha()));
             psAgregar.setDate(10, Date.valueOf(solicitud.getFechaCotizacion()));
             psAgregar.setString(11, solicitud.getMonto());
-            psAgregar.setString(12, solicitud.getNoBienNacional());
-            psAgregar.setString(13, solicitud.getNoCotizacion());
-            psAgregar.setString(14, solicitud.getNombreBien());
-            psAgregar.setString(15, solicitud.getProyectoPOA());
-            psAgregar.setString(16, solicitud.getTelefono());
-            psAgregar.setString(17, solicitud.getTelefonoCompania());
-            psAgregar.setString(18, solicitud.getUbicacion());
+            psAgregar.setString(12, solicitud.getNombreBien());
+            psAgregar.setString(13, solicitud.getNoBienNacional());
+            psAgregar.setString(14, solicitud.getNoCotizacion());
+            psAgregar.setString(15,solicitud.getObservaciones()); 
+            psAgregar.setString(16, solicitud.getProyectoPOA());
+            psAgregar.setString(17, solicitud.getTelefono());
+            psAgregar.setString(18, solicitud.getTelefonoCompania());
+            psAgregar.setString(19, solicitud.getUbicacion());
 
             Integer i = psAgregar.executeUpdate();
 
@@ -540,15 +545,17 @@ public class DBMS {
                 return false;
             }
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
-            psAgregar.setString(2, cotizacion.getRif());
-            psAgregar.setString(3, cotizacion.getNomEmpresa());
+            psAgregar.setString(2,cotizacion.getCodExpediente());
+            psAgregar.setString(3, cotizacion.getCorreo());
             psAgregar.setString(4, cotizacion.getDireccion());
-            psAgregar.setString(5, cotizacion.getTelefono());
-            psAgregar.setString(6, cotizacion.getFax());
-            psAgregar.setString(7, cotizacion.getCorreo());
-            psAgregar.setString(8, cotizacion.getPersonaContacto());
+            psAgregar.setString(5, cotizacion.getFax());     
+            psAgregar.setString(6, cotizacion.getNomEmpresa());
+            psAgregar.setString(7, cotizacion.getPersonaContacto());
+            psAgregar.setString(8, cotizacion.getRif());
+            psAgregar.setString(9, cotizacion.getTelefono());
+            
 
             Integer j = psAgregar.executeUpdate();
 
@@ -556,13 +563,14 @@ public class DBMS {
             Actions.Documentos.Cotizacion.Item temp;
             for (int i = 0; i < items.size(); i++) {
                 temp = (Actions.Documentos.Cotizacion.Item) items.get(i);
-                psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?,?)");
+                psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
-                psAgregar.setString(2, temp.getNombre());
-                psAgregar.setFloat(3, temp.getPrecio());
-                psAgregar.setString(4, temp.getTiempoEntrega());
-                psAgregar.setString(5, temp.getCondicionPago());
-                psAgregar.setString(6, temp.getGarantia());
+                psAgregar.setString(2,temp.getCodigoExpediente());
+                psAgregar.setString(3, temp.getCondicionPago());
+                psAgregar.setString(4, temp.getGarantia());
+                psAgregar.setString(5, temp.getNombre());
+                psAgregar.setFloat(6, temp.getPrecio());
+                psAgregar.setString(7, temp.getTiempoEntrega());
 
                 Integer n = psAgregar.executeUpdate(); //debes chequear esto
             }

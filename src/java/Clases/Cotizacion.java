@@ -36,6 +36,7 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
     private String fax;
     private String correo;
     private String personaContacto;
+    private String codExpediente;
     private ArrayList<Item> items;
     
     // Variables para uso del sistema
@@ -132,6 +133,14 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public String getCodExpediente() {
+        return codExpediente;
+    }
+
+    public void setCodExpediente(String codExpediente) {
+        this.codExpediente = codExpediente;
     }
     
     

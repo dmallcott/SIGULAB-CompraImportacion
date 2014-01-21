@@ -12,6 +12,7 @@ public class Item {
         private String tiempoEntrega;
         private String condicionPago;
         private String garantia;
+        private String codigoExpediente;
         
     public Float getPrecio() {
         return precio;
@@ -54,5 +55,13 @@ public class Item {
 
     public void setCondicionPago(String condicionPago) {
         this.condicionPago = condicionPago;
+    }
+
+    public String getCodigoExpediente() {
+        return codigoExpediente;
+    }
+
+    public void setCodigoExpediente(String codigoExpediente) {
+        this.codigoExpediente = codigoExpediente;
     }
 }

@@ -22,7 +22,7 @@ public class Proveedor extends org.apache.struts.action.ActionForm {
     private static final String patronRIF = "[VJG]-[0-9]{8}-[0-9]";
     private String RIF;
     private String compania;
-    private String telefono;
+    private String contacto;
     private String resena;
     private boolean deshabilitado;
     
@@ -57,12 +57,12 @@ public class Proveedor extends org.apache.struts.action.ActionForm {
         this.compania = compania;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getContacto() {
+        return contacto;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
     }
     
     public String getResena() {
