@@ -40,8 +40,7 @@ public class ReqVerSolicitud extends org.apache.struts.action.Action {
             throws Exception {
 
         HttpSession session = request.getSession(true);
-        String codExp = (String) session.getAttribute("codigo");
-        
+        String codExp = (String) request.getParameter("codigo");
         // Se obtiene la lista de proveedores registrados
         Expediente expediente = DBMS.getInstance().verEpediente(codExp);
         if (expediente.getCodigo() == null) {

@@ -5,11 +5,17 @@
  */
 package Clases;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -44,25 +50,25 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private static final String patronCorreo = "^[a-z]*@usb\\.ve$";
     private static final String patronDia = "^(0[1-9]|[12]\\d|3[01])$";
     private static final String patronMes = "^(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)$";
-    
+
     public boolean validateMesOferta(final String dia) {
         patron = Pattern.compile(patronMes);
         match = patron.matcher(dia);
         return match.matches();
     }
-    
+
     public boolean validateDiaOferta(final String dia) {
         patron = Pattern.compile(patronDia);
         match = patron.matcher(dia);
         return match.matches();
     }
-    
+
     public boolean validateTelefono(final String telefono) {
         patron = Pattern.compile(patronTelefono);
         match = patron.matcher(telefono);
         return match.matches();
     }
-    
+
     public boolean validateCorreo(final String email) {
         patron = Pattern.compile(patronCorreo);
         match = patron.matcher(email);
@@ -89,78 +95,75 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
         if (!validateTelefono(telefono)) {
             errors.add("telefono", new ActionMessage("error.telefono.invalido"));
         }
-        
+
         if (!validateCorreo(correo)) {
             errors.add("correo", new ActionMessage("error.correo.invalido"));
         }
-        
+
         if (!validateDiaOferta(diaOferta)) {
             errors.add("diaOferta", new ActionMessage("error.diaoferta.invalido"));
         }
-        
+
         if (!validateMesOferta(mesOferta)) {
             errors.add("mesOferta", new ActionMessage("error.mesoferta.invalido"));
         }
-        
-        if (nomEmpresa.matches("\\w") || nomEmpresa.equals(""))
+
+        if (nomEmpresa.matches("\\w") || nomEmpresa.equals("")) {
             errors.add("nomEmpresa", new ActionMessage("error.campo.vacio"));
-        
-        if (direccion.matches("\\w") || direccion.equals(""))
+        }
+
+        if (direccion.matches("\\w") || direccion.equals("")) {
             errors.add("direccion", new ActionMessage("error.campo.vacio"));
-        
-        if (contacto.matches("\\w") || contacto.equals(""))
+        }
+
+        if (contacto.matches("\\w") || contacto.equals("")) {
             errors.add("contacto", new ActionMessage("error.campo.vacio"));
-        
+        }
+
         return errors;
     }
-    
-    /*
-     public static void test() throws IOException, InterruptedException{
-     CartaInvitacion test = new CartaInvitacion();
-     test.setCodigo("1");    
-     test.setFecha("2013-12-26");
-     test.setNomEmpresa("DT Systems");
-     test.setDireccion("Caracas");
-     test.setTelefono("0212-1234567");
-     test.setCorreo("dmallcott@usb.ve");
-     test.setDiaOferta("05");
-     test.setMesOferta("Marzo");
-     test.setContacto("Daniel");
-     test.setResponsable("Daniel Mallcott");
-     test.setUnidadSolicitante("ULAB");
-        
-     boolean result = test.generateDoc();
-       
-     }
-    
-    public static void Main(String[] args) {
-        
+
+    public static void test() throws IOException, InterruptedException {
+        CartaInvitacion test = new CartaInvitacion();
+        test.setCodigo("1");
+        test.setFecha("2013-12-26");
+        test.setNomEmpresa("DT Systems");
+        test.setDireccion("Caracas");
+        test.setTelefono("0212-1234567");
+        test.setCorreo("dmallcott@usb.ve");
+        test.setDiaOferta("05");
+        test.setMesOferta("Marzo");
+        test.setContacto("Daniel");
+        test.setResponsable("Daniel Mallcott");
+        test.setUnidadSolicitante("ULAB");
+
+        test.generateDoc();
+
     }
-    */
-    
+
     /**
-     * Este metodo genera el documento asociado a la clase en la carpeta src/documentos/generated. Corre el script 'genCartaInvitacion' el cual se encarga de todo el proceso.
+     * Este metodo genera el documento asociado a la clase en la carpeta
+     * src/documentos/generated. Corre el script 'genCartaInvitacion' el cual se
+     * encarga de todo el proceso.
      *
      * @return Un booleano con el estatus de salida de 'genCartaInvitacion'
      */
-
     public Documento generateDoc() {
         try {
             // Esta cantidad excesiva de strings es para calcular el path de la webapp dinamicamente.
             String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().toString();
             String shortenedPath = absolutePath.replace("file:", "");
-            String appPath = shortenedPath.replace("/build/web/WEB-INF/classes/Clases/CartaInvitacion.class", "");
+            String appPath = shortenedPath.replace("build/web/WEB-INF/classes/Clases/CartaInvitacion.class", "");
             String[] command = {"./src/bash/genCartaInvitacion.sh",
                 codigo, fecha, nomEmpresa, direccion,
                 telefono, correo, diaOferta, mesOferta, contacto, responsable, unidadSolicitante};
             Documento documento = new Documento();
-            
+
             Process terminal = Runtime.getRuntime().exec(command, null, new File(appPath));
-            
             terminal.waitFor();
             if (terminal.exitValue() == 0) {
-                documento.setPathArchivo(appPath + "src/documents/generated/carta_invitacion_" + codigo + ".pdf");
-                documento.setNombreArchivo("carta_invitacion_" + codigo + ".pdf");
+                documento.setPathArchivo(appPath + "src/documents/generated/carta_invitacion_" + codigo.replace("/", "-") + ".pdf");
+                documento.setNombreArchivo("carta_invitacion_" + codigo.replace("/", "-") + ".pdf");
             }
             return documento;
         } catch (IOException ex) {
@@ -168,6 +171,25 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
         } catch (InterruptedException ex) {
             return new Documento();
         }
+        /* CODIGO PARA LEER EL OUPUT DE TERMINAL
+         BufferedReader stdInput = new BufferedReader(new 
+         InputStreamReader(terminal.getInputStream()));
+
+         BufferedReader stdError = new BufferedReader(new 
+         InputStreamReader(terminal.getErrorStream()));
+
+         // read the output from the command
+         System.out.println("Here is the standard output of the command:\n");
+         String s = null;
+         while ((s = stdInput.readLine()) != null) {
+         System.out.println(s);
+         }
+
+         // read any errors from the attempted command
+         System.out.println("Here is the standard error of the command (if any):\n");
+         while ((s = stdError.readLine()) != null) {
+         System.out.println(s);
+         }*/
     }
 
     public String getCodigo() {

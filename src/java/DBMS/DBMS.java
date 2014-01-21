@@ -31,7 +31,7 @@ public class DBMS {
 
     static Connection conexion;
     static DBMS instance = null;
-    
+
     protected DBMS() {
     }
 
@@ -57,14 +57,13 @@ public class DBMS {
         }
         return false;
     }
-    
+
     /* Usuarios */
-    
     public Usuario verificarUsuario(Usuario u) {
         PreparedStatement psConsultar = null;
         Usuario user = new Usuario();
         try {
-            
+
             psConsultar = conexion.prepareStatement("SELECT usbid, tipo, unidad, nombre  "
                     + "FROM \"mod3\".usuarios WHERE (usbid = ? AND pass = ?);");
             psConsultar.setString(1, u.getUsbid());
@@ -84,7 +83,6 @@ public class DBMS {
     }
 
     /* Proveedores */
-    
     public ArrayList<Proveedor> consultarProveedores() {
 
         ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>(0);
@@ -144,7 +142,7 @@ public class DBMS {
             return false;
         }
     }
-    
+
     public boolean deshabilitarProveedor(Proveedor p) {
         PreparedStatement ps = null;
         try {
@@ -251,9 +249,8 @@ public class DBMS {
             return false;
         }
     }
-    
+
     /* DOCUMENTOS ESTATICOS */
-    
     public boolean AgregarCartaInvitacion(Usuario user, CartaInvitacion carta) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -263,10 +260,11 @@ public class DBMS {
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigocarta");
-            else
+            } else {
                 return false;
+            }
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cartainvitacion VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
@@ -290,8 +288,6 @@ public class DBMS {
         }
     }
 
-    
-
     public boolean AgregarActoMotivado(Usuario user, ActoMotivado acto) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -301,10 +297,11 @@ public class DBMS {
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigoactomotivado");
-            else
+            } else {
                 return false;
+            }
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".actomotivado VALUES (?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
@@ -321,22 +318,23 @@ public class DBMS {
             ex.printStackTrace();
             return false;
         }
-    }   
-    
+    }
+
     public boolean AgregarNotaDevolucion(Usuario user, NotaDevolucion nota) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigonota(?);");
             psConsultar.setString(1, user.getUnidad());
-            
+
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigonota");
-            else
+            } else {
                 return false;
-            
+            }
+
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".notadevolucion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setBoolean(2, Boolean.valueOf(nota.getC1().toString()));
@@ -370,7 +368,7 @@ public class DBMS {
             psAgregar.setInt(30, Integer.parseInt(nota.getoNO().toString()));
             psAgregar.setBoolean(31, Boolean.valueOf(nota.getOtro().toString()));
             psAgregar.setString(32, nota.getOtro1());
-            
+
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
@@ -379,21 +377,22 @@ public class DBMS {
             return false;
         }
     }
-    
+
     public boolean AgregarSolicitudServicio(Usuario user, SolicitudServicio solicitud) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigosolservicio(?);");
             psConsultar.setString(1, user.getUnidad());
-            
+
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigosolservicio");
-            else
+            } else {
                 return false;
-            
+            }
+
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".solicitudservicio VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, solicitud.getCompania());
@@ -422,9 +421,8 @@ public class DBMS {
             return false;
         }
     }
-    
+
     /* DOCUMENTOS DINAMICOS */
-    
     public boolean AgregarInformeRecomendacion(Usuario user, InformeRecomendacion informe) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -434,10 +432,11 @@ public class DBMS {
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigoinforme");
-            else
+            } else {
                 return false;
+            }
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".informerecomendacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
@@ -453,15 +452,16 @@ public class DBMS {
             psAgregar.setString(11, informe.getMesRevision());
             psAgregar.setString(12, informe.getResponsable1());
             psAgregar.setString(13, informe.getResponsable2());
-            
+
             Integer j = psAgregar.executeUpdate();
-            
-            if (j < 0)
+
+            if (j < 0) {
                 return false;
-            
+            }
+
             ArrayList items = informe.getItems();
             Actions.Documentos.InformeRecomendacion.Item temp;
-            for (int i = 0; i < items.size() ; i++) {
+            for (int i = 0; i < items.size(); i++) {
                 temp = (Actions.Documentos.InformeRecomendacion.Item) items.get(i);
                 psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".empresasinforme VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
@@ -479,13 +479,13 @@ public class DBMS {
                 Integer n = psAgregar.executeUpdate(); //debes chequear esto
             }
             return j > 0;
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
         }
     }
-    
+
     public boolean AgregarEspecificacionTecnica(Usuario user, EspecificacionTecnica especificacion) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -495,19 +495,20 @@ public class DBMS {
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigoespecificaciones");
-            else
+            } else {
                 return false;
-            
+            }
+
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".especificacionestecnicas VALUES (?)");
             psAgregar.setString(1, nuevoCodigo);
 
             Integer j = psAgregar.executeUpdate();
-            
+
             ArrayList items = especificacion.getItems();
             Actions.Documentos.EspecificacionTecnica.Item temp;
-            for (int i = 0; i < items.size() ; i++) {
+            for (int i = 0; i < items.size(); i++) {
                 temp = (Actions.Documentos.EspecificacionTecnica.Item) items.get(i);
                 psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemsespecificaciones VALUES (?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
@@ -523,7 +524,7 @@ public class DBMS {
             return false;
         }
     }
-    
+
     public boolean AgregarCotizacion(Usuario user, Cotizacion cotizacion) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
@@ -533,10 +534,11 @@ public class DBMS {
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
-            if (rs.next())
+            if (rs.next()) {
                 nuevoCodigo = rs.getString("crearcodigocotizacion");
-            else
+            } else {
                 return false;
+            }
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
@@ -552,7 +554,7 @@ public class DBMS {
 
             ArrayList items = cotizacion.getItems();
             Actions.Documentos.Cotizacion.Item temp;
-            for (int i = 0; i < items.size() ; i++) {
+            for (int i = 0; i < items.size(); i++) {
                 temp = (Actions.Documentos.Cotizacion.Item) items.get(i);
                 psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
@@ -561,10 +563,10 @@ public class DBMS {
                 psAgregar.setString(4, temp.getTiempoEntrega());
                 psAgregar.setString(5, temp.getCondicionPago());
                 psAgregar.setString(6, temp.getGarantia());
-                
+
                 Integer n = psAgregar.executeUpdate(); //debes chequear esto
             }
-            
+
             return j > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -593,7 +595,7 @@ public class DBMS {
         }
         return expedientes;
     }
-    
+
     public Expediente verEpediente(String codigo) {
         Expediente expediente = new Expediente();
         PreparedStatement psConsultar = null;
@@ -623,5 +625,34 @@ public class DBMS {
             ex.printStackTrace();
         }
         return expediente;
+    }
+
+    public CartaInvitacion getCartaInvitacion(String codigo) {
+        CartaInvitacion carta = new CartaInvitacion();
+        PreparedStatement psConsultar = null;
+        try {
+
+            psConsultar = conexion.prepareStatement("SELECT * FROM \"mod3\".cartainvitacion "
+                    + "WHERE codigo = ?");
+            psConsultar.setString(1, codigo);
+            ResultSet rs = psConsultar.executeQuery();
+
+            if (rs.next()) {
+                carta.setCodigo(codigo);
+                carta.setContacto(rs.getString("contacto"));
+                carta.setCorreo(rs.getString("correo"));
+                carta.setDiaOferta(rs.getString("diaoferta"));
+                carta.setDireccion(rs.getString("direccion"));
+                carta.setFecha(rs.getString("fecha"));
+                carta.setMesOferta(rs.getString("mesoferta"));
+                carta.setNomEmpresa(rs.getString("nomempresa"));
+                carta.setResponsable(rs.getString("responsable"));
+                carta.setTelefono(rs.getString("telefono"));
+                carta.setUnidadSolicitante(rs.getString("unidadsolicitante"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return carta;
     }
 }

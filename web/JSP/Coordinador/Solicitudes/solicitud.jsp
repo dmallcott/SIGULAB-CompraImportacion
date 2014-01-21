@@ -9,20 +9,20 @@
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 
-    <logic:empty name="Expediente" property="codCartaInvitacion">
-        <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
+    <logic:empty name="expediente" property="codCartaInvitacion">
+        <html:form action="/reqAgregarCartaInvitacion" onsubmit="return(this)">
             <html:submit>Nuevo</html:submit>
         </html:form>
     </logic:empty>
 
-    <logic:notEmpty name="Expediente" property="codCartaInvitacion">
+    <logic:notEmpty name="expediente" property="codCartaInvitacion">
         <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
             <html:submit>Editar</html:submit>
         </html:form>
     </logic:notEmpty>
 
     
-<html:form action="/descargarDocumento" onsubmit="return(this)">
-    <html:hidden property="codCartaInvitacion"/>
+<html:form action="/descargarCartaInvitacion" onsubmit="return(this)">
+    <html:hidden name="expediente" property="codCartaInvitacion"/>
     <html:submit>Descargar</html:submit>
 </html:form>
