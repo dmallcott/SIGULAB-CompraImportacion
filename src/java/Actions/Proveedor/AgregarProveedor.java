@@ -29,8 +29,8 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
     private static final String YAREGISTRADO = "yaregistrado";
-    
-     /**
+
+    /**
      * This is the action called from the Struts framework.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -43,9 +43,8 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-            throws Exception 
-    {
-
+            throws Exception {
+        
         Proveedor u = (Proveedor) form;
         HttpSession session = request.getSession(true);
         boolean huboError = false;
@@ -54,12 +53,9 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
         //valido los campos de formulario
         error = u.validate(mapping, request);
         
-
-
         if (error.size() != 0) {
             huboError = true;
         }
-        
 
         //si los campos no son validos
         if (huboError) {
@@ -68,18 +64,19 @@ public class AgregarProveedor extends org.apache.struts.action.Action {
             return mapping.findForward(FAILURE);
             //si los campos son validos
         } else {
-             boolean registro = DBMS.getInstance().agregarProveedor(u);
-             ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
-             request.setAttribute("proveedores", proveedores);
+            u.setDeshabilitado(false);
+            boolean registro = DBMS.getInstance().agregarProveedor(u);
+            ArrayList<Proveedor> proveedores = DBMS.getInstance().consultarProveedores();
+            request.setAttribute("proveedores", proveedores);
             if (registro) {
-                request.setAttribute("agregado",SUCCESS);
+                request.setAttribute("agregado", SUCCESS);
                 
             } else {
-                request.setAttribute("yaAgregado",FAILURE);
+                request.setAttribute("yaAgregado", FAILURE);
                 saveErrors(request, error);
                 return mapping.findForward(FAILURE);
             }
-         
+            
         }
         return mapping.findForward(SUCCESS);
     }
