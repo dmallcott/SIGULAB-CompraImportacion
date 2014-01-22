@@ -10,113 +10,98 @@
         <put name="banner" value="/Plantilla/banner.jsp"/>
         <put name="sidebarR" value="/Plantilla/sidebarR.jsp"/>
         <put name="footer" value="/Plantilla/footer.jsp"/>
+        <put name="sidebarL" value="/Plantilla/sidebarL.jsp"/>
     </definition>
     
-    <!-- GENERAL -->
+  
     
-    <definition name="baseGeneral" extends="base"> <!-- BASE PARA COORDINADOR -->
-        <put name="sidebarL" value="/Plantilla/Lsidebars/sidebarGeneral.jsp"/>
-    </definition>
-    
-    <definition name="vistaGeneral" extends="baseGeneral"> <!-- Vista coordinador -->
-        <put name="body" value="" type="string"/>
-        <put name="page_title" value="ULAB" type="string"/>
-        <put name="body_title" value="Sistema de la ULAB" type="string"/>
-    </definition>
-    
-    <!-- COORDINADOR -->
-    
-    <definition name="baseCoordinador" extends="base"> <!-- BASE PARA COORDINADOR -->
-        <put name="sidebarL" value="/Plantilla/Lsidebars/sidebarCoordinador.jsp"/>
-    </definition>
-    
-    <definition name="vistaCoordinador" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="Bienvenido" type="string"/>
+    <definition name="home" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/home.jsp"/>
         <put name="page_title" value="ULAB" type="string"/>
         <put name="body_title" value="Sistema de la ULAB" type="string"/>
     </definition>
     
     <!-- DOCUMENTOS -->
     
-    <definition name="agregarCartaInvitacion" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/cartaInvitacion.jsp"/>
+    <definition name="agregarCartaInvitacion" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/cartaInvitacion.jsp"/>
         <put name="page_title" value="ULAB: Carta de Invitacion" type="string"/>
         <put name="body_title" value="Carta de Invitacion" type="string"/>
     </definition>
     
-    <definition name="agregarCotizacion" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/cotizacion.jsp"/>
+    <definition name="agregarCotizacion" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/cotizacion.jsp"/>
         <put name="page_title" value="ULAB: Cotizacion" type="string"/>
         <put name="body_title" value="Cotizacion" type="string"/>
     </definition>
     
-    <definition name="agregarEspecificacionTecnica" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/especificacionTecnica.jsp"/>
+    <definition name="agregarEspecificacionTecnica" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/especificacionTecnica.jsp"/>
         <put name="page_title" value="ULAB: Especificacion Tecnica" type="string"/>
         <put name="body_title" value="Especificacion Tecnica" type="string"/>
     </definition>
     
-    <definition name="agregarActoMotivado" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/actoMotivado.jsp"/>
+    <definition name="agregarActoMotivado" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/actoMotivado.jsp"/>
         <put name="page_title" value="ULAB: Acto Motivado" type="string"/>
         <put name="body_title" value="Acto Motivado" type="string"/>
     </definition>    
     
-    <definition name="agregarInformeRecomendacion" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/informeRecomendacion.jsp"/>
+    <definition name="agregarInformeRecomendacion" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/informeRecomendacion.jsp"/>
         <put name="page_title" value="ULAB: Informe de Recomendacion" type="string"/>
         <put name="body_title" value="Informe de Recomendacion" type="string"/>
     </definition>
     
-    <definition name="agregarNotaDevolucion" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/notaDevolucion.jsp"/>
+    <definition name="agregarNotaDevolucion" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/notaDevolucion.jsp"/>
         <put name="page_title" value="ULAB: Nota Devolucion" type="string"/>
         <put name="body_title" value="Nota Devolucion" type="string"/>
     </definition>        
     
-    <definition name="agregarSolicitudServicio" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Documentos/solicitudServicio.jsp"/>
+    <definition name="agregarSolicitudServicio" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/solicitudServicio.jsp"/>
         <put name="page_title" value="ULAB: Solicitud de Servicio" type="string"/>
         <put name="body_title" value="Solicitud de Servicio" type="string"/>
     </definition>  
 
     <!-- PROVEEDORES -->
 
-    <definition name="agregarProveedor" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Proveedor/agregarProveedor.jsp"/>
+    <definition name="agregarProveedor" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Proveedor/agregarProveedor.jsp"/>
         <put name="page_title" value="ULAB: Agregar Proveedor" type="string"/>
         <put name="body_title" value="Agregar Proveedor" type="string"/>
     </definition>
     
-    <definition name="consultarProveedores" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Proveedor/consultarProveedores.jsp"/>
+    <definition name="consultarProveedores" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Proveedor/consultarProveedores.jsp"/>
         <put name="page_title" value="ULAB: Consultar Proveedores" type="string"/>
         <put name="body_title" value="Consultar Proveedores" type="string"/>
     </definition>   
     
-    <definition name="editarResena" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Proveedor/editarResena.jsp"/>
+    <definition name="editarResena" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Proveedor/editarResena.jsp"/>
         <put name="page_title" value="ULAB: Editar Resena" type="string"/>
         <put name="body_title" value="Editar Resena" type="string"/>
     </definition>
     
     <!-- COMPRAS -->
-    <definition name="consultarCompras" extends="baseCoordinador"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Coordinador/Compras/consultarCompras.jsp"/>
+    <definition name="consultarCompras" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Compras/consultarCompras.jsp"/>
         <put name="page_title" value="ULAB: Consultar Compras" type="string"/>
         <put name="body_title" value="Consultar Compras" type="string"/>
     </definition>
     
     <!-- SOLICITUDES -->
     
-    <definition name="misSolicitudes" extends="vistaCoordinador">
-        <put name="body" value="/JSP/Coordinador/Solicitudes/misSolicitudes.jsp"/>
+    <definition name="misSolicitudes" extends="base">
+        <put name="body" value="/JSP/Solicitudes/misSolicitudes.jsp"/>
         <put name="page_title" value="ULAB: Mis Solicitudes" type="string"/>
         <put name="body_title" value="Mis Solicitudes" type="string"/>
     </definition>
     
-    <definition name="verSolicitud" extends="vistaCoordinador">
-        <put name="body" value="/JSP/Coordinador/Solicitudes/solicitud.jsp"/>
+    <definition name="verSolicitud" extends="base">
+        <put name="body" value="/JSP/Solicitudes/solicitud.jsp"/>
         <put name="page_title" value="ULAB: Mis Solicitudes" type="string"/>
         <put name="body_title" value="Mis Solicitudes" type="string"/>
     </definition>

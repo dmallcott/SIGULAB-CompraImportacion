@@ -62,6 +62,9 @@
                     <tiles:insert attribute="sidebarL"/>
                 </div>
                 <div class="col-xs-8" >
+                    <div class="row">
+                        <tiles:insert attribute="body_title"/>
+                    </div>
                     <tiles:insert attribute="body"/>
                 </div>
                 <div class="col-xs-1 col-xs-push-1" >

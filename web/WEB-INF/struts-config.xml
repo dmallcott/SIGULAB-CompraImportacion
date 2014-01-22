@@ -22,23 +22,6 @@
         <form-bean name="Expediente" type="Clases.Expediente"/>
     </form-beans>
     <action-mappings>
-            
-        <!-- VISTAS -->
-        <action path="/vistaCoordinador"
-            type="org.apache.struts.actions.ForwardAction"
-            scope="request"
-            validate="false"
-            parameter="vistaCoordinador"
-            >
-        </action>
-        
-        <action path="/vistaGeneral"
-            type="org.apache.struts.actions.ForwardAction"
-            scope="request"
-            validate="false"
-            parameter="vistaGeneral"
-            >
-        </action>
         
         <!-- LOGIN -->
         <action input="/Login.jsp" 
@@ -47,7 +30,7 @@
                 scope="request" 
                 type="Session.IniciarSesion" 
                 validate="false">
-            <forward name="coordinador" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
             <forward name="failure" path="/Login.jsp"/>
         </action>
         
@@ -58,15 +41,6 @@
                 validate="false">
             <forward name="success" path="/Login.jsp"/>
         </action>
-        
-        <!-- GENERAL -->
-        <action name="Usuario" 
-                path="/irInicio" 
-                scope="request" 
-                type="Otros.Inicio" 
-                validate="false">
-            <forward name="coordinador" path="vistaCoordinador"/>
-        </action> <!-- ESTO NO SIRVE -->
         
         <!-- PROVEEDOR -->    
            
@@ -149,7 +123,7 @@
                 name="Compra"
                 validate="false">
             <forward name="success" path="consultarCompras"/>
-            <forward name="failure" path="index"/>
+            <forward name="failure" path="home"/>
         </action>
         
         <!-- Agregar Compra -->
@@ -189,7 +163,7 @@
                 name="CartaInvitacion"
                 validate="false">
             <forward name="failure" path="agregarCartaInvitacion"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>
         
         <action input="/misSolicitudes"
@@ -225,7 +199,7 @@
                 name="Cotizacion"
                 validate="false">
             <forward name="failure" path="agregarCotizacion"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>
 
                 <!-- Agregar Especificacion Tecnica -->
@@ -244,7 +218,7 @@
                 name="EspecificacionTecnica"
                 validate="false">
             <forward name="failure" path="agregarEspecificacionTecnica"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>
         
                 <!-- Agregar Acto Motivado -->
@@ -262,7 +236,7 @@
                 scope="request"
                 name="ActoMotivado"
                 validate="false">
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
             <forward name="failure" path="agregarActoMotivado"/>
         </action>    
         
@@ -281,7 +255,7 @@
                 scope="request"
                 name="InformeRecomendacion"
                 validate="false">
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
             <forward name="failure" path="agregarInformeRecomendacion"/>
         </action>                   
         
@@ -320,7 +294,7 @@
                 name="SolicitudServicio"
                 validate="false">
             <forward name="failure" path="agregarSolicitudServicio"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>        
         
         <!-- Agregar Nota Devolucion -->
@@ -339,7 +313,7 @@
                 name="NotaDevolucion"
                 validate="false">
             <forward name="failure" path="agregarNotaDevolucion"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>
         
         <!-- Agregar Solicitud de Servicio -->
@@ -358,7 +332,7 @@
                 name="SolicitudServicio"
                 validate="false">
             <forward name="failure" path="agregarSolicitudServicio"/>
-            <forward name="success" path="vistaCoordinador"/>
+            <forward name="success" path="home"/>
         </action>        
         
         <!-- SOLICITUDES -->

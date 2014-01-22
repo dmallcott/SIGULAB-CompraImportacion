@@ -24,7 +24,8 @@ import org.apache.struts.action.ActionMessage;
 public class IniciarSesion extends org.apache.struts.action.Action {
 
     private static final String FAILURE = "failure";
-    private static final String COORDINADOR = "coordinador";
+    private static final String SUCCESS = "success";
+    private static final String GENERAL = "general";
 
     /**
      * This is the action called from the Struts framework.
@@ -55,7 +56,13 @@ public class IniciarSesion extends org.apache.struts.action.Action {
                 if (tmp.getTipousuario().equals("Coordinador de Adquisiciones")) {
                     session.setAttribute("usuario", tmp);
                     session.setAttribute("nombre", tmp.getNombre());
-                    return mapping.findForward(COORDINADOR);
+                    session.setAttribute("tipo", 5);
+                    return mapping.findForward(SUCCESS);
+                } else if (tmp.getTipousuario().equals("Usuario General")) {
+                    session.setAttribute("usuario", tmp);
+                    session.setAttribute("nombre", tmp.getNombre());
+                    session.setAttribute("tipo", 0);
+                    return mapping.findForward(SUCCESS);
                 } else {
                     return mapping.findForward(FAILURE);
                 }
