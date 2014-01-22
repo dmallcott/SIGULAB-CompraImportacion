@@ -43,7 +43,7 @@
         margin-left: -100%;
     }
 </style>
-<!--
+<%--
     OJOOOOOOOOOOOOOO QUITA ESTA VAINA QUE SE VE DESDE CTRL+SHIFT+I
     Definicion de tipos:
         0 = Usuario General
@@ -52,9 +52,12 @@
         3 = Asistente de Nacional
         4 = Coordinador Internacional
         5 = Coordinador Nacional
--->
+--%>
 <div>
     <ul>
+        <li>
+            <html:link action="/reqNuevaSolicitud">Nueva Solicitud</html:link>
+        </li>
         <li>
             <html:link action="/misSolicitudes">Mis Solicitudes</html:link>
         </li>
