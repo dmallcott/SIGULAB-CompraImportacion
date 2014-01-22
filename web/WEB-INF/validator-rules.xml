@@ -76,7 +76,7 @@
                        org.apache.struts.action.ActionMessages,
                        org.apache.commons.validator.Validator,
                        javax.servlet.http.HttpServletRequest"
-                   msg="errors.required"/>
+                   msg="error.campo.vacio"/>
 
         <validator name="requiredif"
                    classname="org.apache.struts.validator.FieldChecks"

@@ -46,7 +46,8 @@
                         </td>
                     </tr>
                     <tr><td> <div id="content" class="column grid-10 push-3">
-                    <html:form action="/login" acceptCharset="ISO=8859-1" >
+                     <html:form action="/login" acceptCharset="ISO=8859-1" onsubmit="validateUsuario(this)">
+                        <html:javascript formName="Usuario" />
                         <div id="welcome">
                             <p>Por razones de seguridad, por favor cierre la sesión y su navegador web cuando haya terminado de acceder a los servicios que requieren autenticación.</p>
                             <p style="text-align: center"><strong>Introduzca su USBID y Contraseña</strong></p>

@@ -23,9 +23,12 @@
 
     <formset>
         
-        <form name="Proveedor">
-            <field property="RIF" depends="required">
-                <arg key="Proveedor.RIF"/>
+        <form name="Usuario">
+            <field property="usbid" depends="required">
+                <arg0 key="USBID" resource="false"/>
+            </field>
+            <field property="contrasena" depends="required">
+                <arg0 key="Contrasena" resource="false" />
             </field>
         </form>
         
