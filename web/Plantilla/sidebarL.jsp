@@ -60,7 +60,7 @@ u    ul#menu li:hover #sub1 {
     
     
 </style>
-<div>
+<div style="body">
     <ul>
         <li>
             <html:link action="/reqNuevaSolicitud">Nueva Solicitud</html:link>
