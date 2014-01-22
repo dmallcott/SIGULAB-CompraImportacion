@@ -114,7 +114,7 @@
                 <tr>
                     <td>Item 1</td>
                     <td><input required type="text" maxlength="50" name="nombre0"/></td>
-                    <td><input required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
+                    <td><input style="width: 80px" required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
                     <td><input required type="text" placeholder="2 dias" maxlength="20" name="tiempo0"/></td>
                     <td><input required type="text" maxlength="20" name="condicion0"/></td>
                     <td><input required type="text" maxlength="200" name="garantia0"/></td>

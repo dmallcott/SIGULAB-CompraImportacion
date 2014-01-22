@@ -42,6 +42,16 @@
         right: 200px;          /* LC width */
         margin-left: -100%;
     }
+    
+    ul#sub1 {
+    position:absolute;
+    left:0;
+    width:125px;
+    visibility: hidden;
+}
+u    ul#menu li:hover #sub1 {
+    visibility:visible;
+}
 </style>
 <!--
     OJOOOOOOOOOOOOOO QUITA ESTA VAINA QUE SE VE DESDE CTRL+SHIFT+I
@@ -53,10 +63,21 @@
         4 = Coordinador Internacional
         5 = Coordinador Nacional
 -->
-<div>
+
+<style type="text/css">
+    #body {  
+        font-size: 11px;
+        margin-top:15px;
+        left:-660px;
+    }
+    
+    
+</style>
+
+<div id="body" style="margin-left:-71px;margin-right: 10px;display: inline;float: left">
     <ul>
         <li>
-            <html:link action="/misSolicitudes">Mis Solicitudes</html:link>
+            <ul id="menu"><html:link action="/misSolicitudes">Mis Solicitudes</html:link></ul>
         </li>
         <li>
             <html:link action="/consultarProveedores">Catalogo de proveedores</html:link>
@@ -68,13 +89,13 @@
             <li>
                 <div>Documentos</div>
                 <ul>
-                    <html:link action="/reqAgregarCartaInvitacion">Agregar carta de invitacion</html:link>
-                    <html:link action="/reqAgregarCotizacion">Agregar cotizacion</html:link>
-                    <html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link>
-                    <html:link action="/reqAgregarInformeRecomendacion">Agregar Informe de Recomendacion</html:link>
-                    <html:link action="/reqAgregarActoMotivado">Agregar Acto Motivado</html:link>
-                    <html:link action="/reqAgregarNotaDevolucion">Agregar Nota Devolucion</html:link>
-                    <html:link action="/reqAgregarSolicitudServicio">Agregar Solicitud de Servicio</html:link>
+                    <li> <html:link action="/reqAgregarCartaInvitacion">Agregar carta de invitacion</html:link></li>
+                    <li><html:link action="/reqAgregarCotizacion">Agregar cotizacion</html:link></li>
+                    <li><html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link></li>
+                    <li><html:link action="/reqAgregarInformeRecomendacion">Agregar Informe de Recomendacion</html:link></li>
+                    <li><html:link action="/reqAgregarActoMotivado">Agregar Acto Motivado</html:link></li>
+                    <li><html:link action="/reqAgregarNotaDevolucion">Agregar Nota Devolucion</html:link></li>
+                    <li><html:link action="/reqAgregarSolicitudServicio">Agregar Solicitud de Servicio</html:link></li>
                 </ul>
             </li>
             </logic:greaterThan>
@@ -83,4 +104,4 @@
             </li>
                 
     </ul>
-</div>
+</div>            

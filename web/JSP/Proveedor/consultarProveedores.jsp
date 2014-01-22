@@ -51,36 +51,27 @@
     </p>
 </logic:present>  
 
+  <div class="panel panel-primary" style="width: 635px;margin-left: -23px">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Proveedores</div>
+  <!-- Table -->
 
-<div width="100%" style="overflow-x: scroll;">
-<table border="0">
-    <thead style="">
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        RIF
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Compania
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Telefono
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Resena
-    </th> 
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Estado
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Editar
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Deshabilitar
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Eliminar
-    </th>
-</thead>
-<logic:iterate name="proveedores" id="Proveedores">
+  <table class="table">
+      <thead>
+      <tr>
+        <th> RIF </th>
+        <th> Compañía </th>
+        <th> Telefono </th>
+        <th> Reseña </th>
+        <th> Estado </th>
+        <th> Compañía </th>
+        <th> Editar </th>
+        <th> Deshabilitar </th>
+        <th> Eliminar </th>
+      </tr>
+      </thead>
+      
+      <logic:iterate name="proveedores" id="Proveedores">
     <tr>
         <td>
             <p><bean:write name="Proveedores" property="RIF"></bean:write></p>
@@ -128,5 +119,5 @@
         </td>
     </tr>
 </logic:iterate> 
-</table>
+  </table>
 </div>

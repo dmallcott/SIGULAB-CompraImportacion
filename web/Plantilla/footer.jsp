@@ -5,6 +5,16 @@
 --%>
 
 <!--FOOTER-->
+
+<style type="text/css">
+    #footer {  
+        margin-left: 10px;
+        font-family: Verdana, Arial, Helvetica, sans-serif; 
+        font-size: 11px;
+        line-height: 1.6em;
+    }
+</style>
+
 <footer id="footer" class="section section-footer clearfix" role="footer">
     <div class="region region-footer">
         <div id="block-block-1" class="block block-block first">

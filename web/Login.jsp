@@ -76,7 +76,7 @@
                                     <td>
                                         <table align="center">
                                             <tr>
-                                                <td><html:submit value="Login" /></td>
+                                                    <td><html:submit value="Login" /></td>
                                                 <td><html:reset value="Limpiar" /></td>
                                             </tr>
                                         </table>

@@ -4,8 +4,8 @@
     Author     : daniel
 --%>
 
-<div class="row top ">
-    <div class="col-xs-12 img-responsive" style="text-align:center">
-            <img id="banner" src="./Plantilla/static/img/ulab.jpg" alt="Inicio" style="height: 132px">
-    </div>
-</div>
+<header id="header" class="section section-header clearfix" role="banner">
+          <hgroup class="grid-10">
+                          <a title="Inicio" rel="home" href="http://www.ulab.usb.ve"><img src="./Plantilla/static/img/ulab.jpg" alt="Inicio"></a>
+                      </hgroup>
+              </header>

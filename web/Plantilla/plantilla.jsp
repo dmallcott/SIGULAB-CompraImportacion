@@ -20,6 +20,7 @@
         <script src="Plantilla/static/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="Plantilla/static/bootstrap/dest/respond.src.js" type="text/javascript"></script>
         <script src="Plantilla/static/js/jquery.min.js" type="text/javascript"></script>
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
                 $("ul#subnavegador").hide();
@@ -48,16 +49,25 @@
                 padding-left: 0px;
                 padding-right: 0px;
             }
+            p {
+                margin-bottom: 15px;
+            }
+            a:link, a:visited {
+                color: #1c6ea0;
+            }
+            a:focus, a:hover, a:active {
+                color: #42a9be;
+            }
         </style>
     </head>
     <body>
         <div class="container container-full ">
-            <div class="row show-grid" style="height: 170px;">
+            <div class="row show-grid" style="height: 170px;margin-left: -90px">
                 <div class="col-xs-12">
                     <tiles:insert attribute="banner"/>
                 </div>
             </div>
-            <div class="row show-grid">
+                <div class="row show-grid">
                 <div class="col-xs-2 " >
                     <tiles:insert attribute="sidebarL"/>
                 </div>
@@ -71,7 +81,7 @@
                     <tiles:insert name="sidebarR"/>
                 </div>
             </div>
-            <div class="row show-grid" >
+            <div class="row show-grid" style="margin-left:-4px" >
                 <div class="col-xs-12">
                     <tiles:insert attribute="footer"/>
                 </div>
