@@ -55,9 +55,9 @@
             </tr>
 
             <tr>
-                <td style="color: black">Telefono</td>
+                <td style="color: black">Contacto</td>
                 <td>
-                    <html:text name="Proveedor" property="telefono" maxlength="50" value="" errorStyleClass="error"
+                    <html:text name="Proveedor" property="contacto" maxlength="50" value="" errorStyleClass="error"
                                errorKey="org.apache.struts.action.ERROR"></html:text>
                     </td>
                 </tr>

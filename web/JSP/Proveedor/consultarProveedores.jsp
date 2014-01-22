@@ -80,7 +80,7 @@
             <bean:write name="Proveedores" property="compania"></bean:write>
             </td>
             <td>
-                <p><bean:write name="Proveedores" property="telefono"></bean:write></p>
+                <p><bean:write name="Proveedores" property="contacto"></bean:write></p>
             </td>
             <td>
                 <p style="overflow: auto;"><bean:write name="Proveedores" property="resena"></bean:write></p>
