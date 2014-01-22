@@ -21,8 +21,6 @@ public class Expediente extends org.apache.struts.action.ActionForm {
     private String descripcion;
     private String idJefeLaboratorio;
     private String idSolicitante;
-    private String idSupervisores;
-    private String numeroCotizaciones;
     private String tipo;
 
     public String getCodCartaInvitacion() {
@@ -103,22 +101,6 @@ public class Expediente extends org.apache.struts.action.ActionForm {
 
     public void setIdSolicitante(String idSolicitante) {
         this.idSolicitante = idSolicitante;
-    }
-
-    public String getIdSupervisores() {
-        return idSupervisores;
-    }
-
-    public void setIdSupervisores(String idSupervisores) {
-        this.idSupervisores = idSupervisores;
-    }
-
-    public String getNumeroCotizaciones() {
-        return numeroCotizaciones;
-    }
-
-    public void setNumeroCotizaciones(String numeroCotizaciones) {
-        this.numeroCotizaciones = numeroCotizaciones;
     }
 
     public String getTipo() {

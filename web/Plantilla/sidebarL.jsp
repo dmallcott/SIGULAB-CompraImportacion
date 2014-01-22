@@ -52,19 +52,6 @@
 u    ul#menu li:hover #sub1 {
     visibility:visible;
 }
-</style>
-<!--
-    OJOOOOOOOOOOOOOO QUITA ESTA VAINA QUE SE VE DESDE CTRL+SHIFT+I
-    Definicion de tipos:
-        0 = Usuario General
-        1 = Jefe de Lab
-        2 = Asistente de Internacional
-        3 = Asistente de Nacional
-        4 = Coordinador Internacional
-        5 = Coordinador Nacional
--->
-
-<style type="text/css">
     #body {  
         font-size: 11px;
         margin-top:15px;
@@ -73,12 +60,13 @@ u    ul#menu li:hover #sub1 {
     
     
 </style>
-
-<div id="body" style="margin-left:-71px;margin-right: 10px;display: inline;float: left">
+<div>
     <ul>
         <li>
-            <ul id="menu"><html:link action="/misSolicitudes">Mis Solicitudes</html:link></ul>
-            <ul id="menu"> <html:link action="/solicitud">Agregar Solicitud</html:link></ul>
+            <html:link action="/reqNuevaSolicitud">Nueva Solicitud</html:link>
+        </li>
+        <li>
+            <html:link action="/misSolicitudes">Mis Solicitudes</html:link>
         </li>
         <li>
             <html:link action="/consultarProveedores">Catalogo de proveedores</html:link>

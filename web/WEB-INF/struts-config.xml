@@ -365,8 +365,25 @@
                 validate="false">
         </action>
 
-        <!-- DESCARGA -->
         
+
+        <action input="/*"
+                path="/reqNuevaSolicitud"
+                type="Actions.Solicitudes.ReqNuevaSolicitud"
+                scope="request"
+                name="Expediente"
+                validate="false">
+            <forward name="success" path="agregarSolicitud"/>
+        </action>
+        
+        <action input="/reqNuevaSolicitud"
+                path="/nuevaSolicitud"
+                type="Actions.Solicitudes.NuevaSolicitud"
+                scope="request"
+                name="Expediente"
+                validate="false">
+            <forward name="success" path="misSolicitudes"/>
+        </action>
                         
     </action-mappings>
     

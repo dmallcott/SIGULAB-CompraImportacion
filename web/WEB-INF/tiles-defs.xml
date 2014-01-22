@@ -106,4 +106,10 @@
         <put name="body_title" value="Mis Solicitudes" type="string"/>
     </definition>
     
+    <definition name="agregarSolicitud" extends="base">
+        <put name="body" value="/JSP/Solicitudes/nuevaSolicitud.jsp"/>
+        <put name="page_title" value="ULAB: Nueva Solicitud" type="string"/>
+        <put name="body_title" value="Nueva Solicitud" type="string"/>
+    </definition>
+    
 </tiles-definitions>

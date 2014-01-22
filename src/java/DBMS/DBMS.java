@@ -625,8 +625,6 @@ public class DBMS {
                 expediente.setDescripcion(rs.getString("descripcion"));
                 expediente.setIdJefeLaboratorio(rs.getString("idjefelaboratorio"));
                 expediente.setIdSolicitante(rs.getString("idsolicitante"));
-                expediente.setIdSupervisores(rs.getString("idsupervisores"));
-                expediente.setNumeroCotizaciones(rs.getString("numerocotizaciones"));
                 expediente.setTipo(rs.getString("tipo"));
             }
         } catch (SQLException ex) {
@@ -662,5 +660,43 @@ public class DBMS {
             ex.printStackTrace();
         }
         return carta;
+    }
+
+    public boolean AgregarExpediente(Usuario user, Expediente expediente) {
+        PreparedStatement psAgregar = null;
+        PreparedStatement psConsultar = null;
+        try {
+            psConsultar = conexion.prepareStatement("SELECT crearcodigoexpediente(?);");
+            psConsultar.setString(1, user.getUnidad());
+
+            ResultSet rs = psConsultar.executeQuery();
+            String nuevoCodigo;
+            if (rs.next()) {
+                nuevoCodigo = rs.getString("crearcodigoexpediente");
+            } else {
+                return false;
+            }
+
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".expediente "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, null);
+            psAgregar.setString(3, null);
+            psAgregar.setString(4, null);
+            psAgregar.setString(5, null);
+            psAgregar.setString(6, null);
+            psAgregar.setString(7, null);
+            psAgregar.setString(8, expediente.getDescripcion());
+            psAgregar.setString(9, null);
+            psAgregar.setString(10, user.getUsbid());
+            psAgregar.setString(11, null);
+
+            Integer i = psAgregar.executeUpdate();
+
+            return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 }
