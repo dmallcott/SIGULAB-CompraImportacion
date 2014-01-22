@@ -8,6 +8,13 @@
 <%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
+
+<style type="text/css">
+ .table-scrollable{
+    overflow: auto;
+}
+
+</style>
 <logic:present name="eliminado">
     <br>
     <p align ="center" style="background-color: springgreen;
@@ -51,12 +58,12 @@
     </p>
 </logic:present>  
 
-  <div class="panel panel-primary" style="width: 635px;margin-left: -23px">
+  <div class="panel panel-primary  span11 table-scrollable" style="width: 635px;margin-left: -23px">
   <!-- Default panel contents -->
-  <div class="panel-heading">Proveedores</div>
+  <div class="panel-heading" style="width:148%">Proveedores</div>
   <!-- Table -->
 
-  <table class="table">
+  <table class="table table-hover" >
       <thead>
       <tr>
         <th> RIF </th>
@@ -64,7 +71,6 @@
         <th> Telefono </th>
         <th> Reseña </th>
         <th> Estado </th>
-        <th> Compañía </th>
         <th> Editar </th>
         <th> Deshabilitar </th>
         <th> Eliminar </th>

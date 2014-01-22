@@ -78,6 +78,7 @@ u    ul#menu li:hover #sub1 {
     <ul>
         <li>
             <ul id="menu"><html:link action="/misSolicitudes">Mis Solicitudes</html:link></ul>
+            <ul id="menu"> <html:link action="/solicitud">Agregar Solicitud</html:link></ul>
         </li>
         <li>
             <html:link action="/consultarProveedores">Catalogo de proveedores</html:link>

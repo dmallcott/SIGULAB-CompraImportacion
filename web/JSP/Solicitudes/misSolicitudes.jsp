@@ -8,10 +8,15 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
-<table>
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+ <div class="panel-heading">Solicitudes</div>
+  <!-- Table -->
+  <table class="table">
     <thead>
-        <th>Codigo</th>
-        <th>Descricion</th>
+        <th>Código</th>
+        <th>Descripción</th>
         <th>Detalle</th>
     </thead>
     <tbody>
@@ -31,4 +36,11 @@
             </td>
         </logic:iterate>
     </tbody>
-</table>
+
+
+  </table>
+</div>
+
+
+
+ 
