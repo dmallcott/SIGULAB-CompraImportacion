@@ -52,52 +52,50 @@
     </p>
 </logic:present>
 
-<html:form action="/agregarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="validateCartaInvitacion(this)">
-    <html:javascript formName="CartaInvitacion" />
+<html:form action="/agregarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
+    <div class="form-group">
+        <label for="resena">Nombre de la Empresa</label>
+        <html:errors  property="nomEmpresa"/>
+        <html:text property="nomEmpresa" value="${CartaInvitacion.nomEmpresa}"
+                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
+
         <div class="form-group">
-            <label for="resena">Nombre de la Empresa</label>
-            <html:errors  property="nomEmpresa"/>
-            <html:text property="nomEmpresa" value="${CartaInvitacion.nomEmpresa}" errorStyleClass="error"
-                       errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
-            </div>
+            <label for="resena">Dirección de la Empresa</label>
+        <html:errors  property="direccion"/>
+        <html:text property="direccion" value="${CartaInvitacion.direccion}"
+                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
 
-            <div class="form-group">
-                <label for="resena">Dirección de la Empresa</label>
-            <html:errors  property="direccion"/>
-            <html:text property="direccion" value="${CartaInvitacion.direccion}" errorStyleClass="error"
-                       errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
-            </div>
+        <div class="form-group">
+            <label for="resena">Número de fax</label>
+        <html:errors property="telefono"/>
+        <html:text property="telefono" maxlength="12" value="${CartaInvitacion.telefono}"
+                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>             
 
-            <div class="form-group">
-                <label for="resena">Número de fax</label>
-            <html:errors property="telefono"/>
-            <html:text property="telefono" maxlength="12" value="${CartaInvitacion.fecha}" 
-                       errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
-            </div>             
+        <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+        <html:errors  property="correo"/>
+        <html:text property="correo" value="${CartaInvitacion.correo}"
+                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
 
-            <div class="form-group">
-                <label for="correo">Correo Electrónico</label>
-            <html:errors  property="correo"/>
-            <html:text property="correo" value="${CartaInvitacion.correo}" errorStyleClass="error"
-                       errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
-            </div>
+        <div class="form-group">
+            <label for="resena">Información de Contacto </label>
+        <html:errors  property="contacto"/>
+        <html:text property="contacto" maxlength="50" 
+                   value="${CartaInvitacion.contacto}" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
 
-            <div class="form-group">
-                <label for="resena">Información de Contacto </label>
-            <html:errors  property="contacto"/>
-            <html:text property="contacto" maxlength="50" 
-                       value="${CartaInvitacion.contacto}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
-            </div>
-
-            <div class="form-group">
-                <label for="resena">Fecha final de la oferta</label>
-                <html:errors  property="fechaOferta"/>
-                <html:text styleId="datepicker" property="fechaOferta" 
-                           errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text>
-            </div>
-    <p style="text-align: center">
-        <html:submit styleClass="btn btn-primary" 
-                     ></html:submit>
-    <html:reset styleClass="btn btn-default" value="Limpiar"/>
-</p>
+        <div class="form-group">
+            <label for="resena">Fecha final de la oferta</label>
+        <html:errors property="fechaOferta"/>
+        <html:text styleId="datepicker" styleClass="form-control" property="fechaOferta" 
+                   errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text>
+        </div>
+        <p style="text-align: center">
+        <html:submit styleClass="btn btn-primary"></html:submit>
+        <html:reset styleClass="btn btn-default" value="Limpiar"/>
+    </p>
 </html:form>

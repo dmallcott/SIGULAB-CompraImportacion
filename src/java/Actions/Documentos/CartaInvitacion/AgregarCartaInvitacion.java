@@ -60,8 +60,9 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
         if (error.size() != 0) {
             saveErrors(request, error);
             request.setAttribute("noAgregado", FAILURE);
-            return mapping.getInputForward();
-
+            request.setAttribute("CartaInvitacion", carta);
+            return mapping.findForward(FAILURE);
+            
             //si los campos son validos
         } else {
             boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);

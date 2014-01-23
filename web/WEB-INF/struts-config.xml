@@ -162,7 +162,7 @@
                 type="Actions.Documentos.CartaInvitacion.ReqEditarCartaInvitacion"
                 scope="request"
                 name="CartaInvitacion"
-                validate="true">
+                validate="false">
             <forward name="success" path="editarCartaInvitacion"/>
         </action>
         
@@ -171,15 +171,14 @@
                 type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
                 scope="request"
                 name="CartaInvitacion"
-                validate="true"
-                cancellable="true">
+                validate="false">
             <forward name="failure" path="agregarCartaInvitacion"/>
             <forward name="success" path="home"/>
         </action>
         
         <action input="/reqEditarCartaInvitacion"
-                path="/agregarCartaInvitacion"
-                type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
+                path="/editarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.EditarCartaInvitacion"
                 scope="request"
                 name="CartaInvitacion"
                 validate="false">
