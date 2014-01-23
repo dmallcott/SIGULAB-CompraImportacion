@@ -32,6 +32,13 @@
             </field>
         </form>
         
+        <form name="CartaInvitacion">
+            <field property="telefono" depends="mask">
+                <var><var-name>mask</var-name></var>
+                <var-value>^0212-[0-9]*$</var-value>
+            </field>
+        </form>
+        
     </formset>
 
     <!-- An example formset for another locale -->

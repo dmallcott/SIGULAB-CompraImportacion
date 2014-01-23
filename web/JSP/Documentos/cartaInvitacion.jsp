@@ -22,15 +22,13 @@
     </p>
 </logic:present>
 
-<html:form action="/agregarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
+<html:form action="/agregarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="validateCartaInvitacion(this)">
+    <html:javascript formName="CartaInvitacion" />
     <table border="0">
         <tbody>
             <tr>
                 <td style="color: black">Fecha</td>
                 <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
             </tr>
             <tr>
                 <td style="color: black">Nombre de la Empresa</td>
