@@ -139,7 +139,7 @@
                        org.apache.commons.validator.Validator,
                        javax.servlet.http.HttpServletRequest"
                    depends=""
-                   msg="errors.invalid"/>
+                   msg="error.campo.mask"/>
 
 
         <validator name="byte"

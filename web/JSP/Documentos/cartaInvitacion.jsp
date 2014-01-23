@@ -67,7 +67,21 @@
             </tr>
             <tr>
                 <td style="color: black">Mes final de la oferta</td>
-                <td><html:text property="mesOferta" maxlength="20" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:select property="mesOferta" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR">
+                        <html:option value="">----</html:option>
+                            <html:option value="Enero">Enero</html:option>
+                            <html:option value="Febrero">Febrero</html:option>
+                            <html:option value="Marzo">Marzo</html:option>
+                            <html:option value="Abril">Abril</html:option>
+                            <html:option value="Mayo">Mayo</html:option>
+                            <html:option value="Junio">Junio</html:option>
+                            <html:option value="Julio">Julio</html:option>
+                            <html:option value="Agosto">Agosto</html:option>
+                            <html:option value="Septiembre">Septiembre</html:option>
+                            <html:option value="Octubre">Octubre</html:option>
+                            <html:option value="Noviembre">Noviembre</html:option>
+                            <html:option value="Diciembre">Diciembre</html:option>
+                    </html:select></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="mesOferta"/></td>

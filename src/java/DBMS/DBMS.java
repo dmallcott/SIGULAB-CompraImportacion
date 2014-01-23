@@ -22,9 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 
 /**
@@ -262,10 +260,6 @@ public class DBMS {
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigocarta(?);");
             psConsultar.setString(1, user.getUnidad());
-            
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            java.util.Date date = new java.util.Date.Date();
-            dateFormat.format(date);
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
@@ -281,7 +275,7 @@ public class DBMS {
             psAgregar.setString(3, carta.getCorreo());
             psAgregar.setString(4, carta.getDiaOferta());
             psAgregar.setString(5, carta.getDireccion());
-            psAgregar.setDate(6, Date.valueOf(dateFormat);
+            psAgregar.setDate(6, Date.valueOf(carta.getFecha()));
             psAgregar.setString(7, carta.getMesOferta());
             psAgregar.setString(8, carta.getNomEmpresa());
             psAgregar.setString(9, user.getNombre());

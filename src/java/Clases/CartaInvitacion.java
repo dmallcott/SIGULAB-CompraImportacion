@@ -43,6 +43,85 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String responsable;
     private String unidadSolicitante;
 
+    // to be eliminated
+     private Pattern patron;
+     private Matcher match;
+     private static final String patronTelefono = "^0212-[0-9]{7}$";
+     private static final String patronCorreo = "^[a-z]*@usb\\.ve$";
+     private static final String patronDia = "^(0[1-9]|[12]\\d|3[01])$";
+     private static final String patronMes = "^(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)$";
+ 
+     public boolean validateMesOferta(final String dia) {
+         patron = Pattern.compile(patronMes);
+         match = patron.matcher(dia);
+         return match.matches();
+     }
+ 
+     public boolean validateDiaOferta(final String dia) {
+         patron = Pattern.compile(patronDia);
+         match = patron.matcher(dia);
+         return match.matches();
+     }
+ 
+     public boolean validateTelefono(final String telefono) {
+         patron = Pattern.compile(patronTelefono);
+         match = patron.matcher(telefono);
+         return match.matches();
+     }
+ 
+     public boolean validateCorreo(final String email) {
+         patron = Pattern.compile(patronCorreo);
+         match = patron.matcher(email);
+         return match.matches();
+     }
+ 
+     public boolean validateFecha(String fecha) {
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         try {
+             sdf.parse(fecha);
+             return true;
+         } catch (ParseException ex) {
+             return false;
+         }
+     }
+ 
+     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+         ActionErrors errors = new ActionErrors();
+ 
+         if (!validateFecha(fecha)) {
+             errors.add("fecha", new ActionMessage("error.fecha.invalida"));
+         }
+ 
+         if (!validateTelefono(telefono)) {
+             errors.add("telefono", new ActionMessage("error.telefono.invalido"));
+         }
+ 
+         if (!validateCorreo(correo)) {
+             errors.add("correo", new ActionMessage("error.correo.invalido"));
+         }
+ 
+         if (!validateDiaOferta(diaOferta)) {
+             errors.add("diaOferta", new ActionMessage("error.diaoferta.invalido"));
+         }
+ 
+         if (!validateMesOferta(mesOferta)) {
+             errors.add("mesOferta", new ActionMessage("error.mesoferta.invalido"));
+         }
+ 
+         if (nomEmpresa.matches("\\w") || nomEmpresa.equals("")) {
+             errors.add("nomEmpresa", new ActionMessage("error.campo.vacio"));
+         }
+ 
+         if (direccion.matches("\\w") || direccion.equals("")) {
+             errors.add("direccion", new ActionMessage("error.campo.vacio"));
+         }
+ 
+         if (contacto.matches("\\w") || contacto.equals("")) {
+             errors.add("contacto", new ActionMessage("error.campo.vacio"));
+         }
+ 
+         return errors;
+     }
 
     public static void test() throws IOException, InterruptedException {
         CartaInvitacion test = new CartaInvitacion();
