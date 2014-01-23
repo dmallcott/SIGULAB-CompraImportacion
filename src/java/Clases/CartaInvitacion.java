@@ -34,7 +34,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String fecha;
     private String nomEmpresa;
     private String direccion;
-    //private String presente;
     private String telefono;
     private String correo;
     private String diaOferta;

@@ -33,6 +33,9 @@
             </div>
         </td>
     </tr>
+    <logic:greaterThan name="tipo" value="0">
+        
+    
     <tr>
         <td>
             <div>
@@ -97,7 +100,9 @@
                 </html:form>
             </div>
         </td>
-    </tr>     
+    </tr>  
+    </logic:greaterThan>
+    <logic:greaterThan name="tipo" value="1">
     <tr> 
         <td>
             <div>
@@ -145,5 +150,5 @@
             </div>
         </td>
     </tr>
-
+    </logic:greaterThan>
 </table>
