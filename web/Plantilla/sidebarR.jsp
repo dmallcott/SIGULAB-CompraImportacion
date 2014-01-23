@@ -9,7 +9,6 @@
         width: 200px;          /* LC width */
         right: 200px;          /* LC width */
         margin-top:1.5px;
-        
     }
 </style>
 <div id="right"

@@ -59,6 +59,7 @@
              <html:text property="correo" value="" errorStyleClass="error"
                                    errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
             </div>
+
              <%-- aqui va la fecha --%>
             
             <div class="form-group">

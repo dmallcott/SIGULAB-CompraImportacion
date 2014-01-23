@@ -60,7 +60,7 @@
             <div class="row show-grid" style="height: 170px;text-align: center;">
                 <tiles:insert attribute="banner"/>
             </div>
-            <div class="row show-grid">
+                <div class="row show-grid">
                 <div class="col-xs-2 " >
                     <tiles:insert attribute="sidebarL"/>
                 </div>
