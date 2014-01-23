@@ -32,59 +32,45 @@
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
             </tr>
-            <tr>
-                <td style="color: black">Nombre de la Empresa</td>
-                <td><html:text property="nomEmpresa" maxlength="50" value="${CartaInvitacion.nomEmpresa}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="nomEmpresa"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Direccion de la Empresa</td>
-                <td><html:textarea property="direccion" value="${CartaInvitacion.direccion}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:textarea></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="direccion"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Numero de fax</td>
-                <td><html:text property="telefono" maxlength="12" value="${CartaInvitacion.telefono}" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="telefono"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Correo</td>
-                <td><html:text property="correo" maxlength="50" value="${CartaInvitacion.correo}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="correo"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Dia final de la oferta</td>
-                <td><html:text property="diaOferta" maxlength="2" value="${CartaInvitacion.diaOferta}" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="diaOferta"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Mes final de la oferta</td>
-                <td><html:text property="mesOferta" maxlength="20" value="${CartaInvitacion.mesOferta}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="mesOferta"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Informacion de Contacto</td>
-                <td><html:text property="contacto" maxlength="50" value="${CartaInvitacion.contacto}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="contacto"/></td>
-            </tr>
+            
+            <div class="form-group">
+             <label for="resena">Nombre de la Empresa</label>
+             <html:errors  property="nomEmpresa"/>
+             <html:text property="nomEmpresa" value="" errorStyleClass="error"
+                                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>
+        
+            <div class="form-group">
+             <label for="resena">Dirección de la Empresa</label>
+             <html:errors  property="direccion"/>
+             <html:text property="direccion" value="" errorStyleClass="error"
+                                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>
+
+            <div class="form-group">
+             <label for="resena">Número de fax</label>
+             <html:errors  property="telefono"/>
+             <html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>             
+             
+            <div class="form-group">
+             <label for="resena">Correo Electrónico</label>
+             <html:errors  property="correo"/>
+             <html:text property="correo" value="" errorStyleClass="error"
+                                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>
+             <%-- aqui va la fecha --%>
+            
+            <div class="form-group">
+             <label for="resena">Información de Contacto </label>
+             <html:errors  property="contacto"/>
+             <html:text property="contacto" maxlength="50" 
+                        value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>
         </tbody>
     </table>
     <p style="text-align: center">
-        <html:submit onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
-        <html:reset value="Limpiar"/>
+        <html:submit styleClass="btn btn-primary" onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
+        <html:reset styleClass="btn btn-default" value="Limpiar"/>
     </p>
 </html:form>

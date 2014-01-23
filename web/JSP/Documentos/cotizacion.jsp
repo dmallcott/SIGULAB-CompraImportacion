@@ -20,11 +20,11 @@
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         cell1.innerHTML = "Item " + (rowCount + 1);
-        cell2.innerHTML = '<input required type="text" maxlength="50" name="nombre' + rowCount + '"/>';
-        cell3.innerHTML = '<input required type="text" placeholder="12,00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio' + rowCount + '"/>';
-        cell4.innerHTML = '<input required type="text" maxlength="20" name="tiempo' + rowCount + '"/>';
-        cell5.innerHTML = '<input required type="text" maxlength="20" name="condicion' + rowCount + '"/>';
-        cell6.innerHTML = '<input required type="text" maxlength="200" name="garantia' + rowCount + '"/>';
+        cell2.innerHTML = '<input class="form-control" required type="text" maxlength="50" name="nombre' + rowCount + '"/>';
+        cell3.innerHTML = '<input class="form-control" required type="text" placeholder="12,00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio' + rowCount + '"/>';
+        cell4.innerHTML = '<input class="form-control" required type="text" maxlength="20" name="tiempo' + rowCount + '"/>';
+        cell5.innerHTML = '<input class="form-control" required type="text" maxlength="20" name="condicion' + rowCount + '"/>';
+        cell6.innerHTML = '<input class="form-control" required type="text" maxlength="200" name="garantia' + rowCount + '"/>';
     }
 </script> 
 
@@ -39,65 +39,63 @@
 <html:form scriptLanguage="form" action="/agregarCotizacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
     <table border="0">
         <tbody style="overflow-x: scroll;">
-            <tr>
-                <td style="color: black">RIF</td>
-                <td><html:text property="rif" maxlength="12" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="rif"/></td>
-            </tr>
             
-            <tr>
-                <td style="color: black">Codigo Expediente</td>
-                <td><html:text property="codExpediente" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="codExpediente"/></td>
-            </tr>
+             <div class="form-group">
+             <label for="resena">RIF</label>
+             <html:errors  property="rif"/>
+             <html:text property="rif" maxlength="12" value="" onclick="this.value = ''" 
+                        errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>
             
+             <div class="form-group">
+             <label for="resena">Código Expediente</label>
+             <html:errors  property="codExpediente"/>
+             <html:text property="codExpediente" maxlength="50" value="" onclick="this.value = ''" 
+                        errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>            
+    
+             <div class="form-group">
+             <label for="resena">Nombre de la Empresa</label>
+             <html:errors  property="nomEmpresa"/>
+             <html:text property="nomEmpresa" maxlength="50" value="" 
+                        errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>              
             
-            <tr>
-                <td style="color: black">Nombre de la Empresa</td>
-                <td><html:text property="nomEmpresa" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="nomEmpresa"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Direccion de la Empresa</td>
-                <td><html:text property="direccion" maxlength="150" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="direccion"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Telefono</td>
-                <td><html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="telefono"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Fax</td>
-                <td><html:text property="fax" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="fax"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Correo</td>
-                <td><html:text property="correo" maxlength="50" value="XXXX@usb.ve" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="correo"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Persona de Contacto</td>
-                <td><html:text property="personaContacto" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick"><html:errors property="personaContacto"/></td>
-            </tr>
+             <div class="form-group">
+             <label for="resena">Dirección de la Empresa</label>
+             <html:errors  property="direccion"/>
+             <html:text property="direccion" maxlength="150" value="" 
+                        errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>             
+             
+             <div class="form-group">
+             <label for="resena">Teléfono</label>
+             <html:errors  property="telefono"/>
+             <html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" 
+                        errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div> 
+             
+             <div class="form-group">
+             <label for="resena">Fax</label>
+             <html:errors  property="fax"/>
+             <html:text property="fax" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" 
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>  
+             
+             <div class="form-group">
+             <label for="resena">Correo Electrónico</label>
+             <html:errors  property="correo"/>
+             <html:text property="correo" maxlength="50" value="XXXX@usb.ve" onclick="this.value = ''" 
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>  
+             
+             <div class="form-group">
+             <label for="resena">Persona de Contacto</label>
+             <html:errors  property="personaContacto"/>
+             <html:text property="personaContacto" maxlength="50" value=""
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>              
+             
         </tbody>
     </table>
     <div width="100%" style="overflow-x: scroll;">
@@ -113,20 +111,20 @@
             <tbody id="tabla" >
                 <tr>
                     <td>Item 1</td>
-                    <td><input required type="text" maxlength="50" name="nombre0"/></td>
-                    <td><input required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
-                    <td><input required type="text" placeholder="2 dias" maxlength="20" name="tiempo0"/></td>
-                    <td><input required type="text" maxlength="20" name="condicion0"/></td>
-                    <td><input required type="text" maxlength="200" name="garantia0"/></td>
+                    <td><input class="form-control" required type="text" maxlength="50" name="nombre0"/></td>
+                    <td><input class="form-control"  required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
+                    <td><input class="form-control" required type="text" placeholder="2 dias" maxlength="20" name="tiempo0"/></td>
+                    <td><input class="form-control" required type="text" maxlength="20" name="condicion0"/></td>
+                    <td><input class="form-control" required type="text" maxlength="200" name="garantia0"/></td>
                 </tr>
 
-            <button onclick="agregarItem()">Agregar Item</button>
+            <button class="btn btn-primary" onclick="agregarItem()">Agregar Item</button>
             </tbody>
         </table>
     </div>
 
     <p style="text-align: center">
-        <html:submit onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
-        <html:reset value="Limpiar"/>
+        <html:submit styleClass="btn btn-primary" onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
+        <html:reset styleClass="btn btn-default" value="Limpiar"/>
     </p>
 </html:form>

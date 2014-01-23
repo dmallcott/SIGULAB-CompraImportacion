@@ -25,73 +25,38 @@
 
 <html:form action="/agregarProveedor" method="POST" acceptCharset="ISO-8859-1" 
            enctype="multipart/form-data" onsubmit="return(this)">
-    <table border="0">
-        <tbody>
-            <tr>
-                <td style="color: black">RIF</td>
-                <td>
-                    <html:text name="Proveedor" property="RIF" maxlength="12" value="" errorStyleClass="error"
-                               errorKey="org.apache.struts.action.ERROR"></html:text>
+        <div class="form-group">
+            <label for="rif">RIF</label>
+            <html:errors  property="RIF"/>
+            <html:text name="Proveedor" property="RIF" maxlength="12" value="" errorStyleClass="error"
+                       errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
+        <div class="form-group">
+            <label for="compania">Proveedor</label>
+            <html:errors  property="compania"/>
+            <html:text name="Proveedor" property="compania" maxlength="50" value="" errorStyleClass="error"
+                               errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
+        <div class="form-group">
+            <label for="contacto">Contacto</label>
+            <html:errors  property="RIF"/>
+            <html:text name="Proveedor" property="contacto" maxlength="50" value="" errorStyleClass="error"
+                               errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
+        <div class="form-group">
+            <label for="resena">Reseña</label>
+            <html:errors  property="RIF"/>
+            <html:text name="Proveedor" property="resena" value="" errorStyleClass="error"
+                                   errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+        </div>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick">
-                    <html:errors  property="RIF"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="color: black">Nombre</td>
-                <td>
-                    <html:text name="Proveedor" property="compania" maxlength="50" value="" errorStyleClass="error"
-                               errorKey="org.apache.struts.action.ERROR"></html:text>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick">
-                    <html:errors property="compania"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="color: black">Contacto</td>
-                <td>
-                    <html:text name="Proveedor" property="contacto" maxlength="50" value="" errorStyleClass="error"
-                               errorKey="org.apache.struts.action.ERROR"></html:text>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick">
-                    <html:errors  property="telefono"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="color: black">Resena</td>
-                <td>
-                    <html:textarea name="Proveedor" property="resena" value="" errorStyleClass="error"
-                                   errorKey="org.apache.struts.action.ERROR"></html:textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="color:firebrick">
-                    <html:errors property="resena"/>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2" style="color:firebrick">
-                    <html:errors property="registro"/>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            
+            
     <p style="text-align: center">
-        <html:submit onclick="javascript: return confirm('¿Esta seguro de que los datos son correctos?')">
+        <html:submit styleClass="btn btn-primary" onclick="javascript: return confirm('¿Esta seguro de que los datos son correctos?')">
             Agregar Proveedor
         </html:submit>
-        <html:reset value="Limpiar"/>
+        <html:reset styleClass="btn btn-default" value="Limpiar"/>
     </p>
 
 </html:form>   

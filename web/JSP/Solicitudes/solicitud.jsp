@@ -11,144 +11,152 @@
 <table>
     <tr>
         <td>
-            <div>
-                <h3>Especificacion Tecnica del Bien</h3>
-                <logic:empty name="expediente" property="codEspecificacionBien">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Nuevo</html:submit>
-                    </html:form>
-                </logic:empty>
+            <div class="thumbnail">
+                <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                <div class="caption">
+                    <h4>Especificacion Tecnica del Bien</h4>
+                    <logic:empty name="expediente" property="codEspecificacionBien">
+                        <html:form  onsubmit="return(this)">
+                            <html:submit styleClass="btn btn-default">Nuevo</html:submit>
+                        </html:form>
+                    </logic:empty>
+                    <logic:notEmpty name="expediente" property="codEspecificacionBien">
+                        <html:form  onsubmit="return(this)">
+                            <html:submit  styleClass="btn btn-default">Editar</html:submit>
+                        </html:form>
 
-                <logic:notEmpty name="expediente" property="codEspecificacionBien">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Editar</html:submit>
-                    </html:form>
-                </logic:notEmpty>
-
-
-                <html:form onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codCartaInvitacion"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
+                        <html:form onsubmit="return(this)">
+                            <html:hidden name="expediente" property="codEspecificacionBien"/>
+                            <html:submit style="margin-top:10px" styleClass="btn btn-primary">Descargar</html:submit>
+                        </html:form>
+                    </logic:notEmpty>
+                </div>
             </div>
         </td>
     </tr>
     <logic:greaterThan name="tipo" value="0">
-        
-    
-    <tr>
-        <td>
-            <div>
-                <h3>Cotizaciones</h3>
-                
-                <html:form onsubmit="return(this)">
-                    <html:submit>Ver</html:submit>
-                </html:form>
+        <tr>
+            <td>
+                <div class="thumbnail">
+                    <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                    <div class="caption">
+                        <h4>Cotizaciones</h4>
+                        <html:form onsubmit="return(this)">
+                            <html:hidden name="expediente" property="codEspecificacionBien"/>
+                            <html:submit styleClass="btn btn-default">Ver</html:submit>
+                        </html:form>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="thumbnail">
+                    <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                    <div class="caption">
+                        <h4>Informe de Recomendacion</h4>
+                        <logic:empty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit styleClass="btn btn-default">Nuevo</html:submit>
+                            </html:form>
+                        </logic:empty>
+                        <logic:notEmpty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit  styleClass="btn btn-default">Editar</html:submit>
+                            </html:form>
 
-                <html:form onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codRequesicion"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
-            </div>
-        </td>
-        <td>
-            <div>
-                <h3>Informe de Recomendacion</h3>
-                <logic:empty name="expediente" property="codInformeRecomendacion">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Nuevo</html:submit>
-                    </html:form>
-                </logic:empty>
+                            <html:form onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codEspecificacionBien"/>
+                                <html:submit style="margin-top:10px" styleClass="btn btn-primary">Descargar</html:submit>
+                            </html:form>
+                        </logic:notEmpty>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr >
+            <td colspan="2">
+                <div class="thumbnail" style="background: #269abc">
+                    <div class="caption" style="text-align: center">
+                        <h3 style="margin-top: 0; color: white;">Revision de Presupuesto</h3>
+                    </div>
+                </div>
+            <td>
+        </tr>
+        <tr>
+            <td>
+                <div class="thumbnail">
+                    <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                    <div class="caption">
+                        <h4>Requisicion</h4>
+                        <logic:empty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit styleClass="btn btn-default">Nuevo</html:submit>
+                            </html:form>
+                        </logic:empty>
+                        <logic:notEmpty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit  styleClass="btn btn-default">Editar</html:submit>
+                            </html:form>
 
-                <logic:notEmpty name="expediente" property="codInformeRecomendacion">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Editar</html:submit>
-                    </html:form>
-                </logic:notEmpty>
-
-
-                <html:form onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codInformeRecomendacion"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
-            </div>
-        </td>
-    </tr>
-    <tr style="height: 50px; text-align: center; background: blue; color:white;">
-    <td class="row">REVISION DE PRESUPUESTO<td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                <h3>Requisicion</h3>
-                <logic:empty name="expediente" property="codRequesicion">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Nuevo</html:submit>
-                    </html:form>
-                </logic:empty>
-
-                <logic:notEmpty name="expediente" property="codRequesicion">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Editar</html:submit>
-                    </html:form>
-                </logic:notEmpty>
-
-
-                <html:form onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codRequesicion"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
-            </div>
-        </td>
-    </tr>  
+                            <html:form onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codEspecificacionBien"/>
+                                <html:submit style="margin-top:10px" styleClass="btn btn-primary">Descargar</html:submit>
+                            </html:form>
+                        </logic:notEmpty>
+                    </div>
+                </div>
+            </td>
+        </tr>  
     </logic:greaterThan>
     <logic:greaterThan name="tipo" value="1">
-    <tr> 
-        <td>
-            <div>
-                <h3>Acto Motivado</h3>
-                <logic:empty name="expediente" property="codActoMotivado">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Nuevo</html:submit>
-                    </html:form>
-                </logic:empty>
+        <tr> 
+            <td>
+                <div class="thumbnail">
+                    <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                    <div class="caption">
+                        <h4>Acto Motivado</h4>
+                        <logic:empty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit styleClass="btn btn-default">Nuevo</html:submit>
+                            </html:form>
+                        </logic:empty>
+                        <logic:notEmpty name="expediente" property="codEspecificacionBien">
+                            <html:form  onsubmit="return(this)">
+                                <html:submit  styleClass="btn btn-default">Editar</html:submit>
+                            </html:form>
 
-                <logic:notEmpty name="expediente" property="codActoMotivado">
-                    <html:form onsubmit="return(this)">
-                        <html:submit>Editar</html:submit>
-                    </html:form>
-                </logic:notEmpty>
+                            <html:form onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codEspecificacionBien"/>
+                                <html:submit style="margin-top:10px" styleClass="btn btn-primary">Descargar</html:submit>
+                            </html:form>
+                        </logic:notEmpty>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="thumbnail">
+                    <img class="img-rounded" src="./Plantilla/static/img/actomotivado.png">
+                    <div class="caption">
+                        <h4>Carta Invitacion</h4>
+                        <logic:empty name="expediente" property="codCartaInvitacion">
+                            <html:form action="/reqAgregarCartaInvitacion" onsubmit="return(this)">
+                                <html:submit styleClass="btn btn-default">Nuevo</html:submit>
+                            </html:form>
+                        </logic:empty>
+                        <logic:notEmpty name="expediente" property="codCartaInvitacion">
+                            <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
+                                <html:submit  styleClass="btn btn-default">Editar</html:submit>
+                            </html:form>
 
 
-                <html:form onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codActoMotivado"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
-            </div>
-        </td>
-        <td>
-            <div>
-                <h3>Carta de Invitacion</h3>
-                <logic:empty name="expediente" property="codCartaInvitacion">
-                    <html:form action="/reqAgregarCartaInvitacion" onsubmit="return(this)">
-                        <html:submit>Nuevo</html:submit>
-                    </html:form>
-                </logic:empty>
 
-                <logic:notEmpty name="expediente" property="codCartaInvitacion">
-                    <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
-                        <html:hidden name="expediente" property="codCartaInvitacion"/>
-                        <html:submit>Editar</html:submit>
-                    </html:form>
-                </logic:notEmpty>
-
-
-                <html:form action="/descargarCartaInvitacion" onsubmit="return(this)">
-                    <html:hidden name="expediente" property="codCartaInvitacion"/>
-                    <html:submit>Descargar</html:submit>
-                </html:form>
-            </div>
-        </td>
-    </tr>
+                            <html:form action="/descargarCartaInvitacion" onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codCartaInvitacion"/>
+                                <html:submit style="margin-top:10px" styleClass="btn btn-primary">Descargar</html:submit>
+                            </html:form>
+                        </logic:notEmpty>
+                    </div>
+                </div>
+            </td>
+        </tr>
     </logic:greaterThan>
 </table>
