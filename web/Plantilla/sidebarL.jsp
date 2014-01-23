@@ -60,8 +60,18 @@ u    ul#menu li:hover #sub1 {
     
     
 </style>
-<div style="body">
-    <ul>
+<%--
+    OJOOOOOOOOOOOOOO QUITA ESTA VAINA QUE SE VE DESDE CTRL+SHIFT+I
+    Definicion de tipos:
+        0 = Usuario General
+        1 = Jefe de Lab
+        2 = Asistente de Internacional
+        3 = Asistente de Nacional
+        4 = Coordinador Internacional
+        5 = Coordinador Nacional
+--%>
+<div>
+    <ul style="padding-left: 0;font-size: 11px">
         <li>
             <html:link action="/reqNuevaSolicitud">Nueva Solicitud</html:link>
         </li>
@@ -77,7 +87,7 @@ u    ul#menu li:hover #sub1 {
             </li>
             <li>
                 <div>Documentos</div>
-                <ul>
+                <ul style="padding-left: 0">
                     <li> <html:link action="/reqAgregarCartaInvitacion">Agregar carta de invitacion</html:link></li>
                     <li><html:link action="/reqAgregarCotizacion">Agregar cotizacion</html:link></li>
                     <li><html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link></li>
@@ -91,6 +101,5 @@ u    ul#menu li:hover #sub1 {
             <li>
                 <html:link action="/cerrarSesion">Salir</html:link>
             </li>
-                
     </ul>
 </div>            
