@@ -58,13 +58,13 @@
     </p>
 </logic:present>  
 
-  <div class="panel panel-primary  span11 table-scrollable" style="width: 635px;margin-left: -23px">
+  <div class="panel panel-primary  span11 table-scrollable" style="width: auto;margin-left: -23px">
   <!-- Default panel contents -->
-  <div class="panel-heading" style="width:148%">Proveedores</div>
+<!--  <div class="panel-heading">Proveedores</div>-->
   <!-- Table -->
 
-  <table class="table table-hover" >
-      <thead>
+  <table class="table table-hover">
+      <thead style=" background: #428bca">
       <tr>
         <th> RIF </th>
         <th> Compañía </th>

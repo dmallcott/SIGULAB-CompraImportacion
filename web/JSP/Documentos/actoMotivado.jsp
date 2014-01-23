@@ -20,55 +20,55 @@
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
             </tr>
-            <tr>
-            <tr>
-                <td style="color: black">Proveedor</td>
-                <td><html:text property="proveedor" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="proveedor"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Bien o Servicio</td>
-                <td><html:text property="bienOServicio" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="bienOServicio"/></td>
-            </tr>
-                <td style="color: black">Motivo Requerimiento</td>
-                <td><html:text property="motivoReq" maxlength="200" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="motivoReq"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Responsable</td>
-                <td><html:text property="responsable" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="responsable"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Justificacion</td>
-                <td><html:text property="justificacion" maxlength="300" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="justificacion"/></td>
-            </tr>  
-            <tr>
-                <td style="color: black">Proveniente de</td>
-                <td><html:text property="proveniente" maxlength="20" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="proveniente"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Cargo</td>
-                <td><html:text property="cargo" maxlength="50" value="" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="cargo"/></td>
-            </tr>
+            
+             <div class="form-group">
+             <label for="proveedor">Proveedor</label>
+             <html:errors  property="proveedor"/>
+             <html:text property="proveedor" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>           
+            
+             <div class="form-group">
+             <label for="bienOServicio">Bien o Servicio</label>
+             <html:errors  property="bienOServicio"/>
+             <html:text property="bienOServicio" maxlength="100" value="" onclick="this.value = ''" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div> 
+        
+             <div class="form-group">
+             <label for="motivoReq">Motivo Requerimiento</label>
+             <html:errors  property="motivoReq"/>
+             <html:text property="motivoReq" maxlength="200" value="" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>   
+             
+             <div class="form-group">
+             <label for="responsable">Responsable</label>
+             <html:errors  property="responsable"/>
+             <html:text property="responsable" maxlength="50" value="" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+            </div>  
+             
+             <div class="form-group">
+             <label for="justificacion">Justificación</label>
+             <html:errors  property="responsable"/>
+             <html:text property="responsable" maxlength="300" value="" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+             </div>             
+             
+             <div class="form-group">
+             <label for="proveniente">Proveniente</label>
+             <html:errors  property="proveniente"/>
+             <html:text property="proveniente" maxlength="20" value="" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+             </div>
+             
+             <div class="form-group">
+             <label for="cargo">Cargo</label>
+             <html:errors  property="cargo"/>
+             <html:text property="cargo" maxlength="50" value="" errorStyleClass="error"
+                        errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+             </div>             
         </tbody>
     </table>
     <p style="text-align: center">

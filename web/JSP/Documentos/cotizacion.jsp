@@ -20,11 +20,11 @@
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         cell1.innerHTML = "Item " + (rowCount + 1);
-        cell2.innerHTML = '<input required type="text" maxlength="50" name="nombre' + rowCount + '"/>';
-        cell3.innerHTML = '<input required type="text" placeholder="12,00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio' + rowCount + '"/>';
-        cell4.innerHTML = '<input required type="text" maxlength="20" name="tiempo' + rowCount + '"/>';
-        cell5.innerHTML = '<input required type="text" maxlength="20" name="condicion' + rowCount + '"/>';
-        cell6.innerHTML = '<input required type="text" maxlength="200" name="garantia' + rowCount + '"/>';
+        cell2.innerHTML = '<input class="form-control" required type="text" maxlength="50" name="nombre' + rowCount + '"/>';
+        cell3.innerHTML = '<input class="form-control" required type="text" placeholder="12,00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio' + rowCount + '"/>';
+        cell4.innerHTML = '<input class="form-control" required type="text" maxlength="20" name="tiempo' + rowCount + '"/>';
+        cell5.innerHTML = '<input class="form-control" required type="text" maxlength="20" name="condicion' + rowCount + '"/>';
+        cell6.innerHTML = '<input class="form-control" required type="text" maxlength="200" name="garantia' + rowCount + '"/>';
     }
 </script> 
 
@@ -112,7 +112,7 @@
                 <tr>
                     <td>Item 1</td>
                     <td><input class="form-control" required type="text" maxlength="50" name="nombre0"/></td>
-                    <td><input class="form-control" required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
+                    <td><input class="form-control"  required type="text" placeholder="12.00" pattern="[0-9]*[\\.][0-9]*" title="Utilize decimales positivos." name="precio0"/></td>
                     <td><input class="form-control" required type="text" placeholder="2 dias" maxlength="20" name="tiempo0"/></td>
                     <td><input class="form-control" required type="text" maxlength="20" name="condicion0"/></td>
                     <td><input class="form-control" required type="text" maxlength="200" name="garantia0"/></td>

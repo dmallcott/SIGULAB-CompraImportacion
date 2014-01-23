@@ -10,30 +10,19 @@
 
 <html:form action="/nuevaSolicitud" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
     <table>
-        <thead>
-        <th>
-            Descripcion
-        </th>
-        <th>
-            Tipo
-        </th>
-        <th>
-            
-        </th>
-        </thead>
-        <tr>
-            <td>
-                <html:textarea property="descripcion"></html:textarea>
-            </td>
-            <td>
-        <html:select property="tipo">
-            <html:option value="compra">Compra</html:option>
-            <html:option value="servicio">Servicio</html:option>
-        </html:select>
-            </td>
-            <td>
-            <html:submit>Crear</html:submit>
-            </td>
-        </tr>
+        
+          <div class="form-group">
+             <label for="resena">Descripción</label>
+             <html:textarea property="descripcion" styleClass="form-control"></html:textarea>
+          </div> 
+          
+          <label for="tipo">Tipo</label>
+        <html:select styleClass="form-control" style="width:103px" property="tipo">
+             <html:option value="compra">Compra</html:option>
+             <html:option value="servicio">Servicio</html:option>
+        </html:select>        
+
+        <html:submit styleClass="btn btn-primary" style="margin-top:10px">Crear</html:submit>
+
     </table>
 </html:form>

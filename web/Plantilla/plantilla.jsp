@@ -60,7 +60,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="font-size:11px;">
         <div class="container container-full ">
             <div class="row show-grid" style="height: 170px;margin-left: -90px">
                 <div class="col-xs-12">
