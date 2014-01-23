@@ -27,7 +27,8 @@
         <tbody>
             <tr>
                 <td style="color: black">Fecha</td>
-                <td><html:text property="fecha" maxlength="10" value="${CartaInvitacion.fecha}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="fecha" maxlength="10" value="${CartaInvitacion.fecha}" 
+                           errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
@@ -36,27 +37,28 @@
             <div class="form-group">
              <label for="resena">Nombre de la Empresa</label>
              <html:errors  property="nomEmpresa"/>
-             <html:text property="nomEmpresa" value="" errorStyleClass="error"
+             <html:text property="nomEmpresa" value="${CartaInvitacion.nomEmpresa}" errorStyleClass="error"
                                    errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
             </div>
         
             <div class="form-group">
              <label for="resena">Dirección de la Empresa</label>
              <html:errors  property="direccion"/>
-             <html:text property="direccion" value="" errorStyleClass="error"
+             <html:text property="direccion" value="${CartaInvitacion.direccion}" errorStyleClass="error"
                                    errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
             </div>
 
             <div class="form-group">
              <label for="resena">Número de fax</label>
              <html:errors  property="telefono"/>
-             <html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
+             <html:text property="telefono" maxlength="12" value="${CartaInvitacion.fecha}" 
+                        onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
             </div>             
              
             <div class="form-group">
              <label for="resena">Correo Electrónico</label>
              <html:errors  property="correo"/>
-             <html:text property="correo" value="" errorStyleClass="error"
+             <html:text property="correo" value="${CartaInvitacion.correo}" errorStyleClass="error"
                                    errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
             </div>
 
