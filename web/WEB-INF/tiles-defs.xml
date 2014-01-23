@@ -29,6 +29,12 @@
         <put name="body_title" value="Carta de Invitacion" type="string"/>
     </definition>
     
+    <definition name="editarCartaInvitacion" extends="base"> <!-- Vista coordinador -->
+        <put name="body" value="/JSP/Documentos/cartaInvitacion.jsp"/>
+        <put name="page_title" value="ULAB: Carta de Invitacion" type="string"/>
+        <put name="body_title" value="Carta de Invitacion" type="string"/>
+    </definition>
+    
     <definition name="agregarCotizacion" extends="base"> <!-- Vista coordinador -->
         <put name="body" value="/JSP/Documentos/cotizacion.jsp"/>
         <put name="page_title" value="ULAB: Cotizacion" type="string"/>

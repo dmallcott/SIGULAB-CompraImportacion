@@ -8,6 +8,13 @@
 <%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
+
+<style type="text/css">
+ .table-scrollable{
+    overflow: auto;
+}
+
+</style>
 <logic:present name="eliminado">
     <br>
     <p align ="center" style="background-color: springgreen;
@@ -51,38 +58,28 @@
     </p>
 </logic:present>  
 
+  <div class="panel panel-primary  span11 table-scrollable" style="width: auto;margin-left: -23px">
+  <!-- Default panel contents -->
+<!--  <div class="panel-heading">Proveedores</div>-->
+  <!-- Table -->
 
-<div width="100%" style="overflow-x: scroll;">
-<table border="0">
-    <thead style="">
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        RIF
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Compania
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Telefono
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Resena
-    </th> 
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Estado
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Editar
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Deshabilitar
-    </th>
-    <th style="color: white; font-weight: bold;background: #1c6ea0; border: 2px solid white;">
-        Eliminar
-    </th>
-</thead>
-<logic:iterate name="proveedores" id="Proveedores">
+  <table class="table table-hover">
+      <thead style=" background: #428bca">
+      <tr>
+        <th> RIF </th>
+        <th> Compañía </th>
+        <th> Telefono </th>
+        <th> Reseña </th>
+        <th> Estado </th>
+        <th> Editar </th>
+        <th> Deshabilitar </th>
+        <th> Eliminar </th>
+      </tr>
+      </thead>
+      
+      <logic:iterate name="proveedores" id="Proveedores">
     <tr>
-        <td>
+        <td nowrap>
             <p><bean:write name="Proveedores" property="RIF"></bean:write></p>
             </td>
             <td>
@@ -128,5 +125,5 @@
         </td>
     </tr>
 </logic:iterate> 
-</table>
+  </table>
 </div>

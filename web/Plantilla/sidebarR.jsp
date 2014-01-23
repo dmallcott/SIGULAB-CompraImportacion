@@ -8,11 +8,11 @@
     #right {  
         width: 200px;          /* LC width */
         right: 200px;          /* LC width */
-        margin-left: -100%;
+        margin-top:1.5px;
     }
 </style>
 <div id="right"
-     <p><a href="http://www.ulab.usb.ve"><img alt="" src="Plantilla/static/img/logo_ulab.gif"/></a></p>
+     <p><img alt="" src="Plantilla/static/img/logo_ulab.gif"/></p>
     <p><img alt="" src="Plantilla/static/img/innovar.gif" /></p>
     <p><a href="http://www.ulab.usb.ve/jornadas"><img alt="" src="Plantilla/static/img/stickers_jornadas.jpg" /></a></p>
     <p><a href="http://159.90.91.211/sites/default/files/catalogo_ulab.pdf"><img alt="" src="Plantilla/static/img/cat_ulab.jpg" /></a></p>

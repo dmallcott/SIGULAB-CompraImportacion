@@ -19,8 +19,8 @@
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         cell1.innerHTML = "Item " + (numeroItems+1);
-        cell2.innerHTML = '<input required type="text" maxlength="200" name="caracteristica'+numeroItems+'"/>';
-        cell3.innerHTML = '<input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+numeroItems+'"/>';
+        cell2.innerHTML = '<input class="form-control" required type="text" maxlength="200" name="caracteristica'+numeroItems+'"/>';
+        cell3.innerHTML = '<input class="form-control" required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad'+numeroItems+'"/>';
         numeroItems++;
     }
 </script> 
@@ -38,19 +38,18 @@
             <tbody id="tabla" style="overflow: scroll">
                 <tr>
                     <td>Item 1</td>
-                    <td><input required type="text" maxlength="200" name="caracteristica0"/></td>
-                    <td><input required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad0"/></td>
+                    <td><input class="form-control" required type="text" maxlength="200" name="caracteristica0"/></td>
+                    <td><input  class="form-control"required type="text" pattern="[0-9]*" title="Utilize numeros positivos y enteros." name="cantidad0"/></td>
                 </tr>
-                
-                
-                <button onclick="agregarItem()">Agregar Item</button>
+                <button class="btn btn-primary btn-sm" onclick="agregarItem()">Agregar Item</button>
             </tbody>
         </table>
         </tbody>
     </table>
+
     <p style="text-align: center">
-        <html:submit onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
-        <html:reset value="Limpiar"/>
+        <html:submit styleClass="btn btn-primary" onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
+        <html:reset styleClass="btn btn-default" value="Limpiar"/>
         <%--<html:button property="/" value="Agregar otro item"></html:button>--%>
     </p>
 </html:form>

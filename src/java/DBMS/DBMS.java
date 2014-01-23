@@ -550,16 +550,17 @@ public class DBMS {
                 return false;
             }
 
-            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?,?)");
+            psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2,cotizacion.getCodExpediente());
-            psAgregar.setString(3, cotizacion.getCorreo());
-            psAgregar.setString(4, cotizacion.getDireccion());
-            psAgregar.setString(5, cotizacion.getFax());     
-            psAgregar.setString(6, cotizacion.getNomEmpresa());
-            psAgregar.setString(7, cotizacion.getPersonaContacto());
-            psAgregar.setString(8, cotizacion.getRif());
-            psAgregar.setString(9, cotizacion.getTelefono());
+            psAgregar.setString(3, cotizacion.getCodRecibido());
+            psAgregar.setString(4, cotizacion.getCorreo());
+            psAgregar.setString(5, cotizacion.getDireccion());
+            psAgregar.setString(6, cotizacion.getFax());     
+            psAgregar.setString(7, cotizacion.getNomEmpresa());
+            psAgregar.setString(8, cotizacion.getPersonaContacto());
+            psAgregar.setString(9, cotizacion.getRif());
+            psAgregar.setString(10, cotizacion.getTelefono());
             
 
             Integer j = psAgregar.executeUpdate();
@@ -621,6 +622,7 @@ public class DBMS {
 
             if (rs.next()) {
                 expediente.setCodigo(codigo);
+                expediente.setCodActoMotivado(rs.getString("codactomotivado"));
                 expediente.setCodCartaInvitacion(rs.getString("codcartainvitacion"));
                 expediente.setCodEspecificacionBien(rs.getString("codespecificacionbien"));
                 expediente.setCodInformeRecomendacion(rs.getString("codinformerecomendacion"));
@@ -683,7 +685,7 @@ public class DBMS {
             }
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".expediente "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, null);
             psAgregar.setString(3, null);
@@ -691,10 +693,11 @@ public class DBMS {
             psAgregar.setString(5, null);
             psAgregar.setString(6, null);
             psAgregar.setString(7, null);
-            psAgregar.setString(8, expediente.getDescripcion());
-            psAgregar.setString(9, null);
-            psAgregar.setString(10, user.getUsbid());
-            psAgregar.setString(11, null);
+            psAgregar.setString(8, null);
+            psAgregar.setString(9, expediente.getDescripcion());
+            psAgregar.setString(10, null);
+            psAgregar.setString(11, user.getUsbid());
+            psAgregar.setString(12, null);
 
             Integer i = psAgregar.executeUpdate();
 

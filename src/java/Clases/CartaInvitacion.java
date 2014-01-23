@@ -34,7 +34,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String fecha;
     private String nomEmpresa;
     private String direccion;
-    //private String presente;
     private String telefono;
     private String correo;
     private String diaOferta;
@@ -79,9 +78,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
      public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
          ActionErrors errors = new ActionErrors();
  
-         if (!validateFecha(fecha)) {
-             errors.add("fecha", new ActionMessage("error.fecha.invalida"));
-         }
+         
  
          if (!validateTelefono(telefono)) {
              errors.add("telefono", new ActionMessage("error.telefono.invalido"));

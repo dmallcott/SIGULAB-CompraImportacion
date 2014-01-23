@@ -146,8 +146,9 @@
         </action>
         
         <!-- DOCUMENTOS -->
+        
         <!-- Carta de Invitacion -->
-        <action input="/*"
+        <action input="/misSolicitudes"
                 path="/reqAgregarCartaInvitacion"
                 type="Actions.Documentos.CartaInvitacion.ReqAgregarCartaInvitacion"
                 scope="request"
@@ -156,22 +157,34 @@
             <forward name="success" path="agregarCartaInvitacion"/>
         </action>
         
-        <action input="/reqAgregarCartaInvitacion"
-                path="/agregarCartaInvitacion"
-                type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
-                scope="request"
-                name="CartaInvitacion"
-                validate="false">
-            <forward name="failure" path="agregarCartaInvitacion"/>
-            <forward name="success" path="home"/>
-        </action>
-        
         <action input="/misSolicitudes"
                 path="/reqEditarCartaInvitacion"
                 type="Actions.Documentos.CartaInvitacion.ReqEditarCartaInvitacion"
                 scope="request"
                 name="CartaInvitacion"
+                validate="true">
+            <forward name="success" path="editarCartaInvitacion"/>
+        </action>
+        
+        <action input="/reqAgregarCartaInvitacion"
+                path="/agregarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
+                scope="request"
+                name="CartaInvitacion"
+                validate="true"
+                cancellable="true">
+            <forward name="failure" path="agregarCartaInvitacion"/>
+            <forward name="success" path="home"/>
+        </action>
+        
+        <action input="/reqEditarCartaInvitacion"
+                path="/agregarCartaInvitacion"
+                type="Actions.Documentos.CartaInvitacion.AgregarCartaInvitacion"
+                scope="request"
+                name="CartaInvitacion"
                 validate="false">
+            <forward name="failure" path="editarCartaInvitacion"/>
+            <forward name="success" path="misSolicitudes"/>
         </action>
         
         <action input="/misSolicitudes"
@@ -182,6 +195,8 @@
                 validate="false">
             <forward name="descarga_fallida" path="verSolicitud"/>
         </action>
+        <!-- END Carta de Invitacion -->
+        
 
         <!-- Agregar Cotizacion -->
         <action input="/*"
