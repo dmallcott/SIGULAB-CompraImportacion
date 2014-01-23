@@ -42,26 +42,18 @@
             <field property="telefono" depends="mask,required">
                 <arg0 key="FAX" resource="false"/>
                 <arg1 key="0212-XXXXXXX" resource="false"/>
-                <var><var-name>mask</var-name></var>
-                <var-value>^\A(0212){1}\d{7}$</var-value>
+                <var><var-name>mask</var-name><var-value>^0212[-]\d{7}$</var-value></var>
             </field>
             <field property="correo" depends="mask,required">
                 <arg0 key="correo" resource="false"/>
                 <arg1 key="XXXXX@usb.ve" resource="false"/>
-                <var><var-name>mask</var-name></var>
-                <var-value>^[A-Z0-9._%+-]+@usb.ve$$</var-value>
-            </field>
-            <field property="diaOferta" depends="mask,required">
-                <arg0 key="dia de la oferta" resource="false"/>
-                <arg1 key="tiene que ser un numero de dos " resource="false"/>
-                <var><var-name>mask</var-name></var>
-                <var-value>^(0[1-9]|[12]\d|3[01])$</var-value>
-            </field>
-            <field property="mesOferta" depends="required">
-                <arg0 key="Mes de la oferta" resource="false"/>
+                <var><var-name>mask</var-name><var-value>^[a-zA-Z0-9\._-]*@usb.ve$</var-value></var>
             </field>
             <field property="contacto" depends="required">
                 <arg0 key="Info. del contacto" resource="false"/>
+            </field>
+            <field property="fechaOferta" depends="required">
+                <arg0 key="El dia final de la oferta" resource="false"/>
             </field>
         </form>
         

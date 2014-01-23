@@ -7,6 +7,36 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+  $(function() {
+ //Array para dar formato en español
+  $.datepicker.regional['es'] =
+  {
+  closeText: 'Cerrar',
+  prevText: 'Previo',
+  nextText: 'Próximo',
+  monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+  'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+  monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+  'Jul','Ago','Sep','Oct','Nov','Dic'],
+  monthStatus: 'Ver otro mes', yearStatus: 'Ver otro año',
+  dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+  dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
+  dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+  dateFormat: 'dd/mm/yy', firstDay: 0,
+  initStatus: 'Selecciona la fecha', isRTL: false};
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+ //miDate: fecha de comienzo D=días | M=mes | Y=año
+ //maxDate: fecha tope D=días | M=mes | Y=año
+    $( "#datepicker" ).datepicker({ minDate: "-1D", maxDate: "+1M +10D", dateFormat: "yy-MM-dd" });
+  });
+  </script>
+
+<link rel="stylesheet" href="/resources/demos/style.css">
+
 <logic:present name="noAgregado">
     <br>
     <p align ="center" style="background-color: firebrick; color: white;
@@ -60,32 +90,9 @@
             </tr>
             <tr>
                 <td style="color: black">Dia final de la oferta</td>
-                <td><html:text property="diaOferta" maxlength="2" value="Ej: 02" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text styleId="datepicker" property="fechaOferta" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="diaOferta"/></td>
-            </tr>
-            <tr>
-                <td style="color: black">Mes final de la oferta</td>
-                <td><html:select property="mesOferta" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR">
-                        <html:option value="">----</html:option>
-                            <html:option value="Enero">Enero</html:option>
-                            <html:option value="Febrero">Febrero</html:option>
-                            <html:option value="Marzo">Marzo</html:option>
-                            <html:option value="Abril">Abril</html:option>
-                            <html:option value="Mayo">Mayo</html:option>
-                            <html:option value="Junio">Junio</html:option>
-                            <html:option value="Julio">Julio</html:option>
-                            <html:option value="Agosto">Agosto</html:option>
-                            <html:option value="Septiembre">Septiembre</html:option>
-                            <html:option value="Octubre">Octubre</html:option>
-                            <html:option value="Noviembre">Noviembre</html:option>
-                            <html:option value="Diciembre">Diciembre</html:option>
-                    </html:select></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="color:firebrick"><html:errors property="mesOferta"/></td>
-            </tr>
+            
             <tr>
                 <td style="color: black">Informacion de Contacto</td>
                 <td><html:text property="contacto" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>

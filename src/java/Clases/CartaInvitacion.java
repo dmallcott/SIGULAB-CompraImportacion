@@ -42,6 +42,8 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
     private String contacto;
     private String responsable;
     private String unidadSolicitante;
+    private String fechaOferta;
+
 
     // to be eliminated
      private Pattern patron;
@@ -51,17 +53,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
      private static final String patronDia = "^(0[1-9]|[12]\\d|3[01])$";
      private static final String patronMes = "^(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)$";
  
-     public boolean validateMesOferta(final String dia) {
-         patron = Pattern.compile(patronMes);
-         match = patron.matcher(dia);
-         return match.matches();
-     }
- 
-     public boolean validateDiaOferta(final String dia) {
-         patron = Pattern.compile(patronDia);
-         match = patron.matcher(dia);
-         return match.matches();
-     }
  
      public boolean validateTelefono(final String telefono) {
          patron = Pattern.compile(patronTelefono);
@@ -98,14 +89,6 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
  
          if (!validateCorreo(correo)) {
              errors.add("correo", new ActionMessage("error.correo.invalido"));
-         }
- 
-         if (!validateDiaOferta(diaOferta)) {
-             errors.add("diaOferta", new ActionMessage("error.diaoferta.invalido"));
-         }
- 
-         if (!validateMesOferta(mesOferta)) {
-             errors.add("mesOferta", new ActionMessage("error.mesoferta.invalido"));
          }
  
          if (nomEmpresa.matches("\\w") || nomEmpresa.equals("")) {
@@ -278,5 +261,13 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getFechaOferta() {
+        return fechaOferta;
+    }
+
+    public void setFechaOferta(String fechaOferta) {
+        this.fechaOferta = fechaOferta;
     }
 }

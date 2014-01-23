@@ -260,6 +260,9 @@ public class DBMS {
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigocarta(?);");
             psConsultar.setString(1, user.getUnidad());
+            
+            String fecha = carta.getFechaOferta();
+            String[] fechaDividida = fecha.split("-");
 
             ResultSet rs = psConsultar.executeQuery();
             String nuevoCodigo;
@@ -273,10 +276,10 @@ public class DBMS {
             psAgregar.setString(1, nuevoCodigo);
             psAgregar.setString(2, carta.getContacto());
             psAgregar.setString(3, carta.getCorreo());
-            psAgregar.setString(4, carta.getDiaOferta());
+            psAgregar.setString(4, fechaDividida[2]);
             psAgregar.setString(5, carta.getDireccion());
             psAgregar.setDate(6, Date.valueOf(carta.getFecha()));
-            psAgregar.setString(7, carta.getMesOferta());
+            psAgregar.setString(7, fechaDividida[1]);
             psAgregar.setString(8, carta.getNomEmpresa());
             psAgregar.setString(9, user.getNombre());
             psAgregar.setString(10, carta.getTelefono());
