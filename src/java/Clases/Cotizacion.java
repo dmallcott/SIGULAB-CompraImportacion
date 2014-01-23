@@ -37,6 +37,7 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
     private String correo;
     private String personaContacto;
     private String codExpediente;
+    private String codRecibido;
     private ArrayList<Item> items;
     
     // Variables para uso del sistema
@@ -102,7 +103,16 @@ public class Cotizacion extends org.apache.struts.action.ActionForm {
         this.personaContacto = personaContacto;
     }
 
+    public String getCodRecibido() {
+        return codRecibido;
+    }
 
+    public void setCodRecibido(String codRecibido) {
+        this.codRecibido = codRecibido;
+    }
+
+
+    
     public String getGenPath() {
         return genPath;
     }

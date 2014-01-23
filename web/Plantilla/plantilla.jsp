@@ -32,33 +32,20 @@
             });
         </script>
         <style>
-            .container-full {
-                padding-left: 100px;   
-                padding-right: 50px;  
-                width: 1024px;
-                height: 768px;
-            }
+            
             
             body {  
                 width: 100%;
             }
-            
-            col-xs-6 {               
-                width: 460px;
-                padding-left: 0px;
-                padding-right: 0px;
-            }
         </style>
     </head>
     <body>
-        <div class="container container-full ">
-            <div class="row show-grid" style="height: 170px;">
-                <div class="col-xs-12">
-                    <tiles:insert attribute="banner"/>
-                </div>
+        <div class="container" style="width:80%">
+            <div class="row show-grid" style="padding-bottom: 4%;">
+                <tiles:insert attribute="banner"/>
             </div>
             <div class="row show-grid">
-                <div class="col-xs-2 " >
+                <div class="col-xs-2 col-lg-2" style="text-align: right;">
                     <tiles:insert attribute="sidebarL"/>
                 </div>
                 <div class="col-xs-8" >

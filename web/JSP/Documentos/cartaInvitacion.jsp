@@ -27,56 +27,56 @@
         <tbody>
             <tr>
                 <td style="color: black">Fecha</td>
-                <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="fecha" maxlength="10" value="${CartaInvitacion.fecha}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="fecha"/></td>
             </tr>
             <tr>
                 <td style="color: black">Nombre de la Empresa</td>
-                <td><html:text property="nomEmpresa" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="nomEmpresa" maxlength="50" value="${CartaInvitacion.nomEmpresa}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="nomEmpresa"/></td>
             </tr>
             <tr>
                 <td style="color: black">Direccion de la Empresa</td>
-                <td><html:text property="direccion" maxlength="150" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:textarea property="direccion" value="${CartaInvitacion.direccion}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:textarea></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="direccion"/></td>
             </tr>
             <tr>
                 <td style="color: black">Numero de fax</td>
-                <td><html:text property="telefono" maxlength="12" value="0212-XXXXXXX" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="telefono" maxlength="12" value="${CartaInvitacion.telefono}" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="telefono"/></td>
             </tr>
             <tr>
                 <td style="color: black">Correo</td>
-                <td><html:text property="correo" maxlength="50" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="correo" maxlength="50" value="${CartaInvitacion.correo}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="correo"/></td>
             </tr>
             <tr>
                 <td style="color: black">Dia final de la oferta</td>
-                <td><html:text property="diaOferta" maxlength="2" value="Ej: 02" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="diaOferta" maxlength="2" value="${CartaInvitacion.diaOferta}" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="diaOferta"/></td>
             </tr>
             <tr>
                 <td style="color: black">Mes final de la oferta</td>
-                <td><html:text property="mesOferta" maxlength="20" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="mesOferta" maxlength="20" value="${CartaInvitacion.mesOferta}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="mesOferta"/></td>
             </tr>
             <tr>
                 <td style="color: black">Informacion de Contacto</td>
-                <td><html:text property="contacto" maxlength="50" value="" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
+                <td><html:text property="contacto" maxlength="50" value="${CartaInvitacion.contacto}" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
             </tr>
             <tr>
                 <td colspan="2" style="color:firebrick"><html:errors property="contacto"/></td>

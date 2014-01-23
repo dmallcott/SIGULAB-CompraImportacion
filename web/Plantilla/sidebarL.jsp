@@ -27,22 +27,6 @@
     });
 
 </script>
-
-
-<style type="text/css">
-    li,a, a:hover {
-        list-style-type:none;
-        font-weight: bold;
-        text-decoration: none;
-        text-align: right;
-    }
-    
-    #left {  
-        width: 200px;          /* LC width */
-        right: 200px;          /* LC width */
-        margin-left: -100%;
-    }
-</style>
 <%--
     OJOOOOOOOOOOOOOO QUITA ESTA VAINA QUE SE VE DESDE CTRL+SHIFT+I
     Definicion de tipos:
@@ -54,7 +38,7 @@
         5 = Coordinador Nacional
 --%>
 <div>
-    <ul>
+    <ul style="padding-left: 0; list-style: none;">
         <li>
             <html:link action="/reqNuevaSolicitud">Nueva Solicitud</html:link>
         </li>
@@ -70,7 +54,7 @@
             </li>
             <li>
                 <div>Documentos</div>
-                <ul>
+                <nav style="padding-left: 0;">
                     <html:link action="/reqAgregarCartaInvitacion">Agregar carta de invitacion</html:link>
                     <html:link action="/reqAgregarCotizacion">Agregar cotizacion</html:link>
                     <html:link action="/reqAgregarEspecificacionTecnica">Agregar Especificacion Tecnica</html:link>
@@ -78,7 +62,7 @@
                     <html:link action="/reqAgregarActoMotivado">Agregar Acto Motivado</html:link>
                     <html:link action="/reqAgregarNotaDevolucion">Agregar Nota Devolucion</html:link>
                     <html:link action="/reqAgregarSolicitudServicio">Agregar Solicitud de Servicio</html:link>
-                </ul>
+                </nav>
             </li>
             </logic:greaterThan>
             <li>
