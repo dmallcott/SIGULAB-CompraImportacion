@@ -30,7 +30,7 @@
     </definition>
     
     <definition name="editarCartaInvitacion" extends="base"> <!-- Vista coordinador -->
-        <put name="body" value="/JSP/Documentos/cartaInvitacion.jsp"/>
+        <put name="body" value="/JSP/Documentos/editarCartaInvitacion.jsp"/>
         <put name="page_title" value="ULAB: Carta de Invitacion" type="string"/>
         <put name="body_title" value="Carta de Invitacion" type="string"/>
     </definition>
@@ -108,8 +108,8 @@
     
     <definition name="verSolicitud" extends="base">
         <put name="body" value="/JSP/Solicitudes/solicitud.jsp"/>
-        <put name="page_title" value="ULAB: Mis Solicitudes" type="string"/>
-        <put name="body_title" value="Mis Solicitudes" type="string"/>
+        <put name="page_title" value="ULAB: Solicitud" type="string"/>
+        <put name="body_title" value="Solicitud" type="string"/>
     </definition>
     
     <definition name="agregarSolicitud" extends="base">

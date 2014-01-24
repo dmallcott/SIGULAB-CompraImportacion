@@ -42,6 +42,10 @@ public class ReqEditarCartaInvitacion extends org.apache.struts.action.Action {
         String codCarta = (String) request.getParameter("codCartaInvitacion");
         carta = DBMS.DBMS.getInstance().getCartaInvitacion(codCarta);
         request.setAttribute("CartaInvitacion", carta);
+        session.setAttribute("CartaInvitacion", carta);
+        String codExp = (String) request.getParameter("codigo");
+        request.setAttribute("codigo", codExp);
+        session.setAttribute("codigo", codExp);
         return mapping.findForward(SUCCESS);
     }
 }

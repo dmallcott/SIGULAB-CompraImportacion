@@ -12,7 +12,9 @@ import DBMS.DBMS;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,6 +53,7 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
         CartaInvitacion carta = (CartaInvitacion) form;
         HttpSession session = request.getSession(true);        
         Usuario user = (Usuario) session.getAttribute("usuario");
+        String codExp = (String) session.getAttribute("codigo");
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
@@ -65,10 +68,12 @@ public class AgregarCartaInvitacion extends org.apache.struts.action.Action {
             
             //si los campos son validos
         } else {
-            boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);
+            carta.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime()));
+            boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta,codExp);
             // wat now
             if (registro) {
                 request.setAttribute("agregado", SUCCESS);
+                session.setAttribute("codigo", codExp);
                 return mapping.findForward(SUCCESS);
                 
             } else {

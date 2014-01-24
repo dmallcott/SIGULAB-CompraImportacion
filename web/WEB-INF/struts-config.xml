@@ -173,7 +173,7 @@
                 name="CartaInvitacion"
                 validate="false">
             <forward name="failure" path="agregarCartaInvitacion"/>
-            <forward name="success" path="home"/>
+            <forward name="success" path="reqVerSolicitud"/>
         </action>
         
         <action input="/reqEditarCartaInvitacion"
@@ -183,7 +183,7 @@
                 name="CartaInvitacion"
                 validate="false">
             <forward name="failure" path="editarCartaInvitacion"/>
-            <forward name="success" path="misSolicitudes"/>
+            <forward name="success" path="reqVerSolicitud"/>
         </action>
         
         <action input="/misSolicitudes"

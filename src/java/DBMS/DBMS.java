@@ -23,8 +23,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
 /**
  *
  * @author jidc28
@@ -254,13 +252,13 @@ public class DBMS {
     }
 
     /* DOCUMENTOS ESTATICOS */
-    public boolean AgregarCartaInvitacion(Usuario user, CartaInvitacion carta) {
+    public boolean AgregarCartaInvitacion(Usuario user, CartaInvitacion carta, String codExp) {
         PreparedStatement psAgregar = null;
         PreparedStatement psConsultar = null;
         try {
             psConsultar = conexion.prepareStatement("SELECT crearcodigocarta(?);");
             psConsultar.setString(1, user.getUnidad());
-            
+
             String fecha = carta.getFechaOferta();
             String[] fechaDividida = fecha.split("-");
 
@@ -278,7 +276,7 @@ public class DBMS {
             psAgregar.setString(3, carta.getCorreo());
             psAgregar.setString(4, fechaDividida[2]);
             psAgregar.setString(5, carta.getDireccion());
-            psAgregar.setDate(6, Date.valueOf(carta.getFecha()));
+            psAgregar.setString(6, carta.getFecha());
             psAgregar.setString(7, fechaDividida[1]);
             psAgregar.setString(8, carta.getNomEmpresa());
             psAgregar.setString(9, user.getNombre());
@@ -286,10 +284,18 @@ public class DBMS {
             psAgregar.setString(11, user.getUnidad());
 
             Integer i = psAgregar.executeUpdate();
-
+            
+            if (i<=0)
+                return false;
+            
+            // Luego se agrega al expediente
+            psAgregar=conexion.prepareStatement("UPDATE mod3.expediente SET codcartainvitacion=? WHERE codigo=?;");
+            psAgregar.setString(1, nuevoCodigo);
+            psAgregar.setString(2, codExp);
+            i = psAgregar.executeUpdate();
+            
             return i > 0;
         } catch (SQLException ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -350,7 +356,7 @@ public class DBMS {
             psAgregar.setBoolean(6, Boolean.valueOf(nota.getC5().toString()));
             psAgregar.setBoolean(7, Boolean.valueOf(nota.getC5nombre().toString()));
             psAgregar.setBoolean(8, Boolean.valueOf(nota.getC5fiscal().toString()));
-            psAgregar.setBoolean(9, Boolean.valueOf(nota.getC5rif().toString())); 
+            psAgregar.setBoolean(9, Boolean.valueOf(nota.getC5rif().toString()));
             psAgregar.setBoolean(10, Boolean.valueOf(nota.getC5tlf().toString()));
             psAgregar.setBoolean(11, Boolean.valueOf(nota.getC5banco().toString()));
             psAgregar.setBoolean(12, Boolean.valueOf(nota.getC5contacto().toString()));
@@ -362,8 +368,8 @@ public class DBMS {
             psAgregar.setBoolean(18, Boolean.valueOf(nota.getCertificacionServicio().toString()));
             psAgregar.setInt(19, Integer.parseInt(nota.getCsNO().toString()));
             psAgregar.setDate(20, Date.valueOf(nota.getFecha()));
-            psAgregar.setString(21, nota.getObservaciones()); 
-            psAgregar.setInt(22, Integer.parseInt(nota.getoNO().toString())); 
+            psAgregar.setString(21, nota.getObservaciones());
+            psAgregar.setInt(22, Integer.parseInt(nota.getoNO().toString()));
             psAgregar.setBoolean(23, Boolean.valueOf(nota.getOtro().toString()));
             psAgregar.setString(24, nota.getOtro1());
             psAgregar.setBoolean(25, Boolean.valueOf(nota.getPago().toString()));
@@ -374,9 +380,6 @@ public class DBMS {
             psAgregar.setInt(30, Integer.parseInt(nota.getRqNO().toString()));
             psAgregar.setBoolean(31, Boolean.valueOf(nota.getSolicitudServicio().toString()));
             psAgregar.setInt(32, Integer.parseInt(nota.getSsNO().toString()));
-           
-            
-           
 
             Integer i = psAgregar.executeUpdate();
 
@@ -417,7 +420,7 @@ public class DBMS {
             psAgregar.setString(12, solicitud.getNombreBien());
             psAgregar.setString(13, solicitud.getNoBienNacional());
             psAgregar.setString(14, solicitud.getNoCotizacion());
-            psAgregar.setString(15,solicitud.getObservaciones()); 
+            psAgregar.setString(15, solicitud.getObservaciones());
             psAgregar.setString(16, solicitud.getProyectoPOA());
             psAgregar.setString(17, solicitud.getTelefono());
             psAgregar.setString(18, solicitud.getTelefonoCompania());
@@ -552,16 +555,15 @@ public class DBMS {
 
             psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".cotizacion VALUES (?,?,?,?,?,?,?,?,?,?)");
             psAgregar.setString(1, nuevoCodigo);
-            psAgregar.setString(2,cotizacion.getCodExpediente());
+            psAgregar.setString(2, cotizacion.getCodExpediente());
             psAgregar.setString(3, cotizacion.getCodRecibido());
             psAgregar.setString(4, cotizacion.getCorreo());
             psAgregar.setString(5, cotizacion.getDireccion());
-            psAgregar.setString(6, cotizacion.getFax());     
+            psAgregar.setString(6, cotizacion.getFax());
             psAgregar.setString(7, cotizacion.getNomEmpresa());
             psAgregar.setString(8, cotizacion.getPersonaContacto());
             psAgregar.setString(9, cotizacion.getRif());
             psAgregar.setString(10, cotizacion.getTelefono());
-            
 
             Integer j = psAgregar.executeUpdate();
 
@@ -571,7 +573,7 @@ public class DBMS {
                 temp = (Actions.Documentos.Cotizacion.Item) items.get(i);
                 psAgregar = conexion.prepareStatement("INSERT INTO \"mod3\".itemscotizacion VALUES (?,?,?,?,?,?,?)");
                 psAgregar.setString(1, nuevoCodigo);
-                psAgregar.setString(2,temp.getCodigoExpediente());
+                psAgregar.setString(2, temp.getCodigoExpediente());
                 psAgregar.setString(3, temp.getCondicionPago());
                 psAgregar.setString(4, temp.getGarantia());
                 psAgregar.setString(5, temp.getNombre());
@@ -702,6 +704,41 @@ public class DBMS {
             Integer i = psAgregar.executeUpdate();
 
             return i > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean EditarCartaInvitacion(Usuario user, CartaInvitacion carta) {
+        PreparedStatement ps = null;
+        try {
+            
+            
+
+            String fecha = carta.getFechaOferta();
+            String[] fechaDividida = fecha.split("-");
+            
+            ps = conexion.prepareStatement("UPDATE mod3.cartainvitacion"
+                    + " SET contacto=?, correo=?, diaoferta=?, direccion=?, fecha=?,"
+                    + " mesoferta=?, nomempresa=?, telefono=?"
+                    + " WHERE codigo=?;");
+
+            
+            ps.setString(1, carta.getContacto());
+            ps.setString(2, carta.getCorreo());
+            ps.setString(3, fechaDividida[2]);
+            ps.setString(4, carta.getDireccion());
+            ps.setString(5, carta.getFecha());
+            ps.setString(6, fechaDividida[1]);
+            ps.setString(7, carta.getNomEmpresa());
+            ps.setString(8, carta.getTelefono());
+            ps.setString(9, carta.getCodigo());
+            
+            Integer s = ps.executeUpdate();
+
+            return s > 0;
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;

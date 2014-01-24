@@ -52,7 +52,7 @@
     </p>
 </logic:present>
 
-    <html:form action="/agregarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
+    <html:form action="/editarCartaInvitacion" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
     <div class="form-group">
         <label for="resena">Nombre de la Empresa</label>
         <html:text property="nomEmpresa" value="${CartaInvitacion.nomEmpresa}" styleClass="form-control"></html:text>

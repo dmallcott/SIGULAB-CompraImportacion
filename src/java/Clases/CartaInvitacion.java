@@ -51,7 +51,7 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
      private static final String patronCorreo = "^[a-z]*@usb\\.ve$";
      private static final String patronDia = "^(0[1-9]|[12]\\d|3[01])$";
      private static final String patronMes = "^(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)$";
- 
+     private static final String patronFecha = "^[0-9]{4}-(Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)-[0|1|2|3][0-9]$";
  
      public boolean validateTelefono(final String telefono) {
          patron = Pattern.compile(patronTelefono);
@@ -66,19 +66,17 @@ public class CartaInvitacion extends org.apache.struts.action.ActionForm {
      }
  
      public boolean validateFecha(String fecha) {
-         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         try {
-             sdf.parse(fecha);
-             return true;
-         } catch (ParseException ex) {
-             return false;
-         }
+         patron = Pattern.compile(patronFecha);
+         match = patron.matcher(fecha);
+         return match.matches();
      }
  
      public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
          ActionErrors errors = new ActionErrors();
  
-         
+         if (!validateFecha(fechaOferta)) {
+             errors.add("fechaOferta", new ActionMessage("error.fecha.invalida"));
+         }
  
          if (!validateTelefono(telefono)) {
              errors.add("telefono", new ActionMessage("error.telefono.invalido"));

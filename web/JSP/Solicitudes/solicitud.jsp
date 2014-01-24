@@ -139,15 +139,16 @@
                         <h4>Carta Invitacion</h4>
                         <logic:empty name="expediente" property="codCartaInvitacion">
                             <html:form action="/reqAgregarCartaInvitacion" onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codigo"/>
                                 <html:submit styleClass="btn btn-default">Nuevo</html:submit>
                             </html:form>
                         </logic:empty>
                         <logic:notEmpty name="expediente" property="codCartaInvitacion">
                             <html:form action="/reqEditarCartaInvitacion" onsubmit="return(this)">
+                                <html:hidden name="expediente" property="codigo"/>
+                                <html:hidden name="expediente" property="codCartaInvitacion"/>
                                 <html:submit  styleClass="btn btn-default">Editar</html:submit>
                             </html:form>
-
-
 
                             <html:form action="/descargarCartaInvitacion" onsubmit="return(this)">
                                 <html:hidden name="expediente" property="codCartaInvitacion"/>

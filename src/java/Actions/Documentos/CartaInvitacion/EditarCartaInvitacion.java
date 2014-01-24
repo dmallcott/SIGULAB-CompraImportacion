@@ -9,6 +9,8 @@ package Actions.Documentos.CartaInvitacion;
 import Clases.CartaInvitacion;
 import Clases.Usuario;
 import DBMS.DBMS;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,6 +46,9 @@ public class EditarCartaInvitacion extends org.apache.struts.action.Action {
         CartaInvitacion carta = (CartaInvitacion) form;
         HttpSession session = request.getSession(true);        
         Usuario user = (Usuario) session.getAttribute("usuario");
+        String codExp = (String) session.getAttribute("codigo");
+        String temp = (String) session.getAttribute("codCartaInvitacion"); // el peo es que no tienes el cod
+        
         ActionErrors error = new ActionErrors();
 
         //valido los campos de formulario
@@ -53,13 +58,16 @@ public class EditarCartaInvitacion extends org.apache.struts.action.Action {
         if (error.size() != 0) {
             saveErrors(request, error);
             request.setAttribute("noAgregado", FAILURE);
+            request.setAttribute("CartaInvitacion", carta);
             return mapping.findForward(FAILURE);
             //si los campos son validos
         } else {
-            boolean registro = DBMS.getInstance().AgregarCartaInvitacion(user, carta);
+            carta.setFecha(new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime()));
+            boolean registro = DBMS.getInstance().EditarCartaInvitacion(user, carta);
             // wat now
             if (registro) {
                 request.setAttribute("agregado", SUCCESS);
+                session.setAttribute("codigo", codExp);
                 return mapping.findForward(SUCCESS);
                 
             } else {

@@ -43,6 +43,10 @@ public class ReqAgregarCartaInvitacion extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception 
     {
+        HttpSession session = request.getSession(true);
+        String codExp = (String) request.getParameter("codigo");
+        request.setAttribute("codigo", codExp);
+        session.setAttribute("codigo", codExp);
         return mapping.findForward(SUCCESS);
     }
 }
