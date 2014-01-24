@@ -664,6 +664,8 @@ public class DBMS {
                 carta.setResponsable(rs.getString("responsable"));
                 carta.setTelefono(rs.getString("telefono"));
                 carta.setUnidadSolicitante(rs.getString("unidadsolicitante"));
+                carta.setFechaOferta(rs.getString("diaoferta") + "-" + rs.getString("mesoferta") + "-2014"); 
+                // El ano esta cableado
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

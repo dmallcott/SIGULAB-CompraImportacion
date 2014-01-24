@@ -106,6 +106,7 @@
         <html:errors property="fechaOferta"/>
     </div>
     <p style="text-align: center">
+        <html:hidden name="CartaInvitacion" property="codigo"/>
         <html:submit styleClass="btn btn-primary"></html:submit>
         <html:reset styleClass="btn btn-default" value="Limpiar"/>
     </p>

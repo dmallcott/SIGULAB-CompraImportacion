@@ -47,7 +47,6 @@ public class EditarCartaInvitacion extends org.apache.struts.action.Action {
         HttpSession session = request.getSession(true);        
         Usuario user = (Usuario) session.getAttribute("usuario");
         String codExp = (String) session.getAttribute("codigo");
-        String temp = (String) session.getAttribute("codCartaInvitacion"); // el peo es que no tienes el cod
         
         ActionErrors error = new ActionErrors();
 
