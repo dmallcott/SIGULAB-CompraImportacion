@@ -11,8 +11,7 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
 <html:form action="/agregarActoMotivado" method="POST" acceptCharset="ISO-8859-1" enctype="multipart/form-data" onsubmit="return(this)">
-    <table border="0">
-        <tbody>
+
             <tr>
                 <td style="color: black">Fecha</td>
                 <td><html:text property="fecha" maxlength="10" value="yyyy-mm-dd" onclick="this.value = ''" errorStyleClass="error" errorKey="org.apache.struts.action.ERROR"></html:text></td>
@@ -69,8 +68,7 @@
              <html:text property="cargo" maxlength="50" value="" errorStyleClass="error"
                         errorKey="org.apache.struts.action.ERROR" styleClass="form-control"></html:text>
              </div>             
-        </tbody>
-    </table>
+
     <p style="text-align: center">
         <html:submit onclick="javascript: return confirm('¿Está seguro de que los datos son correctos?')"></html:submit>
         <html:reset value="Limpiar"/>
